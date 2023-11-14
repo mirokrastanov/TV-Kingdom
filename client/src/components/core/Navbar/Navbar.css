@@ -112,9 +112,9 @@
     color: white;
 }
 
-.scrolled .menu-icon__line,
-.scrolled .menu-icon__line::before,
-.scrolled .menu-icon__line::after {
+.scrolled .menu-icon .menu-icon__line,
+.scrolled .menu-icon .menu-icon__line::before,
+.scrolled .menu-icon .menu-icon__line::after {
     background: white;
 }
 
