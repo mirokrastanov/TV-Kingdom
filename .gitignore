@@ -1,3 +1,20 @@
+# Custom
+_templates/
+*.zip
+
+
+
+
+
+
+
+
+
+
+
+
+# Node.js 
+# ------------------
 # Logs
 logs
 *.log
