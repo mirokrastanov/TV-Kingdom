@@ -39,7 +39,7 @@ export default function Navbar() {
                 <li className="nav-link"><a href="javascript:void(0)">Actors</a></li>
                 <li className="nav-link"><a href="javascript:void(0)">Schedule</a></li>
                 <li className="nav-link"><a href="javascript:void(0)">Search</a></li>
-                <li className="nav-link"><a href="javascript:void(0)">User</a></li> {/* Placeholder for Sign In, Sign Up or Profile Icon 
+                <li className="nav-link"><a href="javascript:void(0)">Profile</a></li> {/* Placeholder for Sign In, Sign Up or Profile Icon 
             - figure out where it goes on mobile res */}
             </ul>
         </header>
