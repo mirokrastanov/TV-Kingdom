@@ -1,0 +1,101 @@
+.main-header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 65px;
+    width: 100vw;
+    padding: 0 5vw;
+    color: black;
+    z-index: 100;
+    transition: 0.4s ease-out;
+}
+
+/* FOR TESTING ONLY */
+/* .main-header > * {
+    background: aliceblue;
+    border: 1px solid black;
+} */
+
+.main-header .logo {
+    font-size: 1.5rem;
+    text-wrap: nowrap;
+    margin: 0.2rem;
+    padding: 1rem 0.5rem;
+}
+
+.main-header a {
+    text-decoration: none;
+    color: inherit;
+    text-transform: uppercase;
+}
+
+.main-header .nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.main-header .nav-links .nav-link a {
+    margin: 0.2rem;
+    padding: 1rem 0.5rem;
+    font-size: 1.1rem;
+}
+
+.main-header .nav-links .nav-link a:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.main-header .menu-icon {
+    position: relative;
+    padding: 26px 10px;
+    cursor: pointer;
+    z-index: 100;
+    display: none;
+}
+
+.main-header .menu-icon .menu-icon__line {
+    display: block;
+    position: relative;
+    background: black;
+    height: 2px;
+    width: 20px;
+    border-radius: 4px;
+    transition: background 0.8s ease;
+}
+
+.main-header .menu-icon .menu-icon__line::before,
+.main-header .menu-icon .menu-icon__line::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    background: black;
+    transition: background 0.8s ease;
+}
+
+.main-header .menu-icon .menu-icon__line::before {
+    transform: translateY(-5px);
+}
+
+.main-header .menu-icon .menu-icon__line::after {
+    transform: translateY(5px);
+}
+
+.main-header .menu-btn {
+    display: none;
+
+}
+
+.scrolled {
+    height: 50px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+}
+
+.scrolled .menu-icon__line,
+.scrolled .menu-icon__line::before,
+.scrolled .menu-icon__line::after {
+    background: white;
+}
+
