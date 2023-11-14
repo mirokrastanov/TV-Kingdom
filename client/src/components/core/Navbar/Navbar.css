@@ -35,6 +35,25 @@
     list-style: none;
 }
 
+.main-header .nav-links .nav-link {
+    transition:
+        opacity 0.4s ease-in-out,
+        transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.main-header .nav-links .nav-link:nth-of-type(2) {
+    transition-delay: 0.1s;
+}
+.main-header .nav-links .nav-link:nth-of-type(3) {
+    transition-delay: 0.2s;
+}
+.main-header .nav-links .nav-link:nth-of-type(4) {
+    transition-delay: 0.3s;
+}
+.main-header .nav-links .nav-link:nth-of-type(5) {
+    transition-delay: 0.4s;
+}
+
 .main-header .nav-links .nav-link a {
     margin: 0.2rem;
     padding: 1rem 0.5rem;
@@ -47,7 +66,7 @@
 
 .main-header .menu-icon {
     position: relative;
-    padding: 26px 10px;
+    padding: 26px 15px;
     cursor: pointer;
     z-index: 100;
     display: none;
@@ -57,8 +76,8 @@
     display: block;
     position: relative;
     background: black;
-    height: 2px;
-    width: 20px;
+    height: 3px;
+    width: 25px;
     border-radius: 4px;
     transition: background 0.8s ease;
 }
@@ -75,11 +94,11 @@
 }
 
 .main-header .menu-icon .menu-icon__line::before {
-    transform: translateY(-5px);
+    transform: translateY(-7px);
 }
 
 .main-header .menu-icon .menu-icon__line::after {
-    transform: translateY(5px);
+    transform: translateY(7px);
 }
 
 .main-header .menu-btn {
@@ -109,6 +128,21 @@
 @media screen and (max-width: 767px) {
     .main-header .menu-icon {
         display: block;
+    }
+
+    .main-header .menu-icon__line {
+        animation: closedMid 0.8s backwards;
+        animation-direction: reverse;
+    }
+
+    .main-header .menu-icon__line::before {
+        animation: closedTop 0.8s backwards;
+        animation-direction: reverse;
+    }
+
+    .main-header .menu-icon__line::after {
+        animation: closedBtm 0.8s backwards;
+        animation-direction: reverse;
     }
 
     .main-header .nav-links {
@@ -174,5 +208,119 @@
 
     .main-header .menu-btn:checked~.nav-links .nav-link:nth-of-type(5) {
         transition-delay: 0.8s;
+    }
+
+    .main-header .menu-btn:checked~.menu-icon {
+        border-radius: 50%;
+    }
+
+    .main-header .menu-btn:checked~.menu-icon .menu-icon__line {
+        background: white;
+        animation: openMid 0.8s forwards;
+    }
+
+    .main-header .menu-btn:checked~.menu-icon .menu-icon__line::before {
+        background: white;
+        animation: openTop 0.8s forwards;
+    }
+
+    .main-header .menu-btn:checked~.menu-icon .menu-icon__line::after {
+        background: white;
+        animation: openBtm 0.8s forwards;
+    }
+}
+
+
+
+
+
+/* Animations */
+@keyframes pulse {
+    from {
+        box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.6);
+    }
+
+    to {
+        box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0);
+        background: rgba(255, 255, 255, 0);
+    }
+}
+
+@keyframes openTop {
+    0% {
+        transform: translateY(-5px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(90deg);
+    }
+}
+
+@keyframes openMid {
+    50% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes openBtm {
+    0% {
+        transform: translateY(5px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(90deg);
+    }
+}
+
+/* Required as once the animation has been started it cannot be restarted. 
+Hence the new animations. */
+@keyframes closedTop {
+    0% {
+        transform: translateY(-5px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(90deg);
+    }
+}
+
+@keyframes closedMid {
+    50% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes closedBtm {
+    0% {
+        transform: translateY(5px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(90deg);
     }
 }
