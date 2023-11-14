@@ -102,8 +102,16 @@
 }
 
 .main-header .menu-btn {
-    display: none;
+    position: absolute;
+    top: -100px;
+}
 
+.main-header .menu-btn:focus ~.menu-icon .menu-icon__line::before {
+    transform: translateY(-9px);
+}
+
+.main-header .menu-btn:focus ~.menu-icon .menu-icon__line::after {
+    transform: translateY(9px);
 }
 
 .scrolled {
