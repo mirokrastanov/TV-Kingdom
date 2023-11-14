@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+/* Root Variables */
+:root {
+    --color-white: white;
+    --color-black: black;
+    --color-black-02: rgba(0, 0, 0, 0.2);
+    /* add accent color and other accent modes */
+}
+
+.dark-mode {
+    --color-white: black;
+    --color-black: white;
+    --color-black-02: rgba(255, 255, 255, 0.2);
+
+}
+
+
+/* Reset CSS */
 *,
 *::before,
 *::after {
@@ -8,6 +25,8 @@
     padding: 0;
 }
 
+
+/* Master Font */
 body {
     font-family: 'Montserrat', sans-serif;
 }
