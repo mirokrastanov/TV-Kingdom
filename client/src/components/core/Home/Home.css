@@ -1,0 +1,8 @@
+.container {
+    width: 80%;
+    margin: 2rem auto;
+}
+
+.container p {
+    margin: 1rem 0;
+}
