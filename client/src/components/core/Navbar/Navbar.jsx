@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import './Navbar.css';
+import './Navbar.module.css';
 
 export default function Navbar() {
     const [topScroll, setTopScroll] = useState(true);
 
     useEffect(() => {
-        // Mount
         const scrollHandler = (e) => {
             const scrollPos = window.scrollY;
-            if (scrollPos > 10) {
-                setTopScroll(false);
-            } else {
-                setTopScroll(true);
-            }
+            if (scrollPos > 10) setTopScroll(false);
+            else setTopScroll(true);
         };
-
         window.addEventListener('scroll', scrollHandler);
 
-        // Unmount
         return () => {
             window.removeEventListener('scroll', scrollHandler);
         };
