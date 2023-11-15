@@ -10,6 +10,7 @@
     --color-black-light: rgba(0, 0, 0, 0.2);
     --color-bg: white;
     --color-bg-reverse: #0f0f0f;
+    --color-accent-1: navy;
 
     --text-shadow-1: none;
     --box-shadow-1: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -25,6 +26,7 @@
     --color-black-light: rgba(255, 255, 255, 0.2);
     --color-bg: #0f0f0f;
     --color-bg-reverse: white;
+    --color-accent-1: cyan;
 
     --text-shadow-1: 2px 2px black;
     --box-shadow-1: rgba(205, 205, 162, 0.25) 0px 50px 100px -20px,
@@ -41,6 +43,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    transition: all 0.3s ease;
 }
 
 
