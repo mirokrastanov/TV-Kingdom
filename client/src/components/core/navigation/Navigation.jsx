@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useTheme, useThemeUpdate } from '../../../contexts/ThemeContext';
 import './Navigation.css';
 
 export default function Navigation() {
     const [topScroll, setTopScroll] = useState(true);
+
+    const darkTheme = useTheme();
+    const toggleTheme = useThemeUpdate();
 
     useEffect(() => {
         const scrollHandler = (e) => {
@@ -19,7 +23,12 @@ export default function Navigation() {
 
     return (
         <header className={`main-header ${!topScroll && 'scrolled'}`}>
-            <div className="logo">
+            <div className="logo" onClick={toggleTheme}>
+                {/* 
+                - REPLACE THE TOGGLE WITH A CHECKBOX. 
+                - Figure out the positioning.
+                - Figure out a space outside the ul for the future Profile circle 
+                */}
                 <a href="javascript:void(0)">TV Kingdom</a>
             </div>
 
