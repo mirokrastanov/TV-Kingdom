@@ -3,16 +3,33 @@
 /* Root Variables */
 :root {
     --color-white: white;
+    --color-white-light: rgba(255, 255, 255, 0.2);
     --color-black: black;
-    --color-black-02: rgba(0, 0, 0, 0.2);
-    /* add accent color and other accent modes */
+    --color-black-light: rgba(0, 0, 0, 0.2);
+    --color-bg: white;
+    --color-bg-reverse: #0f0f0f;
+    --color-accent-1: rgb(0, 161, 182);
+
+    --text-shadow-1: none;
+    --box-shadow-1: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    --background-1: url('./assets/sw-wall-1.jpeg');
 }
 
 .dark-mode {
     --color-white: black;
+    --color-white-light: rgba(0, 0, 0, 0.2);
     --color-black: white;
-    --color-black-02: rgba(255, 255, 255, 0.2);
+    --color-black-light: rgba(255, 255, 255, 0.2);
+    --color-bg: #0f0f0f;
+    --color-bg-reverse: white;
 
+    --text-shadow-1: 2px 2px black;
+    --box-shadow-1: rgba(205, 205, 162, 0.25) 0px 50px 100px -20px,
+        rgba(255, 255, 255, 0.3) 0px 30px 60px -30px,
+        rgba(245, 218, 191, 0.35) 0px -2px 6px 0px inset;
+    --background-1: url('./assets/avengers-wall-1.webp');
 }
 
 
@@ -26,7 +43,37 @@
 }
 
 
-/* Master Font */
+/* Master Font & Styles*/
+html,
 body {
     font-family: 'Montserrat', sans-serif;
+    background: var(--color-bg);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Effects */
+.a-left {
+    display: inline-block;
+    position: relative;
+    color: var(--color-black);
+}
+
+.a-left::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -5px;
+    left: 10%;
+    background-color: var(--color-black);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.a-left:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
