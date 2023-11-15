@@ -1,19 +1,18 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
+import { useTheme } from './contexts/ThemeContext';
 import Home from './components/core/home/Home';
 import Navigation from './components/core/navigation/Navigation';
 import Footer from './components/core/footer/Footer';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const darkTheme = useTheme();
+  console.log(darkTheme);
 
   return (
-    <div className='app-ctr'>
+    <div className={`app-ctr${darkTheme ? ' dark-mode' : ''}`}>
       <Navigation />
 
-      <Home />
+      <Home /> {/* TO ADD ROUTES */}
 
       <Footer />
     </div>
