@@ -28,7 +28,7 @@ export default function Navigation() {
                 - REPLACE THE TOGGLE WITH A CHECKBOX. 
                 - Figure out the positioning.
                 - Figure out a space outside the ul for the future Profile circle 
-                */}
+            */}
                 <a href="javascript:void(0)">TV Kingdom</a>
             </div>
 
@@ -41,9 +41,21 @@ export default function Navigation() {
                 <li className="nav-link a-left"><a href="javascript:void(0)">Shows</a></li>
                 <li className="nav-link a-left"><a href="javascript:void(0)">Actors</a></li>
                 <li className="nav-link a-left"><a href="javascript:void(0)">Schedule</a></li>
-                <li className="nav-link a-left"><a href="javascript:void(0)">Search</a></li>
-                <li className="nav-link a-left"><a href="javascript:void(0)">Profile</a></li> {/* Placeholder for Sign In, Sign Up or Profile Icon 
-            - figure out where it goes on mobile res */}
+                <li className="nav-link a-left" title='Search'>
+                    <a href="javascript:void(0)"><span class="material-symbols-outlined">search</span></a>
+                </li>
+                <li className="nav-link a-left" title='Log In'>
+                    <a href="javascript:void(0)"><span class="material-symbols-outlined">login</span></a>
+                </li>
+                <li className="nav-link a-left" title='Sign Up'>
+                    <a href="javascript:void(0)"><span class="material-symbols-outlined">person_add</span></a>
+                </li>
+                <li className="nav-link a-left" title='Log Out'>
+                    <a href="javascript:void(0)"><span class="material-symbols-outlined">logout</span></a>
+                </li>
+                <li className="nav-link a-left" title='Profile Modal'> {/* Change title when the modal is implemented */}
+                    <a href="javascript:void(0)"><span class="material-symbols-outlined">account_circle</span></a>
+                </li>
             </ul>
         </header>
         // the profile can be here as well - TODO later on!
