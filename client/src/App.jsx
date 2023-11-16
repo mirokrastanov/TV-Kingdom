@@ -6,7 +6,6 @@ import Footer from './components/core/footer/Footer';
 
 function App() {
   const darkTheme = useTheme();
-  console.log(darkTheme);
 
   return (
     <div className={`app-ctr${darkTheme ? ' dark-mode' : ''}`}>
