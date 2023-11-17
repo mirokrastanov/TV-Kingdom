@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useTheme, useThemeUpdate } from '../../../contexts/ThemeContext';
+import { useTheme, useThemeUpdate } from '../../contexts/ThemeContext';
 import './Navigation.css';
 
 export default function Navigation() {
