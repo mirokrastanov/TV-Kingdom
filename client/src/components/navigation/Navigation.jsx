@@ -34,6 +34,8 @@ export default function Navigation() {
         // console.log(e.target.value);
         // TODO: Add search logic after API implementation
     };
+    // Also design a mobile search page to be re-directed to from the mobile menu >>
+    // On the new page I can use the same handler. If necessary I'd create a Hook for easy access across.
 
     useEffect(() => {
         window.addEventListener('scroll', scrollHandler);
@@ -113,7 +115,15 @@ export default function Navigation() {
 
 
 
-                {/* Future protected routes */}
+                {/* Future protected routes 
+                
+                - PROFILE
+                - LOGOUT
+                - SEARCH -> to add to protected
+                - SCHEDULE -> to add to protected
+                - Think of some preview for guests 
+                
+                */}
                 {/* <li className="nav-link a-left"><a href="javascript:void(0)">Profile</a></li> */}
             </ul>
         </header>
