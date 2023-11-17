@@ -4,6 +4,7 @@ import './Navigation.css';
 
 export default function Navigation() {
     const [topScroll, setTopScroll] = useState(true);
+    const [mobileWidth, setMobileWidth] = useState(false);
 
     const darkTheme = useTheme();
     const toggleTheme = useThemeUpdate();
@@ -14,10 +15,19 @@ export default function Navigation() {
             if (scrollPos > 10) setTopScroll(false);
             else setTopScroll(true);
         };
+        const screenResizeHandler = (e) => {
+            const screenWidth = window.innerWidth;
+            if (screenWidth <= 767) setMobileWidth(true);
+            else setMobileWidth(false);
+        };
         window.addEventListener('scroll', scrollHandler);
+        window.addEventListener('load', screenResizeHandler);
+        window.addEventListener('resize', screenResizeHandler);
 
         return () => {
             window.removeEventListener('scroll', scrollHandler);
+            window.removeEventListener('load', screenResizeHandler);
+            window.removeEventListener('resize', screenResizeHandler);
         };
     }, []);
 
@@ -38,13 +48,32 @@ export default function Navigation() {
             </label>
 
             <ul className="nav-links">
-                <li className="nav-link a-left tooltip-anchor"><a href="javascript:void(0)">Shows</a>
-                <div className='tooltip'>More Info...</div>
+                <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
+                    <a href="javascript:void(0)">
+                        {mobileWidth ? 'Shows' : (<span className="material-symbols-outlined">smart_display</span>)}
+                    </a>
+                    <div className='tooltip'>Shows</div>
                 </li>
-                <li className="nav-link a-left"><a href="javascript:void(0)">Actors</a></li>
-                <li className="nav-link a-left"><a href="javascript:void(0)">Schedule</a></li>
-                <li className="nav-link a-left"><a href="javascript:void(0)">Log In</a></li>
-                <li className="nav-link a-left"><a href="javascript:void(0)">Sign Up</a></li>
+                <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
+                    <a href="javascript:void(0)">
+                        {mobileWidth ? 'Actors' : (<span className="material-symbols-outlined">person</span>)}
+                    </a>
+                    <div className='tooltip'>Actors</div>
+                </li>
+                <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
+                    <a href="javascript:void(0)">
+                        {mobileWidth ? 'Schedule' : (<span className="material-symbols-outlined">calendar_month</span>)}
+                    </a>
+                    <div className='tooltip'>Schedule</div>
+                </li>
+                <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
+                    <a href="javascript:void(0)">
+                        {mobileWidth ? 'Sign In' : (<span className="material-symbols-outlined">login</span>)}
+                    </a>
+                    <div className='tooltip'>Sign In</div>
+                </li>
+
+
 
                 {/* Future protected routes */}
                 {/* <li className="nav-link a-left"><a href="javascript:void(0)">Profile</a></li> */}
@@ -56,9 +85,9 @@ export default function Navigation() {
 
 
 
-/*
 
-<li className="nav-link a-left" title='Search'>
+
+{/* <li className="nav-link a-left" title='Search'>
     <a href="javascript:void(0)"><span className="material-symbols-outlined">search</span></a>
 </li>
 <li className="nav-link a-left" title='Log In'>
@@ -73,6 +102,10 @@ export default function Navigation() {
 <li className="nav-link a-left" title='Profile Modal'> 
 // Change title when the modal is implemented
 <a href="javascript:void(0)"><span className="material-symbols-outlined">account_circle</span></a>
-</li>
+</li> */}
 
-*/
+{/* <li className="nav-link a-left tooltip-anchor">
+<a href="javascript:void(0)">Sign In</a>
+<div className='tooltip'>Sign In</div>
+</li> */}
+
