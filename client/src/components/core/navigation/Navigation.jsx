@@ -5,21 +5,32 @@ import './Navigation.css';
 export default function Navigation() {
     const [topScroll, setTopScroll] = useState(true);
     const [mobileWidth, setMobileWidth] = useState(false);
+    const [searchShown, setSearchShown] = useState(false);
 
     const darkTheme = useTheme();
     const toggleTheme = useThemeUpdate();
 
+    const scrollHandler = (e) => {
+        const scrollPos = window.scrollY;
+        if (scrollPos > 10) setTopScroll(false);
+        else setTopScroll(true);
+    };
+
+    const screenResizeHandler = (e) => {
+        const screenWidth = window.innerWidth;
+        if (screenWidth <= 767) setMobileWidth(true);
+        else setMobileWidth(false);
+    };
+
+    const searchToggleHandler = (e) => {
+        if (searchShown) {
+            if (!e.target.classList.contains('material-symbols-outlined')) return;
+            setSearchShown(false);
+        }
+        else setSearchShown(true);
+    }
+
     useEffect(() => {
-        const scrollHandler = (e) => {
-            const scrollPos = window.scrollY;
-            if (scrollPos > 10) setTopScroll(false);
-            else setTopScroll(true);
-        };
-        const screenResizeHandler = (e) => {
-            const screenWidth = window.innerWidth;
-            if (screenWidth <= 767) setMobileWidth(true);
-            else setMobileWidth(false);
-        };
         window.addEventListener('scroll', scrollHandler);
         window.addEventListener('load', screenResizeHandler);
         window.addEventListener('resize', screenResizeHandler);
@@ -48,6 +59,25 @@ export default function Navigation() {
             </label>
 
             <ul className="nav-links">
+                <li className={`nav-link ${searchShown || mobileWidth ? '' : 'a-left tooltip-anchor'}`}
+                    onClick={searchToggleHandler}>
+                    <a href="javascript:void(0)">
+                        {mobileWidth ? 'Search' : (
+                            <div className="search-ctr">
+                                <div className={`search${searchShown ? ' active' : ''}`}>
+                                    <div className="icon">
+                                        <span className="material-symbols-outlined"
+                                        >{searchShown ? 'search_off' : 'search'}</span>
+                                    </div>
+                                    <div className="input">
+                                        <input type="text" placeholder='Search...' id='my-search' />
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </a>
+                    <div className='tooltip'>Search</div>
+                </li>
                 <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
                     <a href="javascript:void(0)">
                         {mobileWidth ? 'Shows' : (<span className="material-symbols-outlined">smart_display</span>)}
