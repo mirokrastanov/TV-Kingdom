@@ -5,7 +5,7 @@
     align-items: center;
     height: 65px;
     width: 100vw;
-    padding: 0 3vw 0 0;
+    padding: 0 8vw 0 5vw;
     color: var(--color-black);
     /* text-shadow: var(--text-shadow-1); */
     z-index: 100;
@@ -58,6 +58,10 @@
     margin: 0.2rem;
     padding: 1rem 0.5rem;
     font-size: 1.1rem;
+}
+
+.main-header .nav-links .nav-link .material-symbols-outlined {
+    font-size: 2rem;
 }
 
 .main-header .menu-icon {
@@ -139,8 +143,8 @@
 
 .tooltip {
     visibility: hidden;
-    width: 160px;
-    background-color: var(--color-bg-light);
+    width: 120px;
+    background-color: var(--color-bg);
     color: var(--color-bg-reverse);
     text-align: center;
     border-radius: 6px;
@@ -149,10 +153,13 @@
     z-index: 1;
     top: 100%;
     left: 50%;
-    margin-left: -80px;
+    margin-left: -60px;
     opacity: 0;
     transform: translateY(0px);
     transition: opacity 0.3s, transform 0.3s;
+    font-weight: 700;
+    font-size: 18px;
+    box-shadow: var(--box-shadow-2);
 }
 
 
@@ -191,7 +198,7 @@
         padding: 10rem 0;
         width: 100vw;
         height: 100vh;
-        background: #272727;
+        background: var(--color-bg);
         transition:
             opacity 0.8s 0.1s,
             clip-path 1s 0.1s;
@@ -203,11 +210,11 @@
         transform: translateX(100%);
         width: 100%;
         text-align: center;
-        color: white;
+        color: var(--color-bg-reverse);
     }
 
     .main-header .nav-links .nav-link:hover {
-        background: var(--color-white-light);
+        background: var(--color-black-light);
     }
 
     .main-header .nav-links .nav-link:hover::after,
@@ -255,17 +262,17 @@
     }
 
     .main-header .menu-btn:checked~.menu-icon .menu-icon__line {
-        background: var(--color-white);
+        background: var(--color-bg-reverse);
         animation: openMid 0.8s forwards;
     }
 
     .main-header .menu-btn:checked~.menu-icon .menu-icon__line::before {
-        background: var(--color-white);
+        background: var(--color-bg-reverse);
         animation: openTop 0.8s forwards;
     }
 
     .main-header .menu-btn:checked~.menu-icon .menu-icon__line::after {
-        background: var(--color-white);
+        background: var(--color-bg-reverse);
         animation: openBtm 0.8s forwards;
     }
 
