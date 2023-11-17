@@ -9,6 +9,7 @@
     --color-black: black;
     --color-black-light: rgba(0, 0, 0, 0.2);
     --color-bg: white;
+    --color-bg-light: rgba(255, 255, 255, 0.8);
     --color-bg-reverse: #0f0f0f;
     --color-accent-1: navy;
 
@@ -25,6 +26,7 @@
     --color-black: white;
     --color-black-light: rgba(255, 255, 255, 0.2);
     --color-bg: #0f0f0f;
+    --color-bg-light: rgba(0, 0, 0, 0.8);
     --color-bg-reverse: white;
     --color-accent-1: cyan;
 
