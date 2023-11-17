@@ -125,7 +125,35 @@
     background: var(--color-black);
 }
 
+.tooltip-anchor {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
 
+.tooltip-anchor:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(20px);
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 160px;
+    background-color: var(--color-bg-light);
+    color: var(--color-bg-reverse);
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px 5px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -80px;
+    opacity: 0;
+    transform: translateY(0px);
+    transition: opacity 0.3s, transform 0.3s;
+}
 
 
 

@@ -38,7 +38,9 @@ export default function Navigation() {
             </label>
 
             <ul className="nav-links">
-                <li className="nav-link a-left"><a href="javascript:void(0)">Shows</a></li>
+                <li className="nav-link a-left tooltip-anchor"><a href="javascript:void(0)">Shows</a>
+                <div className='tooltip'>More Info...</div>
+                </li>
                 <li className="nav-link a-left"><a href="javascript:void(0)">Actors</a></li>
                 <li className="nav-link a-left"><a href="javascript:void(0)">Schedule</a></li>
                 <li className="nav-link a-left"><a href="javascript:void(0)">Log In</a></li>
