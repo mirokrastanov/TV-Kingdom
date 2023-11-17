@@ -7,9 +7,8 @@
     width: 100vw;
     padding: 0 3vw 0 0;
     color: var(--color-black);
-    text-shadow: var(--text-shadow-1);
+    /* text-shadow: var(--text-shadow-1); */
     z-index: 100;
-    transition: 0.4s ease-out;
 }
 
 /* FOR TESTING ONLY */
@@ -183,8 +182,8 @@
         background: var(--color-white-light);
     }
 
-    .main-header .nav-links .nav-link.a-left:hover::after,
-    .main-header .nav-links .nav-link.a-left::after {
+    .main-header .nav-links .nav-link:hover::after,
+    .main-header .nav-links .nav-link::after {
         background: none;
     }
 
