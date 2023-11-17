@@ -54,6 +54,10 @@
     transition-delay: 0.3s;
 }
 
+.main-header .nav-links .nav-link:nth-of-type(5) {
+    transition-delay: 0.4s;
+}
+
 .main-header .nav-links .nav-link a {
     margin: 0.2rem;
     padding: 1rem 0.5rem;
@@ -162,12 +166,66 @@
     box-shadow: var(--box-shadow-2);
 }
 
+.search-ctr {
+    display: inline-block;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.main-header .nav-links .nav-link .search .icon .material-symbols-outlined {
+    transition: none;
+    transition-delay: 0s;
+    transition-property: none;
+    animation: none;
+}
+
+.search .input {
+    height: 30px;
+    display: none;
+    opacity: 0;
+    width: 0px;
+    margin-bottom: 3px;
+}
+
+.search.active .input {
+    display: block;
+    opacity: 1;
+    animation: slideInSearch 0.3s ease-in-out;
+    width: calc(25vw);
+    border-radius: 5px;
+}
+
+.search .input input {
+    display: block;
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+    border: 2px solid var(--color-bg-reverse);
+    border-radius: 5px;
+    padding-left: 5px;
+}
+
+
+
+
+
+
 
 
 
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 767px) {
+    .main-header {
+        padding: 0 5vw;
+    }
+
     .main-header .menu-icon {
         display: block;
     }
@@ -255,6 +313,10 @@
 
     .main-header .menu-btn:checked~.nav-links .nav-link:nth-of-type(4) {
         transition-delay: 0.7s;
+    }
+
+    .main-header .menu-btn:checked~.nav-links .nav-link:nth-of-type(5) {
+        transition-delay: 0.8s;
     }
 
     .main-header .menu-btn:checked~.menu-icon {
@@ -375,5 +437,51 @@ Hence the new animations. */
 
     100% {
         transform: translateY(0px) rotate(90deg);
+    }
+}
+
+@keyframes slideInSearch {
+    0% {
+        width: 0;
+    }
+
+    10% {
+        width: 5vw;
+    }
+
+    20% {
+        width: 9vw;
+    }
+
+    30% {
+        width: 11vw;
+    }
+
+    40% {
+        width: 13vw;
+    }
+
+    50% {
+        width: 15vw;
+    }
+
+    60% {
+        width: 17vw;
+    }
+
+    70% {
+        width: 19vw;
+    }
+
+    80% {
+        width: 21vw;
+    }
+
+    90% {
+        width: 23vw;
+    }
+
+    100% {
+        width: 25vw;
     }
 }
