@@ -28,7 +28,12 @@ export default function Navigation() {
             setSearchShown(false);
         }
         else setSearchShown(true);
-    }
+    };
+
+    const searchOnChangeHandler = (e) => {
+        // console.log(e.target.value);
+        // TODO: Add search logic after API implementation
+    };
 
     useEffect(() => {
         window.addEventListener('scroll', scrollHandler);
@@ -47,8 +52,8 @@ export default function Navigation() {
             <div className="logo">
                 <a href="javascript:void(0)">TV Kingdom</a>
                 <div className="theme-toggle">
-                    <input type="checkbox" id="darkmode-toggle" checked={darkTheme} />
-                    <label htmlFor="darkmode-toggle" onClick={toggleTheme} className='tooltip-anchor'>
+                    <input type="checkbox" id="darkmode-toggle" checked={darkTheme} onChange={toggleTheme} />
+                    <label htmlFor="darkmode-toggle" className='tooltip-anchor'>
                         <span className="material-symbols-outlined">light_mode</span>
                         <div className='tooltip mode-tooltip'>{darkTheme ? 'Lights ON' : 'Go Dark'}</div>
                         <span className="material-symbols-outlined">dark_mode</span>
@@ -73,7 +78,7 @@ export default function Navigation() {
                                         >{searchShown ? 'search_off' : 'search'}</span>
                                     </div>
                                     <div className="input">
-                                        <input type="text" placeholder='Search...' id='my-search' />
+                                        <input type="text" placeholder='Search...' id='my-search' onChange={searchOnChangeHandler} />
                                     </div>
                                 </div>
                             </div>
