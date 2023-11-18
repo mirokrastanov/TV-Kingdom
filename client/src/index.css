@@ -12,6 +12,7 @@
     --color-bg-light: rgba(255, 255, 255, 0.8);
     --color-bg-reverse: #0f0f0f;
     --color-accent-1: #FC5B13;
+    --color-gradient-1: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
 
     --text-shadow-1: none;
     --box-shadow-1: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -29,7 +30,6 @@
     --color-bg: #0f0f0f;
     --color-bg-light: rgba(0, 0, 0, 0.8);
     --color-bg-reverse: white;
-    /* --color-accent-1: cyan; */
 
     --text-shadow-1: 2px 2px black;
     --box-shadow-1: rgba(205, 205, 162, 0.25) 0px 50px 100px -20px,
@@ -78,7 +78,7 @@ body {
     height: 2px;
     bottom: -5px;
     left: 10%;
-    background-color: var(--color-black);
+    background: var(--color-black);
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
@@ -86,4 +86,24 @@ body {
 .a-left:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
+}
+
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-black-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-gradient-1);
+    box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
