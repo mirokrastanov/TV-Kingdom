@@ -114,18 +114,6 @@
     color: white;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .main-header a {
     text-decoration: none;
     color: inherit;
@@ -452,6 +440,17 @@
     }
 }
 
+@media screen and (max-width: 350px) {
+    .main-header .logo a {
+        display: none;
+    }
+
+    .main-header .nav-links .nav-link a {
+        font-size: 1.7rem;
+        display: block;
+        padding: 2rem 0;
+    }
+}
 
 
 
