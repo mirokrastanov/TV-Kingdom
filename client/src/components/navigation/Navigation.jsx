@@ -50,7 +50,7 @@ export default function Navigation() {
     }, []);
 
     return (
-        <header className={`main-header ${!topScroll && 'scrolled'}`}>
+        <header className={`main-header ${topScroll ? '' : 'scrolled'}`}>
             <div className="logo">
                 <a href="javascript:void(0)">TV Kingdom</a>
                 <div className="theme-toggle">
