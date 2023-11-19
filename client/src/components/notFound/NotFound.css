@@ -1,0 +1,32 @@
+.not-found-ctr {
+    padding-top: 65px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.not-found-ctr h1 {
+    font-size: 5rem;
+    padding: 1rem 4rem;
+}
+
+.not-found-ctr .upper {
+    font-size: 1.5rem;
+    padding: 1rem 4rem;
+}
+
+.not-found-ctr .lower {
+    padding: 2rem;
+}
+
+.not-found-ctr .lower button {
+    border-radius: 15px;
+    padding: 1rem 4rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.not-found-ctr .lower button:hover {
+    background: var(--color-gradient-1);
+}
