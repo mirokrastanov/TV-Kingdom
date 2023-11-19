@@ -209,7 +209,7 @@
 
 .scrolled {
     height: 50px;
-    background: var(--color-bg);
+    background: var(--background-2);
 }
 
 .scrolled.main-header {
