@@ -9,11 +9,13 @@
 .not-found-ctr h1 {
     font-size: 5rem;
     padding: 1rem 4rem;
+    color: var(--color-bg-reverse);
 }
 
 .not-found-ctr .upper {
     font-size: 1.5rem;
     padding: 1rem 4rem;
+    color: var(--color-bg-reverse);
 }
 
 .not-found-ctr .lower {
@@ -21,12 +23,20 @@
 }
 
 .not-found-ctr .lower button {
-    border-radius: 15px;
-    padding: 1rem 4rem;
-    cursor: pointer;
+    border-radius: 25px;
+    padding: 1rem 3rem;
     font-size: 1.5rem;
+    cursor: pointer;
+    border: 2px solid var(--color-bg-reverse);
+    background: transparent;
+    color: var(--color-bg-reverse);
+    font-weight: 700;
+    box-shadow: var(--box-shadow-4);
+    transition: 0.5s ease, color 0.3s ease;
 }
 
 .not-found-ctr .lower button:hover {
     background: var(--color-gradient-1);
+    box-shadow: var(--box-shadow-5);
+    transform: translateY(-3px);
 }
