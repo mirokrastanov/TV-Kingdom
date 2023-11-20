@@ -23,7 +23,7 @@
     align-items: center;
 }
 
-.main-header .logo .home-link {
+.main-header .logo a {
     height: 30px;
 }
 
@@ -254,7 +254,7 @@
     font-size: 14px;
 }
 
-.search-ctr {
+.search-slider-ctr {
     display: inline-block;
 }
 
