@@ -4,6 +4,7 @@ import './App.css';
 import Home from './components/home/Home';
 import Navigation from './components/navigation/Navigation';
 import NotFound from './components/notFound/NotFound';
+import Shows from './components/shows/shows/Shows';
 
 function App() {
     const darkTheme = useTheme();
@@ -14,10 +15,10 @@ function App() {
 
             <div className="app-content">
                 <Routes>
-                    <Route path='/' element={<Home />} />
+                    <Route exact path='/' element={<Home />} />
                     <Route path='/home' element={<Navigate to='/' />} />
                     <Route path='/index' element={<Navigate to='/' />} />
-                    <Route path='/index.html' element={<Navigate to='/' />} />
+                    <Route path='/shows' element={<Shows />} />
 
                     <Route path='*' element={<NotFound />} />
                 </Routes>
