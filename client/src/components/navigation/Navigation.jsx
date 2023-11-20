@@ -138,14 +138,17 @@ export default function Navigation() {
                 </li>
 
 
-
                 {/* Future protected routes 
-                
+
+                <div id="user-links"> Enclose respective nav links here </div>
+                <div id="guest-links"> Enclose respective nav links here </div>
+        
                 - PROFILE
                 - LOGOUT
                 - SEARCH -> to add to protected
                 - SCHEDULE -> to add to protected
-                - Think of some preview for guests 
+                - ACTORS -> to add to protected
+                - Also limit shows in some way - figure it out later!
                 
                 */}
                 {/* <li className="nav-link a-left"><a href="javascript:void(0)">Profile</a></li> */}
