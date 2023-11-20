@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTheme, useThemeUpdate } from '../../contexts/ThemeContext';
 import './Navigation.css';
 
@@ -6,9 +7,11 @@ export default function Navigation() {
     const [topScroll, setTopScroll] = useState(true);
     const [mobileWidth, setMobileWidth] = useState(false);
     const [searchShown, setSearchShown] = useState(false);
+    const [hamburgerShown, setHamburgerShown] = useState(false);
 
     const darkTheme = useTheme();
     const toggleTheme = useThemeUpdate();
+    const navigate = useNavigate();
 
     const scrollHandler = (e) => {
         const scrollPos = window.scrollY;
@@ -22,7 +25,17 @@ export default function Navigation() {
         else setMobileWidth(false);
     };
 
+    const hamburgerOnChangeHandler = (e) => {
+        if (e.target.checked) setHamburgerShown(true);
+        else setHamburgerShown(false);
+    };
+
     const searchToggleHandler = (e) => {
+        if (mobileWidth) {
+            setHamburgerShown(false);
+            navigate('/search');
+            return;
+        }
         if (searchShown) {
             if (!e.target.classList.contains('material-symbols-outlined')) return;
             setSearchShown(false);
@@ -33,6 +46,7 @@ export default function Navigation() {
     const searchOnChangeHandler = (e) => {
         // console.log(e.target.value);
         // TODO: Add search logic after API implementation
+        // CREATE A CONTEXT AND WRAP THE APP WITH IT so it can be used both here and on a dedicated search page
     };
     // Also design a mobile search page to be re-directed to from the mobile menu >>
     // On the new page I can use the same handler. If necessary I'd create a Hook for easy access across.
@@ -52,7 +66,7 @@ export default function Navigation() {
     return (
         <header className={`main-header ${topScroll ? '' : 'scrolled'}`}>
             <div className="logo">
-                <a href="javascript:void(0)">TV Kingdom</a>
+                <Link className='home-link' to='/'>TV Kingdom</Link>
                 <div className="theme-toggle">
                     <input type="checkbox" id="darkmode-toggle" checked={darkTheme} onChange={toggleTheme} />
                     <label htmlFor="darkmode-toggle" className='tooltip-anchor'>
@@ -63,7 +77,7 @@ export default function Navigation() {
                 </div>
             </div>
 
-            <input type="checkbox" className='menu-btn' id='menu-btn' />
+            <input checked={hamburgerShown} type="checkbox" className='menu-btn' id='menu-btn' onChange={hamburgerOnChangeHandler} />
             <label htmlFor="menu-btn" className='menu-icon'>
                 <span className='menu-icon__line'></span>
             </label>
@@ -71,21 +85,19 @@ export default function Navigation() {
             <ul className="nav-links">
                 <li className={`nav-link ${searchShown || mobileWidth ? '' : 'a-left tooltip-anchor'}`}
                     onClick={searchToggleHandler}>
-                    <a href="javascript:void(0)">
-                        {mobileWidth ? 'Search' : (
-                            <div className="search-ctr">
-                                <div className={`search${searchShown ? ' active' : ''}`}>
-                                    <div className="icon">
-                                        <span className="material-symbols-outlined"
-                                        >{searchShown ? 'search_off' : 'search'}</span>
-                                    </div>
-                                    <div className="input">
-                                        <input type="text" placeholder='Search...' id='my-search' onChange={searchOnChangeHandler} />
-                                    </div>
+                    <a className={mobileWidth ? 'search-mobile' : ''}>{mobileWidth ? 'Search' : (
+                        <div className="search-ctr">
+                            <div className={`search${searchShown ? ' active' : ''}`}>
+                                <div className="icon">
+                                    <span className="material-symbols-outlined"
+                                    >{searchShown ? 'search_off' : 'search'}</span>
+                                </div>
+                                <div className="input">
+                                    <input type="text" placeholder='Search...' id='my-search' onChange={searchOnChangeHandler} />
                                 </div>
                             </div>
-                        )}
-                    </a>
+                        </div>
+                    )}</a>
                     <div className='tooltip'>Search</div>
                 </li>
                 <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
