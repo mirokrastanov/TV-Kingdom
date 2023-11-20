@@ -30,6 +30,11 @@ export default function Navigation() {
         else setHamburgerShown(false);
     };
 
+    const navHandler = (e) => {
+        if (mobileWidth) setHamburgerShown(false);
+
+    };
+
     const searchToggleHandler = (e) => {
         if (mobileWidth) {
             setHamburgerShown(false);
@@ -66,7 +71,9 @@ export default function Navigation() {
     return (
         <header className={`main-header ${topScroll ? '' : 'scrolled'}`}>
             <div className="logo">
+                {/* LOGO */}
                 <Link className='home-link' to='/'>TV Kingdom</Link>
+                {/* DARK MODE TOGGLE */}
                 <div className="theme-toggle">
                     <input type="checkbox" id="darkmode-toggle" checked={darkTheme} onChange={toggleTheme} />
                     <label htmlFor="darkmode-toggle" className='tooltip-anchor'>
@@ -76,13 +83,14 @@ export default function Navigation() {
                     </label>
                 </div>
             </div>
-
+            {/* HAMBURGER MENU (MOBILE) */}
             <input checked={hamburgerShown} type="checkbox" className='menu-btn' id='menu-btn' onChange={hamburgerOnChangeHandler} />
             <label htmlFor="menu-btn" className='menu-icon'>
                 <span className='menu-icon__line'></span>
             </label>
 
             <ul className="nav-links">
+                {/* NAV => SEARCH */}
                 <li className={`nav-link ${searchShown || mobileWidth ? '' : 'a-left tooltip-anchor'}`}
                     onClick={searchToggleHandler}>
                     <a className={mobileWidth ? 'search-mobile' : ''}>{mobileWidth ? 'Search' : (
@@ -100,28 +108,32 @@ export default function Navigation() {
                     )}</a>
                     <div className='tooltip'>Search</div>
                 </li>
+                {/* NAV => SHOWS */}
                 <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <a href="javascript:void(0)">
+                    <Link to='/shows' onClick={navHandler}>
                         {mobileWidth ? 'Shows' : (<span className="material-symbols-outlined">smart_display</span>)}
-                    </a>
+                    </Link>
                     <div className='tooltip'>Shows</div>
                 </li>
+                {/* NAV => ACTORS */}
                 <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <a href="javascript:void(0)">
+                    <Link to='/actors' onClick={navHandler}>
                         {mobileWidth ? 'Actors' : (<span className="material-symbols-outlined">person</span>)}
-                    </a>
+                    </Link>
                     <div className='tooltip'>Actors</div>
                 </li>
+                {/* NAV => SCHEDULE */}
                 <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <a href="javascript:void(0)">
+                    <Link to='/schedule' onClick={navHandler}>
                         {mobileWidth ? 'Schedule' : (<span className="material-symbols-outlined">calendar_month</span>)}
-                    </a>
+                    </Link>
                     <div className='tooltip'>Schedule</div>
                 </li>
+                {/* NAV => SIGN IN */}
                 <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <a href="javascript:void(0)">
+                    <Link to='/user/sign-in' onClick={navHandler}>
                         {mobileWidth ? 'Sign In' : (<span className="material-symbols-outlined">login</span>)}
-                    </a>
+                    </Link>
                     <div className='tooltip'>Sign In</div>
                 </li>
 
