@@ -23,7 +23,7 @@
     align-items: center;
 }
 
-.main-header .logo a {
+.main-header .logo .home-link {
     height: 30px;
 }
 
@@ -271,6 +271,11 @@
     transition-delay: 0s;
     transition-property: none;
     animation: none;
+    cursor: pointer;
+}
+
+.search-mobile {
+    cursor: pointer;
 }
 
 .search .input {
