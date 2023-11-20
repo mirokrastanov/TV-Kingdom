@@ -94,7 +94,7 @@ export default function Navigation() {
                 <li className={`nav-link ${searchShown || mobileWidth ? '' : 'a-left tooltip-anchor'}`}
                     onClick={searchToggleHandler}>
                     <a className={mobileWidth ? 'search-mobile' : ''}>{mobileWidth ? 'Search' : (
-                        <div className="search-ctr">
+                        <div className="search-slider-ctr">
                             <div className={`search${searchShown ? ' active' : ''}`}>
                                 <div className="icon">
                                     <span className="material-symbols-outlined"
@@ -110,28 +110,28 @@ export default function Navigation() {
                 </li>
                 {/* NAV => SHOWS */}
                 <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <Link to='/shows' onClick={navHandler}>
+                    <Link to='/shows' onClick={navHandler} className='nav-a'>
                         {mobileWidth ? 'Shows' : (<span className="material-symbols-outlined">smart_display</span>)}
                     </Link>
                     <div className='tooltip'>Shows</div>
                 </li>
                 {/* NAV => ACTORS */}
                 <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <Link to='/actors' onClick={navHandler}>
+                    <Link to='/actors' onClick={navHandler} className='nav-a'>
                         {mobileWidth ? 'Actors' : (<span className="material-symbols-outlined">person</span>)}
                     </Link>
                     <div className='tooltip'>Actors</div>
                 </li>
                 {/* NAV => SCHEDULE */}
                 <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <Link to='/schedule' onClick={navHandler}>
+                    <Link to='/schedule' onClick={navHandler} className='nav-a'>
                         {mobileWidth ? 'Schedule' : (<span className="material-symbols-outlined">calendar_month</span>)}
                     </Link>
                     <div className='tooltip'>Schedule</div>
                 </li>
                 {/* NAV => SIGN IN */}
                 <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <Link to='/user/sign-in' onClick={navHandler}>
+                    <Link to='/user/sign-in' onClick={navHandler} className='nav-a'>
                         {mobileWidth ? 'Sign In' : (<span className="material-symbols-outlined">login</span>)}
                     </Link>
                     <div className='tooltip'>Sign In</div>
