@@ -9,4 +9,4 @@ export default function Shows() {
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore repudiandae eius dolorum enim. Nobis quo vitae placeat neque itaque. Illum?</p>
         </div>
     )
-}
+};
