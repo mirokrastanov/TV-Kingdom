@@ -1,0 +1,15 @@
+.show-card-ctr {
+    padding-top: 65px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-bg-reverse);
+    margin: auto 5%;
+    text-align: center;
+}
+
+.show-card-ctr h1 {
+    font-size: 2.5rem;
+    padding: 1rem;
+}
