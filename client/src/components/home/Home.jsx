@@ -19,13 +19,13 @@ export default function Home() {
     };
 
     const fetchShowsPage = async () => {
-        const data = await shows.all(pageValues.showsPage);
+        const data = await shows.page(pageValues.showsPage);
         setPageValues({ ...pageValues, showsData: data })
         console.log(data);
     };
 
     const fetchSingleShow = async () => {
-        const data = await shows.one(2999);
+        const data = await shows.one.main(2999);
         console.log(data);
     };
 

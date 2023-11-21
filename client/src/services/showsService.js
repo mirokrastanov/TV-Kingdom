@@ -17,13 +17,19 @@ const get = async (address) => {
 
 
 export const shows = {
-    all: async function (page = 0) {
+    page: async function (page = 0) {
         const data = await get(`${baseURL}/shows?page=${page}`);
         return data;
     },
-    one: async function (id) {
-        const data = await get(`${baseURL}/shows/${id}?embed=cast`);
-        return data;
+    one: {
+        main: async function (id) {
+            const data = await get(`${baseURL}/shows/${id}?embed=cast`);
+            return data;
+        },
+        episodes: async function (id) {
+            const data = await get(`${baseURL}/shows/${id}/episodes?specials=1`);
+            return data;
+        },
     },
 
 };
