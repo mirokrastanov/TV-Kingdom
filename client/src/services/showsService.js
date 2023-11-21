@@ -67,3 +67,20 @@ export const episodes = {
         },
     },
 };
+
+export const actors = {
+    oneActor: {
+        details: async function (actorId) {
+            return await get(`${baseURL}/people/${actorId}?embed=castcredits`);
+        },
+        castCredits: async function (actorId) {
+            return await get(`${baseURL}/people/${actorId}/castcredits?embed=show`);
+        },
+        crewCredits: async function (actorId) {
+            return await get(`${baseURL}/people/${actorId}/crewcredits?embed=show`);
+        },
+        guestCastCredits: async function (actorId) {
+            return await get(`${baseURL}/people/${actorId}/guestcastcredits?embed=episode`);
+        },
+    },
+};
