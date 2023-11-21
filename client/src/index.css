@@ -12,7 +12,8 @@
     --color-bg-light: rgba(255, 255, 255, 0.8);
     --color-bg-reverse: #0f0f0f;
     --color-accent-1: #FC5B13;
-    --color-accent-2: rgba(0, 153, 255, 0.486);
+    --color-accent-2: rgba(0, 217, 255, 0.8);
+    --color-accent-2-light: rgba(108, 229, 255, 0.75);
     --color-gradient-1: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
 
     --text-shadow-1: none;
@@ -41,6 +42,7 @@
     --color-bg-light: rgba(0, 0, 0, 0.8);
     --color-bg-reverse: white;
     --color-accent-2: rgb(28, 138, 255);
+    --color-accent-2-light: rgb(114, 171, 255);
 
     --text-shadow-1: 2px 2px black;
     --box-shadow-1: rgba(205, 205, 162, 0.25) 0px 50px 100px -20px,
@@ -109,28 +111,32 @@ body {
 
 .btn {
     position: relative;
-    font-size: 16px;
+    font-size: 15px;
     text-transform: uppercase;
     text-decoration: none;
     padding: 10px 30px;
     display: inline-block;
-    border-radius: 30px;
+    border-radius: 5px;
     border: none;
     font-family: inherit;
+    font-weight: 700;
     color: var(--color-black);
-    background: var(--color-white-light);
+    background: var(--color-accent-2);
     box-shadow: var(--box-shadow-4);
     cursor: pointer;
-    transition: var(--transition-1);
     transition: 0.2s;
 }
 
 .btn:hover {
-    background: var(--color-accent-2);
+    background: var(--color-accent-2-light);
+    font-size: 16px;
+    padding: 10px 22px;
+    letter-spacing: 1px;
 }
 
 .btn:active {
     transform: translateY(5px);
+    box-shadow: var(--box-shadow-4);
 }
 
 .card {
