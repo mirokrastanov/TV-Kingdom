@@ -88,14 +88,26 @@ export const actors = {
     },
 };
 
-export const scheduleIncHistorical = {
-    full: async function () {
+export const schedule = { // INCLUDES HISTORICAL DATA !!! Newest items first
+    fullList: async function () {
         return await get(`${baseURL}/schedule/full`);
     },
-    web: async function () {
-        return await get(`${baseURL}/schedule/web`);
+    tvList: async function (date = 'YYYY-MM-DD', countryISOCode = 'XX') { // United Kingdom is GB 
+        if (date == 'YYYY-MM-DD' && countryISOCode == 'XX') {
+            return await get(`${baseURL}/schedule`);
+        } else if (countryISOCode == 'XX') {
+            return await get(`${baseURL}/schedule?date=${date}`);
+        } else {
+            return await get(`${baseURL}/schedule?date=${date}&country=${countryISOCode}`);
+        }
     },
-    webForDate: async function (date = '2020-05-29') {
-        return await get(`${baseURL}/schedule/web?date=${date}`);
+    webList: async function (date = 'YYYY-MM-DD', countryISOCode = 'XX') { // United Kingdom is GB 
+        if (date == 'YYYY-MM-DD' && countryISOCode == 'XX') {
+            return await get(`${baseURL}/schedule/web`);
+        } else if (countryISOCode == 'XX') {
+            return await get(`${baseURL}/schedule/web?date=${date}`);
+        } else {
+            return await get(`${baseURL}/schedule/web?date=${date}&country=${countryISOCode}`);
+        }
     },
 };
