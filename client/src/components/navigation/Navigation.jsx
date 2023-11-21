@@ -73,6 +73,7 @@ export default function Navigation() {
             <div className="logo">
                 {/* LOGO */}
                 <Link className='home-link' to='/'>TV Kingdom</Link>
+                <p className='powered-by'>Powered by: TVMAZE.com</p>
                 {/* DARK MODE TOGGLE */}
                 <div className="theme-toggle">
                     <input type="checkbox" id="darkmode-toggle" checked={darkTheme} onChange={toggleTheme} />
