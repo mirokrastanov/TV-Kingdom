@@ -125,13 +125,11 @@ body {
     box-shadow: var(--box-shadow-4);
     cursor: pointer;
     transition: 0.2s;
+    letter-spacing: 1px;
 }
 
 .btn:hover {
     background: var(--color-accent-2-light);
-    font-size: 16px;
-    padding: 10px 22px;
-    letter-spacing: 1px;
 }
 
 .btn:active {
