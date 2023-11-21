@@ -18,8 +18,7 @@ const get = async (address) => {
 
 export const shows = {
     page: async function (page = 0) {
-        const data = await get(`${baseURL}/shows?page=${page}`);
-        return data;
+        return await get(`${baseURL}/shows?page=${page}`);
     },
     oneShow: {
         mainInfo: async function (showId) {
@@ -40,19 +39,31 @@ export const shows = {
         oneSeasonEpisodes: async function (seasonId) {
             return await get(`${baseURL}/seasons/${seasonId}/episodes?embed=guestcast`);
         },
-        showCast: async function(showId) {
+        showCast: async function (showId) {
             return await get(`${baseURL}/shows/${showId}/cast`);
         },
-        showCrew: async function(showId) {
+        showCrew: async function (showId) {
             return await get(`${baseURL}/shows/${showId}/crew`);
         },
-        showAKAs: async function(showId) {
+        showAKAs: async function (showId) {
             return await get(`${baseURL}/shows/${showId}/akas`);
         },
-        showImages: async function(showId) {
+        showImages: async function (showId) {
             return await get(`${baseURL}/shows/${showId}/images`);
         },
-
     },
+};
 
+export const episodes = {
+    oneEpisode: {
+        details: async function (episodeId) {
+            return await get(`${baseURL}/episodes/${episodeId}?embed=show`);
+        },
+        guestCast: async function (episodeId) {
+            return await get(`${baseURL}/episodes/${episodeId}/guestcast`);
+        },
+        guestCrew: async function (episodeId) {
+            return await get(`${baseURL}/episodes/${episodeId}/guestcrew`);
+        },
+    },
 };
