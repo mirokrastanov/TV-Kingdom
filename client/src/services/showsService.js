@@ -17,7 +17,7 @@ const get = async (address) => {
 
 
 export const shows = {
-    page: async function (page = 0) {
+    page: async function (page = 0) { // max 250 per page
         return await get(`${baseURL}/shows?page=${page}`);
     },
     oneShow: {
@@ -69,6 +69,9 @@ export const episodes = {
 };
 
 export const actors = {
+    page: async function (page = 0) { // max 1000 per page
+        return await get(`${baseURL}/people?page=${page}`);
+    },
     oneActor: {
         details: async function (actorId) {
             return await get(`${baseURL}/people/${actorId}?embed=castcredits`);
@@ -82,5 +85,17 @@ export const actors = {
         guestCastCredits: async function (actorId) {
             return await get(`${baseURL}/people/${actorId}/guestcastcredits?embed=episode`);
         },
+    },
+};
+
+export const scheduleIncHistorical = {
+    full: async function () {
+        return await get(`${baseURL}/schedule/full`);
+    },
+    web: async function () {
+        return await get(`${baseURL}/schedule/web`);
+    },
+    webForDate: async function (date = '2020-05-29') {
+        return await get(`${baseURL}/schedule/web?date=${date}`);
     },
 };
