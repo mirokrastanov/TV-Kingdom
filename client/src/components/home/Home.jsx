@@ -25,7 +25,7 @@ export default function Home() {
     };
 
     const fetchSingleShow = async () => {
-        const data = await shows.one.main(2999);
+        const data = await shows.oneShow.mainInfo(2999);
         console.log(data);
     };
 

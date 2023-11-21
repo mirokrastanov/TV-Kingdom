@@ -21,15 +21,26 @@ export const shows = {
         const data = await get(`${baseURL}/shows?page=${page}`);
         return data;
     },
-    one: {
-        main: async function (id) {
-            const data = await get(`${baseURL}/shows/${id}?embed=cast`);
-            return data;
+    oneShow: {
+        mainInfo: async function (id) {
+            return await get(`${baseURL}/shows/${id}?embed=cast`);
         },
         episodes: async function (id) {
-            const data = await get(`${baseURL}/shows/${id}/episodes?specials=1`);
-            return data;
+            return await get(`${baseURL}/shows/${id}/episodes?specials=1`);
         },
+        oneEpisode: async function (showId, season, episode) {
+            return await get(`${baseURL}/shows/${showId}/episodebynumber?season=${season}&number=${episode}`);
+        },
+        seasons: async function (showId) {
+            return await get(`${baseURL}/shows/${showId}/seasons`);
+        },
+        oneSeason: async function (seasonId) {
+            return await get(`${baseURL}/seasons/${seasonId}`);
+        },
+        oneSeasonEpisodes: async function (seasonId) {
+            return await get(`${baseURL}/seasons/${seasonId}/episodes?embed=guestcast`);
+        },
+
     },
 
 };
