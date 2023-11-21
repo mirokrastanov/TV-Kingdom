@@ -2,26 +2,30 @@ import React, { useState } from 'react';
 import './Home.css';
 import { shows } from '../../services/showsService';
 
-const INITIAL_STATE = {
+const INITIAL_VALUES = {
     showsData: {},
     showsPage: 0,
 };
 
 export default function Home() {
-    const [pageValues, setPageValues] = useState(INITIAL_STATE);
+    const [pageValues, setPageValues] = useState(INITIAL_VALUES);
 
-    const nextShowsPage = () => {
-        setPageValues({ ...pageValues, showsPage: pageValues.showsPage + 1 });
-    };
-
-    const prevShowsPage = () => {
-        if (pageValues.showsPage - 1 < 0) return;
-        setPageValues({ ...pageValues, showsPage: pageValues.showsPage - 1 });
+    const pageControl = {
+        next: () => setPageValues({ ...pageValues, showsPage: pageValues.showsPage + 1 }),
+        previous: () => {
+            if (pageValues.showsPage - 1 < 0) return;
+            setPageValues({ ...pageValues, showsPage: pageValues.showsPage - 1 });
+        },
     };
 
     const fetchShowsPage = async () => {
         const data = await shows.all(pageValues.showsPage);
         setPageValues({ ...pageValues, showsData: data })
+        console.log(data);
+    };
+
+    const fetchSingleShow = async () => {
+        const data = await shows.one(2999);
         console.log(data);
     };
 
@@ -33,9 +37,13 @@ export default function Home() {
 
             <div className="container">
                 <div className="btn-cage">
-                    <button className='btn' onClick={prevShowsPage}>Prev page: {pageValues.showsPage - 1 >= 0 ? pageValues.showsPage - 1 : 'X'}</button>
-                    <button className='btn' onClick={fetchShowsPage}>Fetch page: {pageValues.showsPage}</button>
-                    <button className='btn' onClick={nextShowsPage}>Next page: {pageValues.showsPage + 1}</button>
+                    <button className='btn' onClick={pageControl.previous}>Prev page: {pageValues.showsPage - 1 >= 0 ? pageValues.showsPage - 1 : 'X'}</button>
+                    <p>Page = {pageValues.showsPage}</p>
+                    <button className='btn' onClick={pageControl.next}>Next page: {pageValues.showsPage + 1}</button>
+                </div>
+                <div className="btn-cage">
+                    <button className='btn' onClick={fetchShowsPage}>Fetch page</button>
+                    <button className='btn' onClick={fetchSingleShow}>Fetch one</button>
                 </div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sequi nemo perspiciatis adipisci repellendus molestiae, nesciunt ex mollitia amet cum.</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus soluta unde id nulla natus nostrum laudantium minima magni! Quos, exercitationem qui! Laudantium maiores ipsa, nihil totam deleniti, quae in sit fuga possimus itaque mollitia. At labore, numquam cumque illo quae molestiae sunt non similique obcaecati beatae in expedita facere omnis!</p>

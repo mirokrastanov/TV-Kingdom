@@ -7,5 +7,10 @@ export const shows = {
         const data = await res.json();
         return data;
     },
+    one: async function (id) {
+        const res = await fetch(`${baseURL}/shows/${id}?embed=cast`);
+        const data = await res.json();
+        return data;
+    },
 
 };
