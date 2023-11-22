@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Home.css';
-import { shows } from '../../services/showsService';
+import { shows } from '../../services/showService';
 
 const INITIAL_VALUES = {
     showsData: {},

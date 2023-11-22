@@ -111,3 +111,18 @@ export const schedule = { // INCLUDES HISTORICAL DATA !!! Newest items first
         }
     },
 };
+
+export const search = {
+    shows: async function (query) {
+        return await get(`${baseURL}/search/shows?q=${query}`);
+    },
+    actors: async function (query) {
+        return await get(`${baseURL}/search/people?q=${query}`);
+    },
+};
+
+export const urlBuilder = {
+    imdb: function (query) {
+        return `https://www.imdb.com/title/${query}`;
+    },
+};
