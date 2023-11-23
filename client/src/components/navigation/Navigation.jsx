@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTheme, useThemeUpdate } from '../../contexts/ThemeContext';
 import './Navigation.css';
+import { useSearch, useSearchUpdate } from '../../contexts/SearchContext';
 
 export default function Navigation() {
     const [topScroll, setTopScroll] = useState(true);
@@ -11,6 +12,8 @@ export default function Navigation() {
 
     const darkTheme = useTheme();
     const toggleTheme = useThemeUpdate();
+    const searchValue = useSearch();
+    const updateSearchValue = useSearchUpdate();
     const navigate = useNavigate();
 
     const scrollHandler = (e) => {
@@ -32,12 +35,12 @@ export default function Navigation() {
 
     const navHandler = (e) => {
         if (mobileWidth) setHamburgerShown(false);
-
     };
 
     const searchToggleHandler = (e) => {
         if (mobileWidth) {
             setHamburgerShown(false);
+            updateSearchValue('');
             navigate('/search');
             return;
         }
@@ -49,12 +52,17 @@ export default function Navigation() {
     };
 
     const searchOnChangeHandler = (e) => {
-        // console.log(e.target.value);
-        // TODO: Add search logic after API implementation
-        // CREATE A CONTEXT AND WRAP THE APP WITH IT so it can be used both here and on a dedicated search page
+        updateSearchValue(e.target.value);
     };
-    // Also design a mobile search page to be re-directed to from the mobile menu >>
-    // On the new page I can use the same handler. If necessary I'd create a Hook for easy access across.
+
+    const searchOnSubmitHandler = (e) => {
+        e.preventDefault();
+        setSearchShown(false);
+        navigate('/search');
+    };
+
+    // TODO: Add form reset
+    // TODO: Add errors as a state
 
     useEffect(() => {
         window.addEventListener('scroll', scrollHandler);
@@ -101,9 +109,14 @@ export default function Navigation() {
                                     <span className="material-symbols-outlined"
                                     >{searchShown ? 'search_off' : 'search'}</span>
                                 </div>
-                                <div className="input">
-                                    <input type="text" placeholder='Search...' id='my-search' onChange={searchOnChangeHandler} />
-                                </div>
+                                <form className="input" onSubmit={searchOnSubmitHandler}>
+                                    <input
+                                        type="text"
+                                        placeholder='Search...'
+                                        id='my-search'
+                                        value={searchValue}
+                                        onChange={searchOnChangeHandler} />
+                                </form>
                             </div>
                         </div>
                     )}</a>
