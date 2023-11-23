@@ -80,8 +80,10 @@ export default function Navigation() {
         <header className={`main-header ${topScroll ? '' : 'scrolled'}`}>
             <div className="logo">
                 {/* LOGO */}
-                <Link className='home-link' to='/'>TV Kingdom</Link>
-                <p className='powered-by'>Powered by: TVMAZE.com</p>
+                <Link className='home-link' to='/'>
+                    TV Kingdom
+                    <p className='powered-by'>Powered by: TVMAZE.com</p>
+                </Link>
                 {/* DARK MODE TOGGLE */}
                 <div className="theme-toggle">
                     <input type="checkbox" id="darkmode-toggle" checked={darkTheme} onChange={toggleTheme} />
