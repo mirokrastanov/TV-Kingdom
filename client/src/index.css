@@ -29,6 +29,8 @@
 
     --background-1: url('./assets/sw-wall-1.jpeg');
     --background-2: linear-gradient(to right, #fffdf0, #e0fcff);
+    --background-3-light: linear-gradient(to right, #141e303b, #243b553a);
+
 
     --transition-1: all 0.3s ease-in-out;
 }
@@ -57,6 +59,7 @@
 
     --background-1: url('./assets/avengers-wall-1.webp');
     --background-2: linear-gradient(to right, #141e30, #243b55);
+    --background-3-light: linear-gradient(to right, #fffdf03b, #e0fcff3b, #e0fcff3d, #fffdf03a);
 
 }
 
