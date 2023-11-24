@@ -140,7 +140,7 @@ body {
     box-shadow: var(--box-shadow-4);
 }
 
-.card {
+.btn-2 {
     position: relative;
     font-size: 16px;
     text-transform: uppercase;
@@ -157,21 +157,15 @@ body {
     transition: var(--transition-1);
 }
 
-.card:hover {
+.btn-2:hover {
     transform: translateY(-3px);
     box-shadow: var(--box-shadow-5);
 }
 
-.card:active {
+.btn-2:active {
     transform: translateY(0px);
     box-shadow: var(--box-shadow-4);
 }
-
-
-
-
-
-
 
 
 /* Scrollbar styles */
@@ -192,3 +186,19 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(15, 107, 206);
 }
+
+
+/* CARDS */
+.cards-cage {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.filled-symbol {
+    font-variation-settings: 'FILL' 1;
+}
+
+.thin-symbol {
+    font-variation-settings: 'wght' 100;
+}
+
