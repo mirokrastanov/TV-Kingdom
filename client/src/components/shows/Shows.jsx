@@ -9,6 +9,12 @@ export default function Shows() {
             <h1>Shows</h1>
             <div className="cards-cage">
                 <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
             </div>
         </div>
     )

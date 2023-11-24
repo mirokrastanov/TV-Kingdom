@@ -5,6 +5,9 @@
     background: black;
     overflow: hidden;
     cursor: pointer;
+    box-shadow: var(--box-shadow-7-cards);
+    border-radius: 15px;
+    transition: box-shadow 0.3s;
 }
 
 .card .poster {
