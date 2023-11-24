@@ -87,14 +87,15 @@
     padding: 5px 0;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    height: 26px;
 }
 
 .rating span:not(.rating-number) {
     color: #f7f406;
-    margin-right: 2px;
-    font-size: 14px;
+    font-size: 26px;
+    letter-spacing: -10px;
 }
 
 .rating .rating-number {
@@ -102,9 +103,11 @@
     padding: 0 2px;
     display: inline-block;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 14px;
     text-shadow: 1px 1px black;
     letter-spacing: 1px;
+    margin-left: 10px;
+    margin-top: 4px;
 }
 
 .tags {
@@ -125,6 +128,7 @@
     display: inline-block;
     border-radius: 4px;
     font-size: 14px;
+    font-weight: 700;
 }
 
 .tags span.fantasy {
@@ -135,7 +139,17 @@
     background: #f70661;
 }
 
-.info {
+.tags span.adventure {
+    background: #f7ab06;
+    color: black;
+    text-shadow: none;
+}
+
+.tags span.drama {
+    background: cadetblue;
+}
+
+/* .info {
     color: var(--color-bg-reverse);
 }
 
@@ -151,7 +165,7 @@
     word-spacing: 2px;
     text-align: center;
     color: white;
-}
+} */
 
 .extra {
     position: relative;

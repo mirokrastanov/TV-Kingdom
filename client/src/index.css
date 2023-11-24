@@ -209,3 +209,7 @@ body {
 .thin-symbol {
     font-variation-settings: 'wght' 100;
 }
+
+.fill-n-thin-symbol {
+    font-variation-settings: 'wght' 100, 'FILL' 1;
+}
