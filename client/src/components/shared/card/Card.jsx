@@ -11,9 +11,10 @@ const mockup = {
 };
 
 export default function Card(props) {
-    const [p, setP] = useState({});
+    const [p, setP] = useState(mockup);
 
-    const extractYear = (date) => (date.split('-'))[0];
+    const extractYear = (date) => date ? (date.split('-'))[0] : date;
+
     const plotRating = (rating) => {
         let output = [];
         for (let i = 1; i <= 10; i++) {
@@ -27,42 +28,40 @@ export default function Card(props) {
 
 
     useEffect(() => {
-        console.log(props.gosho); // TODO: Rework props to migrate from object properties to direct ones
-        if (props.id) setP({ ...props, rating: 7 });
-        else setP({ ...mockup });
+        // console.log(props);
+        if (props.id) setP({ ...props });
 
         return () => { };
     }, [props]);
 
 
     return (
-        <div className="card">
-            <p style={{ background: 'white', height: '20px' }} >{p.rating}</p> {/* POST REWORK TODO */}
-            {/* <div className="poster">
-                    <img src={p.image.medium} alt="card-poster" />
+        <div className="card" data-id={p.id}>
+            {/* <p style={{ background: 'white', height: '20px' }} >{p.rating.average}</p> */}
+            <div className="poster">
+                <img src={p.image.medium} alt="card-poster" />
+            </div>
+            <div className="details">
+                <div className='title-ctr'><h2>{p.name}</h2></div>
+                <span>{extractYear(p.premiered)} - {extractYear(p.ended)}</span>
+
+                <div className="rating">
+                    {plotRating(p.rating.average).map((x, i) => {
+                        if (x == 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined fill-n-thin-symbol">star</span>);
+                        else if (x > 0 & x < 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star_half</span>);
+                        else return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star</span>);
+                    })}
+
+                    <span className="rating-number">{p.rating.average}/10</span>
                 </div>
-                <div className="details">
-                    <div className='title-ctr'><h2>{p.name}</h2></div>
-                    <span>{extractYear(p.premiered)} - {extractYear(p.ended)}</span>
-
-                    <div className="rating">
-                        {plotRating(p.rating.average).map((x, i) => {
-                            if (x == 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined fill-n-thin-symbol">star</span>);
-                            else if (x > 0 & x < 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star_half</span>);
-                            else return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star</span>);
-                        })}
-
-                        <span className="rating-number">{p.rating.average}/10</span>
-                    </div>
-                    <div className="tags">
-                        {p.genres.map(x => (<span key={x.toLowerCase()} className={x.toLowerCase()}>{x}</span>))}
-                    </div>
-                    <Summary summary={p.summary} />
-                    <div className="extra">
-                        <p>Language: <b>{p.show.language}</b></p>
-                        <p>Network: <b>{p.network.name}</b></p>
-                    </div>
-                </div> */}
+                <div className="tags">
+                    {p.genres.map(x => (<span key={x.toLowerCase()} className={x.toLowerCase()}>{x}</span>))}
+                </div>
+                <Summary summary={p.summary} />
+                <div className="extra">
+                    <p>Language: <b>{p.language}</b></p>
+                </div>
+            </div>
         </div>
     )
 }
