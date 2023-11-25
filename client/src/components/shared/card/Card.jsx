@@ -61,7 +61,7 @@ export default function Card(props) {
                             else return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star</span>);
                         })}
 
-                        <span className="rating-number">{p.rating.average}/10</span>
+                        <span className="rating-number">{p.rating.average ?? 0}/10</span>
                     </div>
                     <div className="tags">
                         {p.genres.map(x => (<span key={x.toLowerCase()} className={x.toLowerCase()}>{x}</span>))}
