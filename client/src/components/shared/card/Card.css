@@ -75,7 +75,7 @@
     text-overflow: ellipsis;
 }
 
-.details > span:nth-of-type(1) {
+.details>span:nth-of-type(1) {
     font-size: 14px;
     font-weight: 700;
     color: #ff9800;
@@ -118,7 +118,13 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 2px;
+    min-height: 20px;
+    gap: 10px 3px;
+    transition: all 0.6s ease-in-out;
+}
+
+.card:hover .tags {
+    gap: 3px;
 }
 
 .tags span {
@@ -129,6 +135,8 @@
     border-radius: 4px;
     font-size: 14px;
     font-weight: 700;
+    background: royalblue;
+    /* generic color for unspecified tags */
 }
 
 .tags span.fantasy {
@@ -136,7 +144,7 @@
 }
 
 .tags span.romance {
-    background: #f70661;
+    background: #ff37a5;
 }
 
 .tags span.adventure {
@@ -146,8 +154,97 @@
 }
 
 .tags span.drama {
-    background: cadetblue;
+    background: rgb(73, 180, 184);
 }
+
+.tags span.crime {
+    background: rgb(126, 68, 68);
+}
+
+.tags span.action {
+    background: chartreuse;
+    color: black;
+    text-shadow: none;
+}
+
+.tags span.science-fiction {
+    background: pink;
+    color: black;
+    text-shadow: none;
+}
+
+.tags span.thriller {
+    background: rgb(185, 9, 38);
+}
+
+.tags span.horror {
+    background: rgb(138, 185, 9);
+}
+
+.tags span.music {
+    background: rgb(35, 97, 212);
+}
+
+.tags span.espionage {
+    background: rgb(82, 89, 102);
+}
+
+.tags span.mystery {
+    background: rgb(202, 136, 255);
+    color: black;
+    text-shadow: none;
+}
+
+.tags span.supernatural {
+    background: rgb(215, 255, 70);
+    color: black;
+    text-shadow: none;
+}
+
+.tags span.family {
+    background: rgb(20, 255, 188);
+    color: black;
+    text-shadow: none;
+}
+
+.tags span.anime {
+    background: rgb(255, 23, 178);
+    color: black;
+    text-shadow: none;
+}
+
+.tags span.history {
+    background: rgb(141, 169, 224);
+}
+
+.tags span.comedy {
+    background: rgb(255, 110, 47);
+}
+
+.tags span.medical {
+    background: rgb(255, 0, 0);
+    color: black;
+    text-shadow: none;
+}
+
+.tags span.legal {
+    background: rgb(133, 126, 29);
+}
+
+.tags span.western {
+    background: rgb(59, 59, 56);
+    color: yellow;
+    text-shadow: none;
+}
+.tags span.war {
+    background: rgb(150, 44, 44);
+    color: black;
+    text-shadow: none;
+}
+
+
+
+
 
 /* .info {
     color: var(--color-bg-reverse);
