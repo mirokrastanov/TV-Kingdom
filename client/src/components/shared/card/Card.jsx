@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Card.css';
 import Summary from '../summary/Summary';
+import Spinner from '../Spinner/Spinner';
 
 // id, name, language, genres[], premiered, ended, rating.average, network.name, image.medium. summmary
 const mockup = {
@@ -12,6 +13,7 @@ const mockup = {
 
 export default function Card(props) {
     const [p, setP] = useState(mockup);
+    const [loading, setLoading] = useState(true);
 
     const extractYear = (date) => date ? (date.split('-'))[0] : date;
 
@@ -29,39 +31,47 @@ export default function Card(props) {
 
     useEffect(() => {
         // console.log(props);
-        if (props.id) setP({ ...props });
+        if (props.id) {
+            setP({ ...props });
+            setLoading(false);
+        };
 
         return () => { };
     }, [props]);
 
 
-    return (
-        <div className="card" data-id={p.id}>
-            {/* <p style={{ background: 'white', height: '20px' }} >{p.rating.average}</p> */}
-            <div className="poster">
-                <img src={p.image.medium} alt="card-poster" />
-            </div>
-            <div className="details">
-                <div className='title-ctr'><h2>{p.name}</h2></div>
-                <span>{extractYear(p.premiered)} - {extractYear(p.ended)}</span>
+    return (<>
+        {loading
+            ? (<div className="card">
+                <div className='card-loader-cage'><Spinner /></div>
+            </div>)
+            : (<div className="card" data-id={p.id}>
+                {/* <p style={{ background: 'white', height: '20px' }} >{p.rating.average}</p> */}
+                <div className="poster">
+                    <img src={p.image.medium} alt="card-poster" />
+                </div>
+                <div className="details">
+                    <div className='title-ctr'><h2>{p.name}</h2></div>
+                    <span>{extractYear(p.premiered)} - {extractYear(p.ended)}</span>
 
-                <div className="rating">
-                    {plotRating(p.rating.average).map((x, i) => {
-                        if (x == 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined fill-n-thin-symbol">star</span>);
-                        else if (x > 0 & x < 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star_half</span>);
-                        else return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star</span>);
-                    })}
+                    <div className="rating">
+                        {plotRating(p.rating.average).map((x, i) => {
+                            if (x == 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined fill-n-thin-symbol">star</span>);
+                            else if (x > 0 & x < 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star_half</span>);
+                            else return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star</span>);
+                        })}
 
-                    <span className="rating-number">{p.rating.average}/10</span>
+                        <span className="rating-number">{p.rating.average}/10</span>
+                    </div>
+                    <div className="tags">
+                        {p.genres.map(x => (<span key={x.toLowerCase()} className={x.toLowerCase()}>{x}</span>))}
+                    </div>
+                    <Summary summary={p.summary} />
+                    <div className="extra">
+                        <p>Language: <b>{p.language}</b></p>
+                    </div>
                 </div>
-                <div className="tags">
-                    {p.genres.map(x => (<span key={x.toLowerCase()} className={x.toLowerCase()}>{x}</span>))}
-                </div>
-                <Summary summary={p.summary} />
-                <div className="extra">
-                    <p>Language: <b>{p.language}</b></p>
-                </div>
-            </div>
-        </div>
-    )
+            </div>)
+        }
+    </>)
 }
