@@ -15,3 +15,7 @@
     text-align: center;
     color: white;
 }
+
+.info p:not(:first-child) {
+    display: none;
+}
