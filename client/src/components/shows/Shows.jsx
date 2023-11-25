@@ -32,12 +32,15 @@ export default function Shows() {
         // fetchShowsPage().catch(console.log);
 
         shows.page(pageValues.showsPage)
-            .then(data => setPageValues({ ...pageValues, showsData: data }))
+            .then(data => {
+                setPageValues({ ...pageValues, showsData: data })
+                console.log(data);
+            })
             .catch((err) => {
                 console.log(err.message);
-            });
+            })
+            .finally(); // remove loading, when I implement it
 
-        console.log(pageValues.showsData);
 
         // return () => { };
     }, []);
@@ -47,7 +50,9 @@ export default function Shows() {
         <div className="shows-ctr">
             <h1>Shows</h1>
             <div className="cards-cage">
-                {pageValues.showsData.slice(0, 10).map(x => (<Card key={x.id} {...x} />))}
+                {pageValues.showsData.map(x => (<Card key={x.id} {...x} />))}
+                {/* Testing renders below */}
+                {/* {pageValues.showsData.slice(0, 10).map(x => (<Card key={x.id} {...x} />))} */}
                 {/* {pageValues.showsData.slice(0, 1).map(x => (<Card key={x.id} {...x} />))} */}
             </div>
         </div>
