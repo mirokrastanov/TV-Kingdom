@@ -8,7 +8,7 @@ export default function Search() {
             <div id="form-ctr">
                 <h1>Search</h1>
                 <form>
-                    <input type="text" placeholder='Type Keywords...' name='search' />
+                    <input type="text" placeholder='Type Keywords...' name='search' autoComplete='off' />
                     <span className="s-icon material-symbols-outlined">search</span>
                 </form>
                 <h4>Navigate through an extensive database featuring a diverse array of shows, actors, and crew members.</h4>
