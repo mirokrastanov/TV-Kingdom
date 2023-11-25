@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Card.css';
 import Summary from '../summary/Summary';
 
-export default function Card(props) {
-    // id, name, language, genres[], premiered, ended, rating.average, network.name, image.medium. summmary
+// id, name, language, genres[], premiered, ended, rating.average, network.name, image.medium. summmary
+const mockup = {
+    id: 82, name: 'Game of Thrones', show: { language: 'English' }, genres: ['Drama', 'Adventure', 'Fantasy'], premiered: '2011-04-17',
+    ended: '2019-05-19', rating: { average: 8.9 }, network: { name: 'HBO' },
+    image: { medium: 'https://posterspy.com/wp-content/uploads/2020/10/got.jpg' },
+    summary: '<p>Based on the bestselling book series <i>A Song of Ice and Fire</i> by George R.R. Martin, this sprawling new HBO drama is set in a world where summers span decades and winters can last a lifetime. From the scheming south and the savage eastern lands, to the frozen north and ancient Wall that protects the realm from the mysterious darkness beyond, the powerful families of the Seven Kingdoms are locked in a battle for the Iron Throne. This is a story of duplicity and treachery, nobility and honor, conquest and triumph. In the <b>Game of Thrones</b>, you either win or you die.</p>'
+};
 
-    let p = { // Mockup data for pre-rendering, testing & to replace missing assets at start
-        id: 82, name: 'Game of Thrones', show: { language: 'English' }, genres: ['Drama', 'Adventure', 'Fantasy'], premiered: '2011-04-17',
-        ended: '2019-05-19', rating: { average: 8.9 }, network: { name: 'HBO' },
-        image: { medium: 'https://posterspy.com/wp-content/uploads/2020/10/got.jpg' },
-        summary: '<p>Based on the bestselling book series <i>A Song of Ice and Fire</i> by George R.R. Martin, this sprawling new HBO drama is set in a world where summers span decades and winters can last a lifetime. From the scheming south and the savage eastern lands, to the frozen north and ancient Wall that protects the realm from the mysterious darkness beyond, the powerful families of the Seven Kingdoms are locked in a battle for the Iron Throne. This is a story of duplicity and treachery, nobility and honor, conquest and triumph. In the <b>Game of Thrones</b>, you either win or you die.</p>'
-    };
+export default function Card(props) {
+    const [p, setP] = useState({});
 
     const extractYear = (date) => (date.split('-'))[0];
     const plotRating = (rating) => {
@@ -23,10 +24,12 @@ export default function Card(props) {
         return output;
     };
 
+
+
     useEffect(() => {
-        if (props.id) {
-            p = props;
-        }
+        console.log(props.gosho); // TODO: Rework props to migrate from object properties to direct ones
+        if (props.id) setP({ ...props, rating: 7 });
+        else setP({ ...mockup });
 
         return () => { };
     }, [props]);
@@ -34,31 +37,32 @@ export default function Card(props) {
 
     return (
         <div className="card">
-            <div className="poster">
-                <img src={p.image.medium} alt="card-poster" />
-            </div>
-            <div className="details">
-                <div className='title-ctr'><h2>{p.name}</h2></div>
-                <span>{extractYear(p.premiered)} - {extractYear(p.ended)}</span>
+            <p style={{ background: 'white', height: '20px' }} >{p.rating}</p> {/* POST REWORK TODO */}
+            {/* <div className="poster">
+                    <img src={p.image.medium} alt="card-poster" />
+                </div>
+                <div className="details">
+                    <div className='title-ctr'><h2>{p.name}</h2></div>
+                    <span>{extractYear(p.premiered)} - {extractYear(p.ended)}</span>
 
-                <div className="rating">
-                    {plotRating(p.rating.average).map((x, i) => {
-                        if (x == 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined fill-n-thin-symbol">star</span>);
-                        else if (x > 0 & x < 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star_half</span>);
-                        else return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star</span>);
-                    })}
+                    <div className="rating">
+                        {plotRating(p.rating.average).map((x, i) => {
+                            if (x == 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined fill-n-thin-symbol">star</span>);
+                            else if (x > 0 & x < 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star_half</span>);
+                            else return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star</span>);
+                        })}
 
-                    <span className="rating-number">{p.rating.average}/10</span>
-                </div>
-                <div className="tags">
-                    {p.genres.map(x => (<span key={x.toLowerCase()} className={x.toLowerCase()}>{x}</span>))}
-                </div>
-                <Summary summary={p.summary} />
-                <div className="extra">
-                    <p>Language: <b>{p.show.language}</b></p>
-                    <p>Network: <b>{p.network.name}</b></p>
-                </div>
-            </div>
+                        <span className="rating-number">{p.rating.average}/10</span>
+                    </div>
+                    <div className="tags">
+                        {p.genres.map(x => (<span key={x.toLowerCase()} className={x.toLowerCase()}>{x}</span>))}
+                    </div>
+                    <Summary summary={p.summary} />
+                    <div className="extra">
+                        <p>Language: <b>{p.show.language}</b></p>
+                        <p>Network: <b>{p.network.name}</b></p>
+                    </div>
+                </div> */}
         </div>
     )
 }
