@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './Shows.css';
 import Card from '../shared/card/card';
 import { shows } from '../../services/showService';
+import Spinner from '../shared/Spinner/Spinner';
 
 export default function Shows() {
     const INITIAL_VALUES = {
         showsData: [],
         showsPage: 0,
+        loading: true,
     };
 
     const [pageValues, setPageValues] = useState(INITIAL_VALUES);
@@ -33,14 +35,12 @@ export default function Shows() {
 
         shows.page(pageValues.showsPage)
             .then(data => {
-                setPageValues({ ...pageValues, showsData: data })
+                setPageValues({ ...pageValues, showsData: data, loading: false });
                 console.log(data);
             })
             .catch((err) => {
                 console.log(err.message);
             })
-            .finally(); // remove loading, when I implement it
-
 
         // return () => { };
     }, []);
@@ -50,7 +50,10 @@ export default function Shows() {
         <div className="shows-ctr">
             <h1>Shows</h1>
             <div className="cards-cage">
-                {pageValues.showsData.map(x => (<Card key={x.id} {...x} />))}
+                {pageValues.loading
+                    ? (<div className='loader-cage'><Spinner /></div>)
+                    : (pageValues.showsData.map(x => (<Card key={x.id} {...x} />)))
+                }
                 {/* Testing renders below */}
                 {/* {pageValues.showsData.slice(0, 10).map(x => (<Card key={x.id} {...x} />))} */}
                 {/* {pageValues.showsData.slice(0, 1).map(x => (<Card key={x.id} {...x} />))} */}
