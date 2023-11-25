@@ -51,7 +51,7 @@ export default function Shows() {
             <h1>Shows</h1>
             <div className="cards-cage">
                 {pageValues.loading
-                    ? (<div className='loader-cage'><Spinner /></div>)
+                    ? (<div className='cards-loader-cage'><Spinner /></div>)
                     : (pageValues.showsData.map(x => (<Card key={x.id} {...x} />)))
                 }
                 {/* Testing renders below */}
