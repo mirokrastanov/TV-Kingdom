@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './Card.css';
-import Summary from '../summary/Summary';
-import Spinner from '../Spinner/Spinner';
+import './ShowCard.css';
+import Summary from '../shared/summary/Summary';
+import Spinner from '../shared/Spinner/Spinner';
 
 // id, name, language, genres[], premiered, ended, rating.average, network.name, image.medium. summmary
 const mockup = {
