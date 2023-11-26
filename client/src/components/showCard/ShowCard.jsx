@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ShowCard.css';
 import Summary from '../shared/summary/Summary';
-import Spinner from '../shared/Spinner/Spinner';
+import CardLoader from '../shared/cardLoader/CardLoader';
 
 // id, name, language, genres[], premiered, ended, rating.average, network.name, image.medium. summmary
 const mockup = {
@@ -16,7 +16,6 @@ export default function Card(props) {
     const [loading, setLoading] = useState(true);
 
     const extractYear = (date) => date ? (date.split('-'))[0] : date;
-
     const plotRating = (rating) => {
         let output = [];
         for (let i = 1; i <= 10; i++) {
@@ -26,8 +25,6 @@ export default function Card(props) {
         }
         return output;
     };
-
-
 
     useEffect(() => {
         // console.log(props);
@@ -42,25 +39,20 @@ export default function Card(props) {
 
     return (<>
         {loading
-            ? (<div className="card">
-                <div className='card-loader-cage'><Spinner /></div>
-            </div>)
+            ? (<div className="card"><CardLoader /></div>)
             : (<div className="card" data-id={p.id}>
-                {/* <p style={{ background: 'white', height: '20px' }} >{p.rating.average}</p> */}
                 <div className="poster">
                     <img src={p.image.medium} alt="card-poster" />
                 </div>
                 <div className="details">
                     <div className='title-ctr'><h2>{p.name}</h2></div>
                     <span>{extractYear(p.premiered)} - {extractYear(p.ended)}</span>
-
                     <div className="rating">
                         {plotRating(p.rating.average).map((x, i) => {
                             if (x == 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined fill-n-thin-symbol">star</span>);
                             else if (x > 0 & x < 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star_half</span>);
                             else return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star</span>);
                         })}
-
                         <span className="rating-number">{p.rating.average ?? 0}/10</span>
                     </div>
                     <div className="tags">
@@ -71,7 +63,8 @@ export default function Card(props) {
                         <p>Language: <b>{p.language}</b></p>
                     </div>
                 </div>
-            </div>)
+            </div>
+            )
         }
     </>)
 }

@@ -24,15 +24,3 @@
     flex-wrap: wrap;
     gap: 20px;
 }
-
-.loader-cage {
-    width: 100%;
-    height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.shows-ctr .cards-loader-cage .lds-roller {
-    scale: 1.5;
-}

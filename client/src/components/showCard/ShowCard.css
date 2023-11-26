@@ -274,12 +274,3 @@
     letter-spacing: 1px;
     word-spacing: 2px;
 }
-
-.card .card-loader-cage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background: var(--background-2);
-}
