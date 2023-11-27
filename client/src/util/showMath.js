@@ -5,3 +5,11 @@ export function returnInfData(showsData, infSize, infPage) {
     else return showsData.slice(infSize * infPage, infSize * infPage + infSize);
 };
 
+export function createPartials(showsData) {
+    const result = [];
+    while (showsData.length > 0) {
+        if (showsData.length >= 50) result.push(showsData.splice(0, 50));
+        else result.push(showsData.splice(0));
+    }
+    return result;
+};
