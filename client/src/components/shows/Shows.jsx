@@ -4,6 +4,7 @@ import ShowCard from '../showCard/ShowCard';
 import { shows } from '../../services/showService';
 import PageLoader from '../shared/pageLoader/PageLoader';
 import { createPartials } from '../../util/showMath';
+import ScrollLoader from '../shared/scrollLoader/ScrollLoader';
 
 export default function Shows() {
     const INITIAL_VALUES = {
@@ -11,7 +12,8 @@ export default function Shows() {
         showsPage: 0,
         partialData: [],
         displayData: [],
-        loading: true,
+        pageLoading: true,
+        scrollLoading: false,
     };
 
     const [pageValues, setPageValues] = useState(INITIAL_VALUES);
@@ -26,18 +28,18 @@ export default function Shows() {
                     showsData: [...data],
                     partialData: partials,
                     displayData: [...prev.displayData, ...first],
-                    loading: false,
+                    pageLoading: false,
                 }));
                 // console.log(data);
                 // console.log(pageValues);
             })
-            .catch((err) => { 
+            .catch((err) => {
                 console.log(err.message);
             })
     };
 
     useEffect(() => {
-        console.log(pageValues.displayData);
+
     }, [pageValues.displayData]);
 
     useEffect(() => {
@@ -49,13 +51,15 @@ export default function Shows() {
         <div className="shows-ctr">
             <h1>Shows</h1>
             <div className="cards-cage">
-                {pageValues.loading
+                {pageValues.pageLoading
                     ? (<PageLoader />)
                     : (pageValues.displayData.map(x => (<ShowCard key={x.id} {...x} />)))
                 }
                 {/* Testing renders below */}
                 {/* {pageValues.showsData.slice(0, 10).map(x => (<ShowCard key={x.id} {...x} />))} */}
                 {/* {pageValues.showsData.slice(0, 1).map(x => (<ShowCard key={x.id} {...x} />))} */}
+
+                {pageValues.scrollLoading && <ScrollLoader />}
             </div>
         </div>
     )
