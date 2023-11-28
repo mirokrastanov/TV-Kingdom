@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ShowCard.css';
 import Summary from '../shared/summary/Summary';
 import CardLoader from '../shared/cardLoader/CardLoader';
+import { useNavigate } from 'react-router-dom';
 
 // id, name, language, genres[], premiered, ended, rating.average, network.name, image.medium. summmary
 const mockup = {
@@ -15,6 +16,8 @@ const ShowCard = React.forwardRef((props, ref) => {
     const [p, setP] = useState(mockup);
     const [loading, setLoading] = useState(true);
 
+    const navigate = useNavigate();
+
     const extractYear = (date) => date ? (date.split('-'))[0] : date;
     const plotRating = (rating) => {
         let output = [];
@@ -24,6 +27,13 @@ const ShowCard = React.forwardRef((props, ref) => {
             else if (i > rating) output.push(0);
         }
         return output;
+    };
+
+    const clickHandler = (e) => {
+        const showId = e.currentTarget.dataset.id;
+        // console.log('clicked', id);
+
+        navigate(`${showId}/details`);
     };
 
     useEffect(() => {
@@ -40,7 +50,7 @@ const ShowCard = React.forwardRef((props, ref) => {
     return (<>
         {loading
             ? (<div className="card"><CardLoader /></div>)
-            : (<div className="card" data-id={p.id} ref={ref ? ref : null}>
+            : (<div className="card" data-id={p.id} ref={ref ? ref : null} onClick={clickHandler}>
                 <div className="poster">
                     <img src={p.image.medium} alt="card-poster" />
                 </div>

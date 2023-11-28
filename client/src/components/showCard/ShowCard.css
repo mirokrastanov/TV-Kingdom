@@ -8,6 +8,7 @@
     box-shadow: var(--box-shadow-7-cards);
     border-radius: 15px;
     transition: box-shadow 0.3s;
+    user-select: none;
 }
 
 .card .poster {
