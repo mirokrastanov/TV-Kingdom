@@ -1,7 +1,9 @@
 import React from 'react';
 import './NotFound.css';
+import { Link } from 'react-router-dom';
 
 export default function NotFound() {
+    
 
     return (
         <>
@@ -11,7 +13,7 @@ export default function NotFound() {
                     <h2>Page not found!</h2>
                 </div>
                 <div className='lower'>
-                    <button>Home page</button>
+                    <Link to={'/'} className='btn'>Home page</Link>
                 </div>
             </div>
 
