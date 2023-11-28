@@ -12,8 +12,9 @@ export default function Shows() {
         showsPage: 0,
         partialData: [],
         displayData: [],
+        displayPage: 1,
         pageLoading: true,
-        // scrollLoading: false,
+        isIntersecting: false,
     };
 
     const [pageValues, setPageValues] = useState(INITIAL_VALUES);
@@ -21,21 +22,23 @@ export default function Shows() {
     const intObserver = useRef();
     const lastCardRef = useCallback(card => {
         if (pageValues.pageLoading) return;
-        // if (pageValues.pageLoading || pageValues.scrollLoading) return;
         if (intObserver.current) intObserver.current.disconnect();
-        
+
         intObserver.current = new IntersectionObserver(cards => {
             if (cards[0].isIntersecting) {
+                pageValues.isIntersecting = true;
                 console.log('Near last card!');
                 console.log(card);
-                // get next page ...
+                setPageValues(prev => ({ ...prev, displayPage: prev.displayPage + 1 }));
             }
+        }, {
+            threshold: 1,
+            rootMargin: '-80px',
         });
 
         if (card) intObserver.current.observe(card);
 
     }, [pageValues.pageLoading]);
-    // }, [pageValues.pageLoading, pageValues.scrollLoading]);
 
     const fetchShowsData = () => {
         setPageValues(prev => ({ ...prev, pageLoading: true }));
@@ -70,10 +73,16 @@ export default function Shows() {
                 displayData: [...new Set([...prev.displayData, ...partial])], // ensure uniqueness
                 pageLoading: false,
             }));
+        } else {
+            // fetch shows, but persist some values
         }
-
-
     };
+
+    useEffect(() => {
+        if (!pageValues.isIntersecting) return;
+
+        fetchDisplayData();
+    }, [pageValues.displayPage]);
 
     useEffect(() => {
         setPageValues(INITIAL_VALUES);
@@ -93,12 +102,7 @@ export default function Shows() {
                         return (<ShowCard key={x.id} {...x} />)
                     }))
                 }
-
-                {/* Testing renders below */}
-                {/* {pageValues.showsData.slice(0, 10).map(x => (<ShowCard key={x.id} {...x} />))} */}
-                {/* {pageValues.showsData.slice(0, 1).map(x => (<ShowCard key={x.id} {...x} />))} */}
-
-                {/* {pageValues.scrollLoading && <ScrollLoader />} */}
+                <ScrollLoader />
             </div>
             {pageValues.pageLoading
                 ? null
