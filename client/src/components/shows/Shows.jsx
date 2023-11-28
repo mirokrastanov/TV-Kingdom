@@ -4,29 +4,15 @@ import ShowCard from '../showCard/ShowCard';
 import { shows } from '../../services/showService';
 import PageLoader from '../shared/pageLoader/PageLoader';
 import ScrollLoader from '../shared/scrollLoader/ScrollLoader';
+import { createPartials } from '../../utilities/showUtility';
 
 export default function Shows() {
     const INITIAL_VALUES = {
-        showsData: [],
-        showsPage: 0,
-        partialData: [],
-        displayData: [],
-        displayPage: 1,
-        pageLoading: true,
-        scrollLoading: true,
-        isIntersecting: false,
+        showsData: [], showsPage: 0, partialData: [], displayData: [],
+        displayPage: 1, pageLoading: true, scrollLoading: true, isIntersecting: false,
     };
 
     const [pageValues, setPageValues] = useState(INITIAL_VALUES);
-
-    function createPartials(showsData) {
-        const result = [];
-        while (showsData.length > 0) {
-            if (showsData.length >= 24) result.push(showsData.splice(0, 24));
-            else result.push(showsData.splice(0));
-        }
-        return result;
-    };
 
     const intObserver = useRef();
     const lastCardRef = useCallback(card => {

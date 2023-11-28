@@ -3,6 +3,7 @@ import './ShowCard.css';
 import Summary from '../shared/summary/Summary';
 import CardLoader from '../shared/cardLoader/CardLoader';
 import { useNavigate } from 'react-router-dom';
+import { extractYear, plotRating } from '../../utilities/showUtility';
 
 // id, name, language, genres[], premiered, ended, rating.average, network.name, image.medium. summmary
 const mockup = {
@@ -17,17 +18,6 @@ const ShowCard = React.forwardRef((props, ref) => {
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
-
-    const extractYear = (date) => date ? (date.split('-'))[0] : date;
-    const plotRating = (rating) => {
-        let output = [];
-        for (let i = 1; i <= 10; i++) {
-            if (i <= rating) output.push(1);
-            else if (i - 1 < rating && i > rating) output.push(0.5);
-            else if (i > rating) output.push(0);
-        }
-        return output;
-    };
 
     const clickHandler = (e) => {
         const showId = e.currentTarget.dataset.id;
