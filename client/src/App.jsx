@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 import { useTheme } from './contexts/ThemeContext';
 import './App.css';
 import Home from './components/home/Home';
@@ -9,9 +9,11 @@ import UserSignIn from './components/userSignIn/UserSignIn';
 import Actors from './components/actors/Actors';
 import Schedule from './components/schedule/Schedule';
 import Search from './components/search/Search';
+import ShowDetails from './components/showDetails/ShowDetails';
 
 function App() {
     const darkTheme = useTheme();
+    const { showId } = useParams();
 
     return (
         <div className={`app-ctr${darkTheme ? ' dark-mode' : ''}`}>
@@ -22,17 +24,17 @@ function App() {
                     <Route exact path='/' element={<Home />} />
                     <Route path='home' element={<Navigate to='/' />} />
                     <Route path='index' element={<Navigate to='/' />} />
-                    
+
                     <Route path='shows' element={<Shows />} />
+                    <Route path='shows/:showId/details' element={<ShowDetails />} />
+
                     <Route path='actors' element={<Actors />} />
                     <Route path='schedule' element={<Schedule />} />
                     <Route path='search' element={<Search />} />
 
-                    <Route path='user'>
-                        <Route path='sign-in' element={<UserSignIn />} />
-                        <Route path='sign-up' element={<Shows />} />
-                        <Route path='profile' element={<Shows />} />
-                    </Route>
+                    <Route path='user/sign-in' element={<UserSignIn />} />
+                    <Route path='user/sign-up' element={<Shows />} />
+                    <Route path='user/profile' element={<Shows />} />
 
                     <Route path='*' element={<NotFound />} />
                 </Routes>
