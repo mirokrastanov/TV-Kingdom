@@ -11,7 +11,7 @@ const mockup = {
     summary: '<p>Based on the bestselling book series <i>A Song of Ice and Fire</i> by George R.R. Martin, this sprawling new HBO drama is set in a world where summers span decades and winters can last a lifetime. From the scheming south and the savage eastern lands, to the frozen north and ancient Wall that protects the realm from the mysterious darkness beyond, the powerful families of the Seven Kingdoms are locked in a battle for the Iron Throne. This is a story of duplicity and treachery, nobility and honor, conquest and triumph. In the <b>Game of Thrones</b>, you either win or you die.</p>'
 };
 
-export default function Card(props) {
+const ShowCard = React.forwardRef((props, ref) => {
     const [p, setP] = useState(mockup);
     const [loading, setLoading] = useState(true);
 
@@ -40,7 +40,7 @@ export default function Card(props) {
     return (<>
         {loading
             ? (<div className="card"><CardLoader /></div>)
-            : (<div className="card" data-id={p.id}>
+            : (<div className="card" data-id={p.id} ref={ref ? ref : null}>
                 <div className="poster">
                     <img src={p.image.medium} alt="card-poster" />
                 </div>
@@ -67,4 +67,6 @@ export default function Card(props) {
             )
         }
     </>)
-}
+})
+
+export default ShowCard;
