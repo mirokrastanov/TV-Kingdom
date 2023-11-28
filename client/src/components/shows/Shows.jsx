@@ -3,7 +3,6 @@ import './Shows.css';
 import ShowCard from '../showCard/ShowCard';
 import { shows } from '../../services/showService';
 import PageLoader from '../shared/pageLoader/PageLoader';
-import { createPartials } from '../../util/showMath';
 import ScrollLoader from '../shared/scrollLoader/ScrollLoader';
 
 export default function Shows() {
@@ -14,10 +13,20 @@ export default function Shows() {
         displayData: [],
         displayPage: 1,
         pageLoading: true,
+        scrollLoading: true,
         isIntersecting: false,
     };
 
     const [pageValues, setPageValues] = useState(INITIAL_VALUES);
+
+    function createPartials(showsData) {
+        const result = [];
+        while (showsData.length > 0) {
+            if (showsData.length >= 24) result.push(showsData.splice(0, 24));
+            else result.push(showsData.splice(0));
+        }
+        return result;
+    };
 
     const intObserver = useRef();
     const lastCardRef = useCallback(card => {
@@ -26,67 +35,71 @@ export default function Shows() {
 
         intObserver.current = new IntersectionObserver(cards => {
             if (cards[0].isIntersecting) {
-                pageValues.isIntersecting = true;
-                console.log('Near last card!');
-                console.log(card);
-                setPageValues(prev => ({ ...prev, displayPage: prev.displayPage + 1 }));
+                // console.log('Near last card!', card);
+                setPageValues(prev => ({ ...prev, displayPage: prev.displayPage + 1, isIntersecting: true }));
             }
         }, {
-            threshold: 1,
-            rootMargin: '-80px',
+            threshold: 1, // full element on screen, before trigger
+            rootMargin: '-60px', // + a margin for the scroll loader
         });
 
         if (card) intObserver.current.observe(card);
-
     }, [pageValues.pageLoading]);
 
-    const fetchShowsData = () => {
-        setPageValues(prev => ({ ...prev, pageLoading: true }));
-
-        shows.page(pageValues.showsPage)
+    function fetchShowsData(p) {
+        shows.page(p)
             .then(data => {
+                if (!data || !Array.isArray(data)) {
+                    setPageValues(prev => ({ ...prev, scrollLoading: false }));
+                }
                 const partials = createPartials(data);
                 const first = partials.shift();
                 setPageValues(prev => ({
                     ...prev,
                     showsData: [...data],
-                    partialData: partials,
-                    displayData: [...new Set([...prev.displayData, ...first])], // ensure uniqueness
+                    partialData: [...partials],
+                    displayData: [...prev.displayData, ...first],
                     pageLoading: false,
+                    isIntersecting: false,
                 }));
-                // console.log(data);
-                // console.log(pageValues);
             })
             .catch((err) => {
                 console.log(err.message);
             })
     };
 
-    const fetchDisplayData = () => {
-        setPageValues(prev => ({ ...prev, pageLoading: true }));
-
+    function loadDisplayData() {
         const length = pageValues.partialData.length;
         if (length > 0) {
             const partial = pageValues.partialData.shift();
             setPageValues(prev => ({
                 ...prev,
-                displayData: [...new Set([...prev.displayData, ...partial])], // ensure uniqueness
+                displayData: [...prev.displayData, ...partial],
                 pageLoading: false,
+                isIntersecting: false,
             }));
         } else {
-            // fetch shows, but persist some values
+            fetchShowsData(pageValues.showsPage + 1);
+            setPageValues(prev => ({ ...prev, showsPage: prev.showsPage + 1 }));
         }
     };
 
+    // LOAD ON SCROLL
     useEffect(() => {
         if (!pageValues.isIntersecting) return;
 
-        fetchDisplayData();
+        loadDisplayData();
     }, [pageValues.displayPage]);
 
+    // DEV LOG
+    // useEffect(() => {
+    //     console.log(pageValues.displayData);
+    // }, [pageValues.displayData]);
+
+    // ON INIT
     useEffect(() => {
         setPageValues(INITIAL_VALUES);
-        fetchShowsData();
+        fetchShowsData(0);
     }, []);
 
     return (
@@ -102,9 +115,9 @@ export default function Shows() {
                         return (<ShowCard key={x.id} {...x} />)
                     }))
                 }
-                <ScrollLoader />
+                {(!pageValues.pageLoading && pageValues.scrollLoading) && <ScrollLoader />}
             </div>
-            {pageValues.pageLoading
+            {(pageValues.pageLoading && !pageValues.scrollLoading)
                 ? null
                 : (<p className='top-link btn'><a href="#top">Back to Top</a></p>)}
         </div>

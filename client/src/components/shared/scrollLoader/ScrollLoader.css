@@ -7,5 +7,9 @@
     position: absolute;
     left: 0;
     bottom: -30px;
-    scale: 0.85;
+    height: 20vh;
+}
+
+.scroll-loader-cage .lds-roller {
+    scale: 0.9;
 }
