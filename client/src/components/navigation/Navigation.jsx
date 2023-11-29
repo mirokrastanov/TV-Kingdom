@@ -145,12 +145,12 @@ export default function Navigation() {
                     </Link>
                     <div className='tooltip'>Schedule</div>
                 </li>
-                {/* NAV => SIGN IN */}
+                {/* NAV => SIGN UP */}
                 <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <Link to='/user/sign-in' onClick={navHandler} className='nav-a'>
-                        {mobileWidth ? 'Sign In' : (<span className="material-symbols-outlined">login</span>)}
+                    <Link to='/user/sign-up' onClick={navHandler} className='nav-a'>
+                        {mobileWidth ? 'Sign Up' : (<span className="material-symbols-outlined">login</span>)}
                     </Link>
-                    <div className='tooltip'>Sign In</div>
+                    <div className='tooltip'>Sign Up</div>
                 </li>
 
 
