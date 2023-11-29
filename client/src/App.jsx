@@ -10,6 +10,7 @@ import Actors from './components/actors/Actors';
 import Schedule from './components/schedule/Schedule';
 import Search from './components/search/Search';
 import ShowDetails from './components/showDetails/ShowDetails';
+import UserSignUp from './components/userSignUp/UserSignUp';
 
 function App() {
     const darkTheme = useTheme();
@@ -33,7 +34,7 @@ function App() {
                     <Route path='search' element={<Search />} />
 
                     <Route path='user/sign-in' element={<UserSignIn />} />
-                    <Route path='user/sign-up' element={<Shows />} />
+                    <Route path='user/sign-up' element={<UserSignUp />} />
                     <Route path='user/profile' element={<Shows />} />
 
                     <Route path='*' element={<NotFound />} />
