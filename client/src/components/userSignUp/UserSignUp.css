@@ -50,6 +50,12 @@
     border: 2px solid var(--color-black-light);
 }
 
+/* .sign-up-ctr input[type="text"],
+.sign-up-ctr input[type="password"],
+.sign-up-ctr textarea {
+    background: rgb(212, 244, 255);
+} */
+
 .sign-up-ctr label,
 .sign-up-ctr button {
     margin-top: 1rem;
@@ -64,9 +70,13 @@
     text-transform: uppercase;
 }
 
+/* .sign-up-ctr button:hover {
+    background: var(--color-black-light);
+}
+
 .sign-up-ctr button:active {
     transform: translateY(1px);
-}
+} */
 
 .sign-up-ctr .instructions {
     font-size: 0.95rem;
