@@ -1,0 +1,138 @@
+.sign-up-ctr {
+    padding-top: 65px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-bg-reverse);
+    margin: auto 5%;
+    text-align: center;
+    font-size: 22px;
+}
+
+.sign-up-ctr section {
+    margin-top: 5%;
+    width: 100%;
+    max-width: 420px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+    /* background-color: rgba(0, 0, 0, 0.4); */
+}
+
+.sign-up-ctr form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding-bottom: 1rem;
+}
+
+.sign-up-ctr a,
+.sign-up-ctr a:visited {
+    color: var(--color-bg-reverse);
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 10px;
+    padding: 5px 25px 5px 15px;
+    text-align: center;
+}
+
+.sign-up-ctr input[type="text"],
+.sign-up-ctr input[type="password"],
+.sign-up-ctr button,
+.sign-up-ctr textarea {
+    font-size: 22px;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    border: 2px solid var(--color-black-light);
+}
+
+.sign-up-ctr label,
+.sign-up-ctr button {
+    margin-top: 1rem;
+}
+
+.sign-up-ctr button {
+    margin-top: 2rem;
+    padding: 0.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+}
+
+.sign-up-ctr button:active {
+    transform: translateY(1px);
+}
+
+.sign-up-ctr .instructions {
+    font-size: 0.95rem;
+    border-radius: 0.5rem;
+    padding: 0.25rem 1.5rem;
+    position: relative;
+    bottom: -10px;
+    background-color: var(--color-bg);
+    color: var(--color-bg-reverse);
+    box-shadow: var(--box-shadow-2);
+}
+
+.sign-up-ctr .instructions p:not(:first-child) {
+    margin-top: 3px;
+}
+
+.sign-up-ctr .instructions>svg {
+    margin-right: 0.25rem;
+}
+
+.sign-up-ctr .offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.sign-up-ctr .hide {
+    display: none;
+}
+
+.sign-up-ctr .valid {
+    color: limegreen;
+    margin-left: 0.25rem;
+}
+
+.sign-up-ctr .invalid {
+    color: red;
+    margin-left: 0.25rem;
+}
+
+.sign-up-ctr .errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+}
+
+.sign-up-ctr div:has(.line) {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 20px;
+}
+
+.sign-up-ctr .line {
+    display: inline-block;
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .sign-up-ctr {
+        margin: auto 0;
+    }
+
+}
