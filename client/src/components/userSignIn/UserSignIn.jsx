@@ -4,20 +4,22 @@ import { useForm } from '../../hooks/useForm';
 
 
 export default function UserSignIn() {
-    const { formValues, onChangeHandler, onSubmit } = useForm({
+    const { formValues, onChangeHandler } = useForm({
         name: '',
         password: '',
         // rework when the form is selected
-    }, (values) => {
-        console.log(values);
     });
 
+    function onSubmitHandler(e) {
+        e.preventDefault();
+        console.log(formValues);
+    };
 
     return (
         <div className="sign-in-ctr">
             <h1>Sign In FORM</h1>
             <h2>Also add a Sign Up link somewhere</h2>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmitHandler}>
                 <label htmlFor="name">Name</label>
                 <input type="text" name="name" id="name" placeholder='name' value={formValues.name} onChange={onChangeHandler} />
                 <label htmlFor="password">Password</label>
