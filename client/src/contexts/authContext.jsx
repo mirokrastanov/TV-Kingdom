@@ -26,6 +26,7 @@ export function AuthProvider({ children }) {
                 userInfo.pwd,
             );
             console.log('SESSION: ', response);
+            return response;
         } catch (error) {
             // console.log(error.message);
             // console.log(error.response);
