@@ -3,6 +3,8 @@ import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './UserSignUp.css';
 import { Link } from 'react-router-dom';
+import { useForm } from '../../hooks/useForm';
+import { CustomFormLabel } from '../../utilities/formUtility';
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^[a-zA-Z\d][\w\.-]*[a-zA-Z\d]@[a-zA-Z\d][a-zA-Z\d\.-]*[a-zA-Z\d]\.[a-zA-Z]{2,}$/;
@@ -15,7 +17,30 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{6,24}$/;
 // TODO: Apply the same principles to the Sign-In form as well
 // TODO: Set a timeout for set err msg so it clears up and hides away after 5 seconds on the screen
 
+const initialValues = {
+    user: '',
+    validName: false,
+    userFocus: false,
+
+    email: '',
+    validEmail: false,
+    emailFocus: false,
+
+    pwd: '',
+    validPwd: false,
+    pwdFocus: false,
+
+    matchPwd: '',
+    validMatch: false,
+    matchFocus: false,
+
+    errMsg: '',
+    success: false,
+};
+
 function UserSignUp() {
+    const { values, onChange, onSubmit } = useForm(handleSubmit, initialValues);
+
     const userRef = useRef();
     const errRef = useRef();
 
@@ -67,7 +92,7 @@ function UserSignUp() {
     }, [user, email, pwd, matchPwd])
 
 
-    const handleSubmit = async (e) => {
+    async function handleSubmit(e) {
         e.preventDefault();
         // if button enabled with JS hack
         const v1 = USER_REGEX.test(user);
@@ -78,22 +103,27 @@ function UserSignUp() {
             return;
         }
         try {
-            const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ user, pwd }),
-                {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                }
-            );
-            console.log(response?.data);
-            console.log(response?.accessToken);
-            console.log(JSON.stringify(response))
-            setSuccess(true);
-            //clear state and controlled inputs
-            //need value attrib on inputs for this
-            setUser('');
-            setPwd('');
-            setMatchPwd('');
+            // const response = await axios.post(REGISTER_URL,
+            //     JSON.stringify({ user, pwd }),
+            //     {
+            //         headers: { 'Content-Type': 'application/json' },
+            //         withCredentials: true
+            //     }
+            // );
+            // console.log(response?.data);
+            // console.log(response?.accessToken);
+            // console.log(JSON.stringify(response))
+            // setSuccess(true);
+
+            // 1. Send data to back end
+            // 2. Receive a response. Save it. Log it.
+            // 3. setSuccess(true) or implement a redirect if the back end returns a token for auto-sign-in post sign up
+
+            // 4. Clear State and inputs
+            // setUser('');
+            // setEmail('');
+            // setPwd('');
+            // setMatchPwd('');
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');
@@ -118,20 +148,16 @@ function UserSignUp() {
                 <section>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Sign Up</h1>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={onSubmit}>
 
-                        <label htmlFor="username">
-                            Username:
-                            <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"} />
-                        </label>
+                        <CustomFormLabel text='Username' validProp={validName} prop={user} />
                         <input
                             type="text"
                             id="username"
                             ref={userRef}
                             autoComplete="off"
-                            onChange={(e) => setUser(e.target.value)}
-                            value={user}
+                            onChange={onChange}
+                            value={values.user}
                             required
                             aria-invalid={validName ? "false" : "true"}
                             aria-describedby="uidnote"
@@ -145,13 +171,9 @@ function UserSignUp() {
                         </div>
 
 
-                        <label htmlFor="email">
-                            Email:
-                            <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} />
-                        </label>
+                        <CustomFormLabel text='Email' validProp={validEmail} prop={email} />
                         <input
-                            type="text"
+                            type="email"
                             id="email"
                             autoComplete="off"
                             onChange={(e) => setEmail(e.target.value)}
@@ -213,7 +235,7 @@ function UserSignUp() {
                         </div>
 
 
-                        <button type='submit' disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+                        <button className='btn' type='submit' disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
                     </form>
                     <div>
                         <span>Have an Account?</span>
