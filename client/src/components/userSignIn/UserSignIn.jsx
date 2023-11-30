@@ -7,6 +7,7 @@ import { useForm } from '../../hooks/useForm';
 import { useAuth } from '../../contexts/AuthContext.jsx';
 import { FormLabel } from '../shared/formLabel/FormLabel.jsx';
 import { REGEX_TESTS } from '../../utilities/formUtility.js';
+import { FormInstructions } from '../shared/formInstructions/FormInstructions.jsx';
 
 const EMAIL_REGEX = REGEX_TESTS.email;
 const PWD_REGEX = REGEX_TESTS.pwd;
@@ -66,8 +67,9 @@ function UserSignIn() {
             const userInfo = { email: values.email, pwd: values.pwd };
             const data = await loginUser(userInfo);
             // 2. Receive a response. Save it. Log it.
-            if (!data?.id) throw data;
-            
+            // console.log(data);
+            if (!data?.userId) throw data;
+
             // 3. setSuccess(true) or implement a redirect if the back end returns a token for auto-sign-in post sign up
 
             // 4. Clear State and inputs
@@ -120,10 +122,7 @@ function UserSignIn() {
                             onFocus={onFocus}
                             onBlur={onBlur}
                         />
-                        <div id="emailnote" className={values.emailFocus && values.email && !values.validEmail ? "instructions" : "offscreen"}>
-                            <p><FontAwesomeIcon icon={faInfoCircle} /> Enter a valid <b>Email</b></p>
-                            <p><FontAwesomeIcon icon={faInfoCircle} /> Eg: <b>john@example.com</b></p>
-                        </div>
+                        <FormInstructions id='emailnote' className={values.emailFocus && values.email && !values.validEmail ? "instructions" : "offscreen"} />
 
 
                         <FormLabel text='Password' validProp={values.validPwd} prop={values.pwd} />
@@ -138,12 +137,7 @@ function UserSignIn() {
                             onFocus={onFocus}
                             onBlur={onBlur}
                         />
-                        <div id="pwdnote" className={values.pwdFocus && !values.validPwd ? "instructions" : "offscreen"}>
-                            <p><FontAwesomeIcon icon={faInfoCircle} /> 8 to 24 characters</p>
-                            <p><FontAwesomeIcon icon={faInfoCircle} /> Required: <b>Uppercase</b>, <b>Lowercase</b> & <b>Number</b></p>
-                            <p><FontAwesomeIcon icon={faInfoCircle} /> Optional: allowed special characters:</p>
-                            <p><b>! . _ @ # $ %</b></p>
-                        </div>
+                        <FormInstructions id='pwdnote' className={values.pwdFocus && !values.validPwd ? "instructions" : "offscreen"} />
 
                         <button className='btn' type='submit' disabled={!values.validEmail || !values.validPwd ? true : false}>Sign In</button>
                     </form>
