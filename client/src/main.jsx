@@ -1,7 +1,7 @@
 import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { AuthProvider } from './contexts/authContext.jsx';
+import { AuthProvider } from './contexts/AuthContext.jsx';
 import { ThemeProvider } from './contexts/ThemeContext.jsx';
 import { SearchProvider } from './contexts/SearchContext.jsx';
 import { BrowserRouter } from 'react-router-dom'
