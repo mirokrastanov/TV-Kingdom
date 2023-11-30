@@ -4,11 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './UserSignUp.css';
 import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
-import { CustomFormLabel } from '../../utilities/formUtility';
+import { useAuth } from '../../contexts/AuthContext.jsx';
+import { FormLabel } from '../shared/formLabel/FormLabel.jsx';
+import { REGEX_TESTS } from '../../utilities/formUtility.js';
 
-const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
-const EMAIL_REGEX = /^[a-zA-Z\d][\w\.-]*[a-zA-Z\d]@[a-zA-Z\d][a-zA-Z\d\.-]*[a-zA-Z\d]\.[a-zA-Z]{2,}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{6,24}$/;
+const EMAIL_REGEX = REGEX_TESTS.email;
+const PWD_REGEX = REGEX_TESTS.pwd;
+const USER_REGEX = REGEX_TESTS.user;
 
 // TODO: Combine all states into a single complex state
 // TODO: Move logic into useForm hook or create a new hook - inc ALL handlers - make an abstraction for all
@@ -18,33 +20,21 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{6,24}$/;
 // TODO: Set a timeout for set err msg so it clears up and hides away after 5 seconds on the screen
 
 const initialValues = {
-    user: '',
-    validName: false,
-    userFocus: false,
-
-    email: '',
-    validEmail: false,
-    emailFocus: false,
-
-    pwd: '',
-    validPwd: false,
-    pwdFocus: false,
-
-    matchPwd: '',
-    validMatch: false,
-    matchFocus: false,
-
-    errMsg: '',
-    success: false,
+    username: '', validName: false, userFocus: false,
+    email: '', validEmail: false, emailFocus: false,
+    pwd: '', validPwd: false, pwdFocus: false,
+    matchPwd: '', validMatch: false, matchFocus: false,
+    errMsg: '', success: false,
 };
 
 function UserSignUp() {
+    const { user, registerUser } = useAuth();
     const { values, onChange, onSubmit } = useForm(handleSubmit, initialValues);
 
     const userRef = useRef();
     const errRef = useRef();
 
-    const [user, setUser] = useState('');
+    const [username, setUsername] = useState('');
     const [validName, setValidName] = useState(false);
     const [userFocus, setUserFocus] = useState(false);
 
@@ -68,34 +58,32 @@ function UserSignUp() {
     }, [])
 
     useEffect(() => {
-        const result = USER_REGEX.test(user);
-        console.log(result, user);
+        const result = USER_REGEX.test(username);
         setValidName(result);
-    }, [user])
+    }, [username])
 
     useEffect(() => {
         const result = EMAIL_REGEX.test(email);
-        console.log(result, email);
         setValidEmail(result);
     }, [email])
 
     useEffect(() => {
         const result = PWD_REGEX.test(pwd);
-        console.log(result, pwd);
         setValidPwd(result);
+
         const match = pwd === matchPwd;
         setValidMatch(match);
     }, [pwd, matchPwd])
 
     useEffect(() => {
         setErrMsg('');
-    }, [user, email, pwd, matchPwd])
+    }, [username, email, pwd, matchPwd])
 
 
     async function handleSubmit(e) {
         e.preventDefault();
         // if button enabled with JS hack
-        const v1 = USER_REGEX.test(user);
+        const v1 = USER_REGEX.test(username);
         const v2 = EMAIL_REGEX.test(email);
         const v3 = PWD_REGEX.test(pwd);
         if (!v1 || !v2 || !v3) {
@@ -103,24 +91,15 @@ function UserSignUp() {
             return;
         }
         try {
-            // const response = await axios.post(REGISTER_URL,
-            //     JSON.stringify({ user, pwd }),
-            //     {
-            //         headers: { 'Content-Type': 'application/json' },
-            //         withCredentials: true
-            //     }
-            // );
-            // console.log(response?.data);
-            // console.log(response?.accessToken);
-            // console.log(JSON.stringify(response))
-            // setSuccess(true);
-
             // 1. Send data to back end
+            const userInfo = { username, email, pwd, matchPwd };
+            registerUser(userInfo);
+
             // 2. Receive a response. Save it. Log it.
             // 3. setSuccess(true) or implement a redirect if the back end returns a token for auto-sign-in post sign up
 
             // 4. Clear State and inputs
-            // setUser('');
+            // setUsername('');
             // setEmail('');
             // setPwd('');
             // setMatchPwd('');
@@ -150,28 +129,28 @@ function UserSignUp() {
                     <h1>Sign Up</h1>
                     <form onSubmit={onSubmit}>
 
-                        <CustomFormLabel text='Username' validProp={validName} prop={user} />
+                        <FormLabel text='Username' validProp={validName} prop={username} />
                         <input
                             type="text"
                             id="username"
                             ref={userRef}
                             autoComplete="off"
                             onChange={onChange}
-                            value={values.user}
+                            value={values.username}
                             required
                             aria-invalid={validName ? "false" : "true"}
                             aria-describedby="uidnote"
                             onFocus={() => setUserFocus(true)}
                             onBlur={() => setUserFocus(false)}
                         />
-                        <div id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
+                        <div id="uidnote" className={userFocus && username && !validName ? "instructions" : "offscreen"}>
                             <p><FontAwesomeIcon icon={faInfoCircle} /> 4 to 24 characters</p>
                             <p><FontAwesomeIcon icon={faInfoCircle} /> Must begin with a <b>Letter</b></p>
                             <p><FontAwesomeIcon icon={faInfoCircle} /> Allowed: <b>Letters</b>, <b>Numbers</b>, <b>Underscores</b> & <b>Hyphens</b></p>
                         </div>
 
 
-                        <CustomFormLabel text='Email' validProp={validEmail} prop={email} />
+                        <FormLabel text='Email' validProp={validEmail} prop={email} />
                         <input
                             type="email"
                             id="email"
@@ -209,8 +188,8 @@ function UserSignUp() {
                         />
                         <div id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
                             <p><FontAwesomeIcon icon={faInfoCircle} /> 6 to 24 characters</p>
-                            <p><FontAwesomeIcon icon={faInfoCircle} /> Must include <b>Uppercase</b> & <b>Lowercase</b> letters, a <b>Number</b> and a <b>Special Character</b></p>
-                            <p><FontAwesomeIcon icon={faInfoCircle} /> Allowed special characters: <b>! @ # $ %</b></p>
+                            <p><FontAwesomeIcon icon={faInfoCircle} /> Must include <b>Uppercase</b> & <b>Lowercase</b> letters & a <b>Number</b></p>
+                            <p><FontAwesomeIcon icon={faInfoCircle} /> Allowed <b>optional</b> special characters: <b>! . _ @ # $ %</b></p>
                         </div>
 
 
