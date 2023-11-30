@@ -143,7 +143,7 @@ function UserSignIn() {
                     </form>
                     <div>
                         <span>Not signed up?</span>
-                        <span className="line a-left"><Link to={'/user/sign-up'}>Sign Up</Link></span>
+                        <span className="line btn"><Link to={'/user/sign-up'}>Sign Up</Link></span>
                     </div>
                 </section>
             )}

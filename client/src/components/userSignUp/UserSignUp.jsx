@@ -218,7 +218,7 @@ function UserSignUp() {
                     </form>
                     <div>
                         <span>Have an Account?</span>
-                        <span className="line a-left"><Link to={'/user/sign-in'}>Sign In</Link></span>
+                        <span className="line btn"><Link to={'/user/sign-in'}>Sign In</Link></span>
                     </div>
                 </section>
             )}

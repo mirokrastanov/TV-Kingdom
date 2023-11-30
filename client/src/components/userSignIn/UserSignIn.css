@@ -14,7 +14,7 @@
     margin-top: 5%;
     width: 100%;
     max-width: 420px;
-    min-height: 400px;
+    min-height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -106,7 +106,7 @@
     background-color: var(--color-bg);
     color: var(--color-bg-reverse);
     box-shadow: var(--box-shadow-2);
-
+    border: 1px solid var(--color-black-light);
 }
 
 .sign-in-ctr .instructions p:not(:first-child) {
@@ -148,9 +148,9 @@
 .sign-in-ctr div:has(.line) {
     padding: 5px 10px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 5px;
     font-size: 20px;
 }
 
@@ -158,6 +158,10 @@
     display: inline-block;
 }
 
+.sign-in-ctr .btn:not([type=submit]) {
+    padding: 8px 0;
+    border-radius: 15px;
+}
 
 
 
