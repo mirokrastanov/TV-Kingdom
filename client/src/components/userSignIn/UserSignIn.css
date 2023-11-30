@@ -7,13 +7,165 @@
     color: var(--color-bg-reverse);
     margin: auto 5%;
     text-align: center;
+    font-size: 22px;
 }
 
-.sign-in-ctr h1 {
-    font-size: 2.5rem;
+.sign-in-ctr section {
+    margin-top: 5%;
+    width: 100%;
+    max-width: 420px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     padding: 1rem;
+    /* background-color: rgba(0, 0, 0, 0.4); */
 }
 
-.sign-in-ctr h2 {
-    padding: 1rem;
+.sign-in-ctr form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding-bottom: 1rem;
+}
+
+.sign-in-ctr a,
+.sign-in-ctr a:visited {
+    color: var(--color-bg-reverse);
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 10px;
+    padding: 5px 25px 5px 15px;
+    text-align: center;
+}
+
+.sign-in-ctr input[type="text"],
+.sign-in-ctr input[type="email"],
+.sign-in-ctr input[type="password"],
+.sign-in-ctr textarea {
+    font-size: 22px;
+    padding: 0.35rem 1rem;
+    border-radius: 5rem;
+    border: 1px solid var(--color-black-light);
+    outline: none;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+
+.sign-in-ctr form button {
+    font-size: 22px;
+    border-radius: 5rem;
+}
+
+.sign-in-ctr form button:active {
+    box-shadow: none;
+}
+
+.sign-in-ctr form button:disabled {
+    opacity: 0.3;
+}
+
+.sign-in-ctr form button:disabled:hover {
+    transform: translateY(0);
+    background: var(--color-accent-2);
+}
+
+.sign-in-ctr form button:disabled:active {
+    transform: translateY(0);
+}
+
+.sign-in-ctr label,
+.sign-in-ctr button {
+    margin-top: 1rem;
+}
+
+.sign-in-ctr button {
+    margin-top: 2rem;
+    padding: 0.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+}
+
+/* .sign-in-ctr button:hover {
+    background: var(--color-black-light);
+}
+
+.sign-in-ctr button:active {
+    transform: translateY(1px);
+} */
+
+.sign-in-ctr .instructions {
+    font-size: 0.95rem;
+    border-radius: 1rem;
+    padding: 0.25rem 0.5rem;
+    position: relative;
+    bottom: -10px;
+    background-color: var(--color-bg);
+    color: var(--color-bg-reverse);
+    box-shadow: var(--box-shadow-2);
+
+}
+
+.sign-in-ctr .instructions p:not(:first-child) {
+    margin-top: 3px;
+}
+
+.sign-in-ctr .instructions>svg {
+    margin-right: 0.25rem;
+}
+
+.sign-in-ctr .offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.sign-in-ctr .hide {
+    display: none;
+}
+
+.sign-in-ctr .valid {
+    color: limegreen;
+    margin-left: 0.25rem;
+}
+
+.sign-in-ctr .invalid {
+    color: red;
+    margin-left: 0.25rem;
+}
+
+.sign-in-ctr .errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+}
+
+.sign-in-ctr div:has(.line) {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 20px;
+}
+
+.sign-in-ctr .line {
+    display: inline-block;
+}
+
+
+
+
+
+
+@media screen and (max-width: 767px) {
+    .sign-in-ctr {
+        margin: auto 0;
+    }
+
 }
