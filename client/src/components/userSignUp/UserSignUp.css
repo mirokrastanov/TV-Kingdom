@@ -41,20 +41,39 @@
 }
 
 .sign-up-ctr input[type="text"],
+.sign-up-ctr input[type="email"],
 .sign-up-ctr input[type="password"],
-.sign-up-ctr button,
 .sign-up-ctr textarea {
     font-size: 22px;
-    padding: 0.25rem;
-    border-radius: 0.5rem;
-    border: 2px solid var(--color-black-light);
+    padding: 0.35rem 1rem;
+    border-radius: 5rem;
+    border: 1px solid var(--color-black-light);
+    outline: none;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
 }
 
-/* .sign-up-ctr input[type="text"],
-.sign-up-ctr input[type="password"],
-.sign-up-ctr textarea {
-    background: rgb(212, 244, 255);
-} */
+.sign-up-ctr form button {
+    font-size: 22px;
+    border-radius: 5rem;
+}
+
+.sign-up-ctr form button:active {
+    box-shadow: none;
+}
+
+.sign-up-ctr form button:disabled {
+    opacity: 0.3;
+}
+
+.sign-up-ctr form button:disabled:hover {
+    transform: translateY(0);
+    background: var(--color-accent-2);
+}
+
+.sign-up-ctr form button:disabled:active {
+    transform: translateY(0);
+}
 
 .sign-up-ctr label,
 .sign-up-ctr button {
@@ -80,13 +99,14 @@
 
 .sign-up-ctr .instructions {
     font-size: 0.95rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     padding: 0.25rem 1.5rem;
     position: relative;
     bottom: -10px;
     background-color: var(--color-bg);
     color: var(--color-bg-reverse);
     box-shadow: var(--box-shadow-2);
+
 }
 
 .sign-up-ctr .instructions p:not(:first-child) {
@@ -137,6 +157,9 @@
 .sign-up-ctr .line {
     display: inline-block;
 }
+
+
+
 
 
 
