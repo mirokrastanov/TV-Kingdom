@@ -4,27 +4,59 @@ import { account } from "../config/appwriteConfig";
 import { ID } from 'appwrite';
 
 const AuthContext = createContext();
-const AuthUpdateContext = createContext();
 
 export function useAuth() {
     return useContext(AuthContext);
 }
 
-export function useAuthUpdate() {
-    return useContext(AuthUpdateContext);
-}
-
 export function AuthProvider({ children }) {
-    const [auth, setAuth] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState(null);
 
-    
-    
+    useEffect(() => {
+        setLoading(false);
+    }, [])
+
+    const loginUser = async (userInfo) => {
+        console.log(userInfo);
+        setLoading(true);
+        try {
+            const response = await account.createEmailSession(
+                userInfo.email,
+                userInfo.pwd,
+            );
+            console.log('SESSION: ', response);
+        } catch (error) {
+            // console.log(error.message);
+            // console.log(error.response);
+            // console.log(error?.response?.code);
+            // console.log(error?.response?.message);
+            return error;
+        }
+
+        setLoading(false);
+    };
+
+    const logoutUser = () => {
+
+    };
+
+    const registerUser = (userInfo) => { };
+
+    const checkUserStatus = () => { };
+
+    const contextData = {
+        user,
+        loginUser,
+        logoutUser,
+        registerUser,
+
+    };
 
     return (
-        <AuthContext.Provider value={auth}>
-            <AuthUpdateContext.Provider value={setAuth}>
-                {children}
-            </AuthUpdateContext.Provider>
+        <AuthContext.Provider value={contextData}>
+            {children}
+            {/* {loading ? <p>Loading...</p> : children} */}
         </AuthContext.Provider>
     );
 };
