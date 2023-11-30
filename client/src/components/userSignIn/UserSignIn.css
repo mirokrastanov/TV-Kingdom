@@ -5,9 +5,10 @@
     flex-direction: column;
     align-items: center;
     color: var(--color-bg-reverse);
-    margin: auto 5%;
+    margin: auto 0;
     text-align: center;
     font-size: 22px;
+    background: var(--background-4);
 }
 
 .sign-in-ctr section {
