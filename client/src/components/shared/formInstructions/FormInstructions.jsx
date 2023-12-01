@@ -3,14 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect } from 'react';
 
 const messages = {
+    uidnote: [
+        (<> 4 to 24 characters</>),
+        (<> Must begin with a <b>Letter</b></>),
+        (<> Allowed: <b>Letters</b>, <b>Numbers</b>, <b>Underscores</b> & <b>Hyphens</b></>),
+    ],
     emailnote: [(<> Enter a valid <b>Email</b></>), (<> Eg: <b>john@example.com</b></>)],
     pwdnote: [
         (<> 8 to 24 characters</>),
         (<> Required: <b>Uppercase</b>, <b>Lowercase</b> & <b>Number</b></>),
         (<> Optional: Allowed special characters:</>),
-        (<><b> ! . _ @ # $ %</b></>)
+        (<><b> ! . _ @ # $ %</b></>),
     ],
-
+    confirmnote: [(<> Must match the first <b>Password</b></>)],
 };
 
 export function FormInstructions({ id, check }) {
