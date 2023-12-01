@@ -13,14 +13,14 @@ const messages = {
 
 };
 
-export function FormInstructions({ id, className }) {
+export function FormInstructions({ id, check }) {
 
     useEffect(() => {
-        //   console.log(text, validProp, prop);
+        //   console.log(id, className);
     }, [])
 
     return (
-        <div id={id} className={className}>
+        <div id={id} className={check ? "instructions" : "offscreen"}>
             {messages[id].map((x, i) => (
                 <p key={`${id}-${i}`}>
                     {!(id == 'pwdnote' && i == 3) && (<FontAwesomeIcon icon={faInfoCircle} />)}{x}
