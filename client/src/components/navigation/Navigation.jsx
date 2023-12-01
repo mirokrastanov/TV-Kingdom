@@ -3,8 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useTheme, useThemeUpdate } from '../../contexts/ThemeContext';
 import './Navigation.css';
 import { useSearch, useSearchUpdate } from '../../contexts/SearchContext';
+import { useAuth } from '../../contexts/AuthContext.jsx';
+import { NavBtn } from '../shared/navBtn/NavBtn.jsx';
 
 export default function Navigation() {
+    const { user } = useAuth();
     const [topScroll, setTopScroll] = useState(true);
     const [mobileWidth, setMobileWidth] = useState(false);
     const [searchShown, setSearchShown] = useState(false);
@@ -148,11 +151,32 @@ export default function Navigation() {
                 {/* NAV => SIGN UP */}
                 <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
                     <Link to='/user/sign-up' onClick={navHandler} className='nav-a'>
-                        {mobileWidth ? 'Sign Up' : (<span className="material-symbols-outlined">login</span>)}
+                        {mobileWidth ? 'Sign Up' : (<span className="material-symbols-outlined">person_add</span>)}
                     </Link>
                     <div className='tooltip'>Sign Up</div>
                 </li>
+                {/* NAV => SIGN IN */}
+                <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
+                    <Link to='/user/sign-in' onClick={navHandler} className='nav-a'>
+                        {mobileWidth ? 'Sign In' : (<span className="material-symbols-outlined">login</span>)}
+                    </Link>
+                    <div className='tooltip'>Sign In</div>
+                </li>
 
+                {/* PROTECTED ROUTES BELOW */}
+                {/* NAV => PROFILE */}
+                {/* <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
+                    <Link to='/user/profile' onClick={navHandler} className='nav-a'>
+                        {mobileWidth ? 'My Profile' : (<span className="material-symbols-outlined">account_circle</span>)}
+                    </Link>
+                    <div className='tooltip'>My Profile</div>
+                </li> */}
+
+                <NavBtn target={'My Profile'} check={mobileWidth} handler={navHandler} user={user} />
+
+
+
+                {/* NAV SEARCH & NAV LOGOUT should be separate entities */}
 
                 {/* Future protected routes 
 
