@@ -5,11 +5,9 @@ export const useForm = (submitHandler, initialValues) => {
     const [values, setValues] = useState(initialValues);
 
     const onChange = (e) => {
-        let name = e.target.name;
-        if (e.target.name == 'confirm_pwd') name = 'matchPwd';
         setValues(state => ({
             ...state,
-            [name]: e.target.value
+            [e.target.name]: e.target.value
         }));
     };
 
@@ -20,22 +18,16 @@ export const useForm = (submitHandler, initialValues) => {
     };
 
     const onFocus = (e) => {
-        let name = e.target.name;
-        if (e.target.name == 'matchPwd') name = 'match';
-        else if (e.target.name == 'username') name = 'user';
         setValues(state => ({
             ...state,
-            [`${name}Focus`]: true,
+            [`${e.target.name}Focus`]: true,
         }));
     };
 
     const onBlur = (e) => {
-        let name = e.target.name;
-        if (e.target.name == 'matchPwd') name = 'match';
-        else if (e.target.name == 'username') name = 'user';
         setValues(state => ({
             ...state,
-            [`${name}Focus`]: false,
+            [`${e.target.name}Focus`]: false,
         }));
     };
 
