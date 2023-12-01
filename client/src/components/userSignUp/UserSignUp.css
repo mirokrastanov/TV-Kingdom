@@ -139,6 +139,8 @@
 
 .sign-up-ctr .errmsg {
     background-color: lightpink;
+    border: 1px solid var(--color-black-light);
+    box-shadow: var(--box-shadow-2);
     color: firebrick;
     font-weight: bold;
     padding: 0.5rem;
@@ -163,6 +165,7 @@
     padding: 8px 0;
     border-radius: 15px;
 }
+
 
 
 
