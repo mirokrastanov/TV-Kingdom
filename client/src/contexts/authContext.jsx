@@ -25,8 +25,12 @@ export function AuthProvider({ children }) {
                 userInfo.email,
                 userInfo.pwd,
             );
+            const accountDetails = await account.get();
+
             console.log('SESSION: ', response);
-            return response;
+            console.log('AccountDetails: ', accountDetails);
+            setUser(accountDetails); // that will log us in
+            return accountDetails;
         } catch (error) {
             // console.log(error.message);
             // console.log(error.response);
