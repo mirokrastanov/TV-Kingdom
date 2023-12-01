@@ -1,12 +1,13 @@
 import './UserSignIn.css';
 import React, { useRef, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { useAuth } from '../../contexts/AuthContext.jsx';
 import { FormLabel } from '../shared/formLabel/FormLabel.jsx';
 import { REGEX_TESTS } from '../../utilities/formUtility.js';
 import { FormInstructions } from '../shared/formInstructions/FormInstructions.jsx';
 import { FormInput } from '../shared/formInput/FormInput.jsx';
+import PageLoader from '../shared/pageLoader/PageLoader.jsx';
 
 const EMAIL_REGEX = REGEX_TESTS.email;
 const PWD_REGEX = REGEX_TESTS.pwd;
@@ -20,14 +21,15 @@ const initialValues = {
 };
 
 function UserSignIn() {
-    const { user, loginUser } = useAuth();
     const { values, setValues, onChange, onSubmit, onBlur, onFocus } = useForm(handleSubmit, initialValues);
+    const { user, loginUser } = useAuth();
+    const navigate = useNavigate();
 
     const emailRef = useRef();
     const errRef = useRef();
 
     useEffect(() => {
-        emailRef.current.focus();
+        emailRef.current?.focus();
     }, [])
 
     useEffect(() => {
@@ -60,19 +62,15 @@ function UserSignIn() {
             // 1. Send data to back end
             const userInfo = { email: submitted.email, pwd: submitted.pwd };
             const data = await loginUser(userInfo);
-            // 2. Receive a response. Save it. Log it.
-            // console.log(data);
-            if (!data?.userId) throw data;
+            // 2. Receive a response & re-throw error if present
+            if (!data?.$id) throw data;
+            // 3. setSuccess(true) & clear inputs
+            setValues(state => ({ ...state, success: true, email: '', pwd: '' }));
+            // 4. Re-route to shows
+            navigate('/shows');
 
-            // 3. setSuccess(true) or implement a redirect if the back end returns a token for auto-sign-in post sign up
-
-            // 4. Clear State and inputs
-            // setUsername('');
-            // setEmail('');
-            // setPwd('');
-            // setMatchPwd('');
         } catch (err) {
-            console.log(err?.response?.code, err?.message);
+            // console.log(err?.response?.code, err?.message);
             if (!err?.response) {
                 setValues(state => ({ ...state, errMsg: 'No Server Response' }));
             } else if (err?.response?.code === 401) {
@@ -82,7 +80,7 @@ function UserSignIn() {
             } else {
                 setValues(state => ({ ...state, errMsg: 'Sign Up Failed' }));
             }
-            errRef.current.focus();
+            errRef.current?.focus();
             setTimeout(() => {
                 setValues(state => ({ ...state, errMsg: '' }));
             }, 5000);
@@ -92,10 +90,8 @@ function UserSignIn() {
     return (
         <div className='sign-in-ctr'>
             {values.success ? (
-                // MOCKUP MESSAGE ON SUCCESS ==> Replace with a redirect or improve styling if time's not enough
                 <section>
-                    <h1>Success!</h1>
-                    <p><span className="line btn"><Link to={'/user/sign-in'}>Sign In</Link></span></p>
+                    <PageLoader />
                 </section>
             ) : (
                 <section>
