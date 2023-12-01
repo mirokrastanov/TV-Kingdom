@@ -14,7 +14,7 @@ export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        setLoading(false);
+        checkUserStatus();
     }, [])
 
     const loginUser = async (userInfo) => {
@@ -43,12 +43,23 @@ export function AuthProvider({ children }) {
     };
 
     const logoutUser = () => {
-
+        account.deleteSession('current');
+        setUser(null);
     };
 
     const registerUser = (userInfo) => { };
 
-    const checkUserStatus = () => { };
+    const checkUserStatus = async () => {
+        try {
+            const accountDetails = await account.get();
+            // Logs in / out the user
+            setUser(accountDetails);
+        } catch (error) {
+
+        }
+
+        setLoading(false);
+    };
 
     const contextData = {
         user,
