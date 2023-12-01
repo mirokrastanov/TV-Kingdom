@@ -20,7 +20,7 @@ const initialValues = {
     email: '', validEmail: false, emailFocus: false,
     pwd: '', validPwd: false, pwdFocus: false,
     match: '', validMatch: false, matchFocus: false,
-    errMsg: '', success: false,
+    errMsg: '', loading: false,
 };
 
 function UserSignUp() {
@@ -32,6 +32,7 @@ function UserSignUp() {
     const errRef = useRef();
 
     useEffect(() => {
+        if (user) navigate('/');
         userRef.current?.focus();
     }, [])
 
@@ -57,8 +58,8 @@ function UserSignUp() {
     }, [values.username, values.email, values.pwd, values.match])
 
 
-    async function handleSubmit(submitted) {
-        // console.log(submitted);
+    async function handleSubmit(sub) {
+        // console.log(sub);
 
         // if button enabled with JS hack
         const v1 = USER_REGEX.test(values.username);
@@ -69,22 +70,19 @@ function UserSignUp() {
             return;
         }
         try {
+            setValues(state => ({ ...state, loading: true }));
             // 1. Send data to back end
-            const userInfo = {
-                username: submitted.username,
-                email: submitted.email,
-                pwd: submitted.pwd,
-                match: submitted.match,
-            };
+            const userInfo = { username: sub.username, email: sub.email, pwd: sub.pwd };
             const data = await registerUser(userInfo);
             // 2. Receive a response & re-throw error if present
             if (!data?.$id) throw data;
             // 3. setSuccess(true) & clear inputs
-            setValues(state => ({ ...state, success: true, username: '', email: '', pwd: '', match: '' }));
-            // 4. Re-route to shows
-            navigate('/shows');
+            setValues(state => ({ ...state, username: '', email: '', pwd: '', match: '' }));
+            // 4. Re-route to index
+            navigate('/');
 
         } catch (err) {
+            setValues(state => ({ ...state, loading: false }));
             // console.log(err?.response?.code, err?.message);
             if (!err?.response) {
                 setValues(state => ({ ...state, errMsg: 'No Server Response' }));
@@ -104,7 +102,7 @@ function UserSignUp() {
 
     return (
         <div className='sign-up-ctr'>
-            {values.success ? (
+            {values.loading ? (
                 <section>
                     <PageLoader />
                 </section>
