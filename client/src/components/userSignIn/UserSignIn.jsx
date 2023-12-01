@@ -1,7 +1,5 @@
 import './UserSignIn.css';
 import React, { useRef, useState, useEffect } from 'react';
-import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { useAuth } from '../../contexts/AuthContext.jsx';
@@ -13,12 +11,7 @@ import { FormInput } from '../shared/formInput/FormInput.jsx';
 const EMAIL_REGEX = REGEX_TESTS.email;
 const PWD_REGEX = REGEX_TESTS.pwd;
 
-// TODO: Combine all states into a single complex state
-// TODO: Move logic into useForm hook or create a new hook - inc ALL handlers - make an abstraction for all
-// TODO: Move repetitive html into a util file and create an input+label function creator
 // TODO: Explore further optimization options
-// TODO: Apply the same principles to the Sign-In form as well
-// TODO: Set a timeout for set err msg so it clears up and hides away after 5 seconds on the screen
 
 const initialValues = {
     email: '', validEmail: false, emailFocus: false,
@@ -65,7 +58,7 @@ function UserSignIn() {
         }
         try {
             // 1. Send data to back end
-            const userInfo = { email: values.email, pwd: values.pwd };
+            const userInfo = { email: submitted.email, pwd: submitted.pwd };
             const data = await loginUser(userInfo);
             // 2. Receive a response. Save it. Log it.
             // console.log(data);
