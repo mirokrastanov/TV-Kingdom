@@ -5,9 +5,10 @@ import './Navigation.css';
 import { useSearch, useSearchUpdate } from '../../contexts/SearchContext';
 import { useAuth } from '../../contexts/AuthContext.jsx';
 import { NavBtn } from '../shared/navBtn/NavBtn.jsx';
+import { NavLogout } from '../navLogout/NavLogout.jsx';
 
 export default function Navigation() {
-    const { user } = useAuth();
+    const { user, logoutUser } = useAuth();
     const [topScroll, setTopScroll] = useState(true);
     const [mobileWidth, setMobileWidth] = useState(false);
     const [searchShown, setSearchShown] = useState(false);
@@ -173,7 +174,7 @@ export default function Navigation() {
                 </li> */}
 
                 <NavBtn target={'My Profile'} check={mobileWidth} handler={navHandler} user={user} />
-
+                <NavLogout logout={logoutUser} check={mobileWidth} handler={navHandler} user={user} />
 
 
                 {/* NAV SEARCH & NAV LOGOUT should be separate entities */}
