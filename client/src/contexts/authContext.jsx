@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { account } from "../config/appwriteConfig";
 import { ID } from 'appwrite';
 
@@ -10,55 +9,67 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-    const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
 
     useEffect(() => {
         checkUserStatus();
-    }, [])
+    }, []);
 
     const loginUser = async (userInfo) => {
-        console.log(userInfo);
-        setLoading(true);
+        const { email, pwd } = userInfo;
+        // console.log(userInfo);
         try {
-            const response = await account.createEmailSession(
-                userInfo.email,
-                userInfo.pwd,
-            );
+            const session = await account.createEmailSession(email, pwd);
             const accountDetails = await account.get();
 
-            console.log('SESSION: ', response);
-            console.log('AccountDetails: ', accountDetails);
-            setUser(accountDetails); // that will log us in
+            localStorage.setItem('TV-session', JSON.stringify(session));
+            localStorage.setItem('TV-account', JSON.stringify(accountDetails));
+
+            setUser(accountDetails); // that will login the user locally
             return accountDetails;
         } catch (error) {
-            // console.log(error.message);
-            // console.log(error.response);
-            // console.log(error?.response?.code);
-            // console.log(error?.response?.message);
             return error;
         }
+    };
 
-        setLoading(false);
+    const registerUser = async (userInfo) => {
+        const { username, email, pwd } = userInfo;
+        // console.log(userInfo);
+        try {
+            const registerRes = await account.create(ID.unique(), email, pwd, username);
+            const session = await account.createEmailSession(email, pwd);
+            const accountDetails = await account.get();
+
+            localStorage.setItem('TV-session', JSON.stringify(session));
+            localStorage.setItem('TV-account', JSON.stringify(accountDetails));
+
+            setUser(accountDetails); // that will login the user locally
+            return accountDetails;
+        } catch (error) {
+            console.log(error);
+            return error;
+        }
     };
 
     const logoutUser = () => {
         account.deleteSession('current');
         setUser(null);
+        localStorage.removeItem('TV-session');
+        localStorage.removeItem('TV-account');
     };
-
-    const registerUser = (userInfo) => { };
 
     const checkUserStatus = async () => {
         try {
             const accountDetails = await account.get();
-            // Logs in / out the user
-            setUser(accountDetails);
+            if (localStorage.getItem('TV-account') != JSON.stringify(accountDetails)) {
+                localStorage.setItem('TV-account', JSON.stringify(accountDetails));
+            }
+            setUser(accountDetails); // that will login the user locally
+            return accountDetails;
         } catch (error) {
-
+            setUser(null);
+            return error;
         }
-
-        setLoading(false);
     };
 
     const contextData = {
@@ -66,13 +77,12 @@ export function AuthProvider({ children }) {
         loginUser,
         logoutUser,
         registerUser,
-
+        checkUserStatus,
     };
 
     return (
         <AuthContext.Provider value={contextData}>
             {children}
-            {/* {loading ? <p>Loading...</p> : children} */}
         </AuthContext.Provider>
     );
 };
