@@ -128,100 +128,40 @@ export default function Navigation() {
                     )}</a>
                     <div className='tooltip'>Search</div>
                 </li>
-                {/* NAV => SHOWS */}
-                <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <Link to='/shows' onClick={navHandler} className='nav-a'>
-                        {mobileWidth ? 'Shows' : (<span className="material-symbols-outlined">smart_display</span>)}
-                    </Link>
-                    <div className='tooltip'>Shows</div>
-                </li>
-                {/* NAV => ACTORS */}
-                <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <Link to='/actors' onClick={navHandler} className='nav-a'>
-                        {mobileWidth ? 'Actors' : (<span className="material-symbols-outlined">person</span>)}
-                    </Link>
-                    <div className='tooltip'>Actors</div>
-                </li>
-                {/* NAV => SCHEDULE */}
-                <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <Link to='/schedule' onClick={navHandler} className='nav-a'>
-                        {mobileWidth ? 'Schedule' : (<span className="material-symbols-outlined">calendar_month</span>)}
-                    </Link>
-                    <div className='tooltip'>Schedule</div>
-                </li>
-                {/* NAV => SIGN UP */}
-                <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <Link to='/user/sign-up' onClick={navHandler} className='nav-a'>
-                        {mobileWidth ? 'Sign Up' : (<span className="material-symbols-outlined">person_add</span>)}
-                    </Link>
-                    <div className='tooltip'>Sign Up</div>
-                </li>
-                {/* NAV => SIGN IN */}
-                <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <Link to='/user/sign-in' onClick={navHandler} className='nav-a'>
-                        {mobileWidth ? 'Sign In' : (<span className="material-symbols-outlined">login</span>)}
-                    </Link>
-                    <div className='tooltip'>Sign In</div>
-                </li>
+                {/* NAV SEARCH should be separate entity & protected */}
 
-                {/* PROTECTED ROUTES BELOW */}
-                {/* NAV => PROFILE */}
-                {/* <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
-                    <Link to='/user/profile' onClick={navHandler} className='nav-a'>
-                        {mobileWidth ? 'My Profile' : (<span className="material-symbols-outlined">account_circle</span>)}
-                    </Link>
-                    <div className='tooltip'>My Profile</div>
-                </li> */}
 
+                {/* USER ROUTES */}
+                <NavBtn target={'Shows'} check={mobileWidth} handler={navHandler} user={user} />
+                <NavBtn target={'Actors'} check={mobileWidth} handler={navHandler} user={user} />
+
+                {/* SHARED ROUTES */}
+                <NavBtn target={'Schedule'} check={mobileWidth} handler={navHandler} user={user} />
+
+                {/* USER ROUTES */}
                 <NavBtn target={'My Profile'} check={mobileWidth} handler={navHandler} user={user} />
+
+                {/* GUEST ROUTES */}
+                <NavBtn target={'Sign Up'} check={mobileWidth} handler={navHandler} user={user} />
+                <NavBtn target={'Sign In'} check={mobileWidth} handler={navHandler} user={user} />
+
+
+                {/* Logout to move inside My Profile after it's converted to a modal */}
                 <NavLogout logout={logoutUser} check={mobileWidth} handler={navHandler} user={user} />
 
-
-                {/* NAV SEARCH & NAV LOGOUT should be separate entities */}
-
-                {/* Future protected routes 
-
-                <div id="user-links"> Enclose respective nav links here </div>
-                <div id="guest-links"> Enclose respective nav links here </div>
-        
-                - PROFILE
-                - LOGOUT
-                - SEARCH -> to add to protected
-                - SCHEDULE -> to add to protected
-                - ACTORS -> to add to protected
-                - Also limit shows in some way - figure it out later!
-                
-                */}
-                {/* <li className="nav-link a-left"><a href="javascript:void(0)">Profile</a></li> */}
             </ul>
         </header>
-        // the profile can be here as well - TODO later on!
     )
 }
 
 
 
 
-
-{/* <li className="nav-link a-left" title='Search'>
-    <a href="javascript:void(0)"><span className="material-symbols-outlined">search</span></a>
-</li>
-<li className="nav-link a-left" title='Log In'>
-    <a href="javascript:void(0)"><span className="material-symbols-outlined">login</span></a>
-</li>
-<li className="nav-link a-left" title='Sign Up'>
-    <a href="javascript:void(0)"><span className="material-symbols-outlined">person_add</span></a>
-</li>
-<li className="nav-link a-left" title='Log Out'>
-    <a href="javascript:void(0)"><span className="material-symbols-outlined">logout</span></a>
-</li>
-<li className="nav-link a-left" title='Profile Modal'> 
-// Change title when the modal is implemented
-<a href="javascript:void(0)"><span className="material-symbols-outlined">account_circle</span></a>
-</li> */}
-
-{/* <li className="nav-link a-left tooltip-anchor">
-<a href="javascript:void(0)">Sign In</a>
-<div className='tooltip'>Sign In</div>
-</li> */}
+// {/* NAV => SHOWS */}
+// <li className={`nav-link a-left${mobileWidth ? '' : ' tooltip-anchor'}`}>
+// <Link to='/shows' onClick={navHandler} className='nav-a'>
+//     {mobileWidth ? 'Shows' : (<span className="material-symbols-outlined">smart_display</span>)}
+// </Link>
+// <div className='tooltip'>Shows</div>
+// </li>
 
