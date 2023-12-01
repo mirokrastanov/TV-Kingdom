@@ -17,7 +17,7 @@ const PWD_REGEX = REGEX_TESTS.pwd;
 const initialValues = {
     email: '', validEmail: false, emailFocus: false,
     pwd: '', validPwd: false, pwdFocus: false,
-    errMsg: '', success: false,
+    errMsg: '', loading: false,
 };
 
 function UserSignIn() {
@@ -29,6 +29,7 @@ function UserSignIn() {
     const errRef = useRef();
 
     useEffect(() => {
+        if (user) navigate('/');
         emailRef.current?.focus();
     }, [])
 
@@ -48,8 +49,8 @@ function UserSignIn() {
     }, [values.email, values.pwd])
 
 
-    async function handleSubmit(submitted) {
-        // console.log(submitted);
+    async function handleSubmit(sub) {
+        // console.log(sub);
 
         // if button enabled with JS hack
         const v1 = EMAIL_REGEX.test(values.email);
@@ -59,17 +60,19 @@ function UserSignIn() {
             return;
         }
         try {
+            setValues(state => ({ ...state, loading: true }));
             // 1. Send data to back end
-            const userInfo = { email: submitted.email, pwd: submitted.pwd };
+            const userInfo = { email: sub.email, pwd: sub.pwd };
             const data = await loginUser(userInfo);
             // 2. Receive a response & re-throw error if present
             if (!data?.$id) throw data;
-            // 3. setSuccess(true) & clear inputs
-            setValues(state => ({ ...state, success: true, email: '', pwd: '' }));
-            // 4. Re-route to shows
-            navigate('/shows');
+            // 3. setSuccess(true) & clear inputs - this adds loading
+            setValues(state => ({ ...state, email: '', pwd: '' }));
+            // 4. Re-route to index
+            navigate('/');
 
         } catch (err) {
+            setValues(state => ({ ...state, loading: false }));
             // console.log(err?.response?.code, err?.message);
             if (!err?.response) {
                 setValues(state => ({ ...state, errMsg: 'No Server Response' }));
@@ -89,7 +92,7 @@ function UserSignIn() {
 
     return (
         <div className='sign-in-ctr'>
-            {values.success ? (
+            {values.loading ? (
                 <section>
                     <PageLoader />
                 </section>
