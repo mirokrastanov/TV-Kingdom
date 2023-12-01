@@ -12,6 +12,7 @@ import Search from './components/search/Search';
 import ShowDetails from './components/showDetails/ShowDetails';
 import UserSignUp from './components/userSignUp/UserSignUp';
 import PrivateRoutes from './utilities/privateRoutes';
+import UserProfile from './components/userProfile/UserProfile';
 
 function App() {
     const darkTheme = useTheme();
@@ -36,8 +37,9 @@ function App() {
 
                     <Route path='user/sign-in' element={<UserSignIn />} />
                     <Route path='user/sign-up' element={<UserSignUp />} />
+                    
                     <Route element={<PrivateRoutes />}>
-                        <Route path='user/profile' element={<Shows />} />
+                        <Route path='user/profile' element={<UserProfile />} />
                     </Route>
 
                     <Route path='*' element={<NotFound />} />
