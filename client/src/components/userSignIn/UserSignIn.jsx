@@ -8,6 +8,7 @@ import { useAuth } from '../../contexts/AuthContext.jsx';
 import { FormLabel } from '../shared/formLabel/FormLabel.jsx';
 import { REGEX_TESTS } from '../../utilities/formUtility.js';
 import { FormInstructions } from '../shared/formInstructions/FormInstructions.jsx';
+import { FormInput } from '../shared/formInput/FormInput.jsx';
 
 const EMAIL_REGEX = REGEX_TESTS.email;
 const PWD_REGEX = REGEX_TESTS.pwd;
@@ -110,36 +111,14 @@ function UserSignIn() {
                     <form onSubmit={onSubmit}>
 
                         <FormLabel text='Email' validProp={values.validEmail} prop={values.email} />
-                        <input
-                            type="email"
-                            id="email"
-                            name='email'
-                            ref={emailRef}
-                            autoComplete="off"
-                            onChange={onChange}
-                            value={values.email}
-                            required
-                            onFocus={onFocus}
-                            onBlur={onBlur}
-                        />
-                        <FormInstructions id='emailnote' className={values.emailFocus && values.email && !values.validEmail ? "instructions" : "offscreen"} />
-
+                        <FormInput target={'email'} elRef={emailRef} val={values.email} handlers={[onChange, onFocus, onBlur]} />
+                        <FormInstructions id='emailnote' check={values.emailFocus && values.email && !values.validEmail} />
 
                         <FormLabel text='Password' validProp={values.validPwd} prop={values.pwd} />
-                        <input
-                            type="password"
-                            id="pwd"
-                            name='pwd'
-                            autoComplete="off"
-                            onChange={onChange}
-                            value={values.pwd}
-                            required
-                            onFocus={onFocus}
-                            onBlur={onBlur}
-                        />
-                        <FormInstructions id='pwdnote' className={values.pwdFocus && !values.validPwd ? "instructions" : "offscreen"} />
+                        <FormInput target={'pwd'} val={values.pwd} handlers={[onChange, onFocus, onBlur]} />
+                        <FormInstructions id='pwdnote' check={values.pwdFocus && !values.validPwd} />
 
-                        <button className='btn' type='submit' disabled={!values.validEmail || !values.validPwd ? true : false}>Sign In</button>
+                        <button className='btn' type='submit' disabled={!values.validEmail || !values.validPwd}>Sign In</button>
                     </form>
                     <div>
                         <span>Not signed up?</span>
