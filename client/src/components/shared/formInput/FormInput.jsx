@@ -4,7 +4,7 @@ const targetType = {
     'username': 'text',
     'email': 'email',
     'pwd': 'password',
-    'matchPwd': 'password',
+    'match': 'password',
 };
 
 export function FormInput({ target, elRef, val, handlers = [], }) {
