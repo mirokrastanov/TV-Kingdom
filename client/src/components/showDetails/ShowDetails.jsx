@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { shows } from '../../services/showService';
 import { extractYear, plotRating } from '../../utilities/showUtility';
 import Summary from '../shared/summary/Summary';
-import CardLoader from '../shared/cardLoader/CardLoader';
+import PageLoader from '../shared/pageLoader/PageLoader';
 
 export default function ShowDetails() {
     const { showId } = useParams();
@@ -30,10 +30,18 @@ export default function ShowDetails() {
     return (
         <div className="show-details-ctr">
             <h1>Show Details</h1>
-            <div className="card-cage">
-                {loading
-                    ? (<div className="card"><CardLoader /></div>)
-                    : (<div className="card" data-id={p.id}>
+            {loading
+                ? (<PageLoader />)
+                : (<>
+                    <div className="card-cage" data-id={p.id}>
+                        <div className="details-img">
+                            <img src={p.image.original} alt="card-poster" />
+                        </div>
+
+
+                    </div>
+
+                    <div className="card" data-id={p.id}>
                         <div className="poster">
                             <img src={p.image.medium} alt="card-poster" />
                         </div>
@@ -57,9 +65,8 @@ export default function ShowDetails() {
                             </div>
                         </div>
                     </div>
-                    )
-                }
-            </div>
+                </>)
+            }
         </div>
     )
 }
