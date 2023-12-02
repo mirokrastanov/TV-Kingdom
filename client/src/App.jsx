@@ -11,7 +11,7 @@ import Schedule from './components/schedule/Schedule';
 import Search from './components/search/Search';
 import ShowDetails from './components/showDetails/ShowDetails';
 import UserSignUp from './components/userSignUp/UserSignUp';
-import PrivateRoutes from './utilities/privateRoutes';
+import UserRoutes from './utilities/userRoutes';
 import UserProfile from './components/userProfile/UserProfile';
 
 function App() {
@@ -27,20 +27,22 @@ function App() {
                     <Route exact path='/' element={<Home />} />
                     <Route path='home' element={<Navigate to='/' />} />
                     <Route path='index' element={<Navigate to='/' />} />
-
-                    <Route path='shows' element={<Shows />} />
-                    <Route path='shows/:showId/details' element={<ShowDetails />} />
-
-                    <Route path='actors' element={<Actors />} />
                     <Route path='schedule' element={<Schedule />} />
-                    <Route path='search' element={<Search />} />
+
+                    <Route element={<UserRoutes />}>
+                        <Route path='shows' element={<Shows />} />
+                        <Route path='shows/:showId/details' element={<ShowDetails />} />
+
+                        <Route path='search' element={<Search />} />
+                        <Route path='actors' element={<Actors />} />
+
+                        <Route path='user/profile' element={<UserProfile />} />
+                    </Route>
+
 
                     <Route path='user/sign-in' element={<UserSignIn />} />
                     <Route path='user/sign-up' element={<UserSignUp />} />
-                    
-                    <Route element={<PrivateRoutes />}>
-                        <Route path='user/profile' element={<UserProfile />} />
-                    </Route>
+
 
                     <Route path='*' element={<NotFound />} />
                 </Routes>
