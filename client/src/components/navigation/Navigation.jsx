@@ -6,6 +6,7 @@ import { useSearch, useSearchUpdate } from '../../contexts/SearchContext';
 import { useAuth } from '../../contexts/AuthContext.jsx';
 import { NavBtn } from '../shared/navBtn/NavBtn.jsx';
 import { NavLogout } from '../navLogout/NavLogout.jsx';
+import { NavSearch } from '../shared/navSearch/NavSearch.jsx';
 
 export default function Navigation() {
     const { user, logoutUser } = useAuth();
@@ -105,50 +106,24 @@ export default function Navigation() {
             </label>
 
             <ul className="nav-links">
-                {/* NAV => SEARCH */}
-                <li className={`nav-link ${searchShown || mobileWidth ? '' : 'a-left tooltip-anchor'}`}
-                    onClick={searchToggleHandler}>
-                    <a className={mobileWidth ? 'search-mobile' : ''}>{mobileWidth ? 'Search' : (
-                        <div className="search-slider-ctr">
-                            <div className={`search${searchShown ? ' active' : ''}`}>
-                                <div className="icon">
-                                    <span className="material-symbols-outlined"
-                                    >{searchShown ? 'search_off' : 'search'}</span>
-                                </div>
-                                <form className="input" onSubmit={searchOnSubmitHandler}>
-                                    <input
-                                        type="text"
-                                        placeholder='Search...'
-                                        id='my-search'
-                                        value={searchValue}
-                                        onChange={searchOnChangeHandler} />
-                                </form>
-                            </div>
-                        </div>
-                    )}</a>
-                    <div className='tooltip'>Search</div>
-                </li>
-                {/* NAV SEARCH should be separate entity & protected */}
-
-
-                {/* USER ROUTES */}
+                {/* USER */}
+                <NavSearch searchValue={searchValue} user={user} checks={[searchShown, mobileWidth]}
+                    handlers={[searchToggleHandler, searchOnSubmitHandler, searchOnChangeHandler]} />
                 <NavBtn target={'Shows'} check={mobileWidth} handler={navHandler} user={user} />
                 <NavBtn target={'Actors'} check={mobileWidth} handler={navHandler} user={user} />
 
-                {/* SHARED ROUTES */}
+                {/* ALL */}
                 <NavBtn target={'Schedule'} check={mobileWidth} handler={navHandler} user={user} />
 
-                {/* USER ROUTES */}
+                {/* USER */}
                 <NavBtn target={'My Profile'} check={mobileWidth} handler={navHandler} user={user} />
 
-                {/* GUEST ROUTES */}
+                {/* GUEST */}
                 <NavBtn target={'Sign Up'} check={mobileWidth} handler={navHandler} user={user} />
                 <NavBtn target={'Sign In'} check={mobileWidth} handler={navHandler} user={user} />
 
-
-                {/* Logout to move inside My Profile after it's converted to a modal */}
+                {/* USER */}
                 <NavLogout logout={logoutUser} check={mobileWidth} handler={navHandler} user={user} />
-
             </ul>
         </header>
     )
@@ -164,4 +139,3 @@ export default function Navigation() {
 // </Link>
 // <div className='tooltip'>Shows</div>
 // </li>
-
