@@ -66,9 +66,6 @@ export default function Navigation() {
         navigate('/search');
     };
 
-    // TODO: Add form reset
-    // TODO: Add errors as a state
-
     useEffect(() => {
         window.addEventListener('scroll', scrollHandler);
         window.addEventListener('load', screenResizeHandler);
