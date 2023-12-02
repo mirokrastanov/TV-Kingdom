@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const parse = {
     'Shows': ['smart_display', '/shows', 'users'],
-    'Actors': ['person', '/actors', 'users'],
+    'Actors': ['group', '/actors', 'users'],
     'Schedule': ['calendar_month', '/schedule', 'all'],
     'Sign Up': ['person_add', '/user/sign-up', 'guests'],
     'Sign In': ['login', '/user/sign-in', 'guests'],

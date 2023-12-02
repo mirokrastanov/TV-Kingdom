@@ -338,7 +338,7 @@
 
 
 /* MEDIA QUERIES */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
     .main-header .nav-links .nav-link a {
         margin: 0;
         padding: 1rem 0.4rem;
