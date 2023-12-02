@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { account } from "../config/appwriteConfig";
 import { ID } from 'appwrite';
+import PageLoader from "../components/shared/pageLoader/PageLoader";
 
 const AuthContext = createContext();
 
@@ -10,6 +11,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         checkUserStatus();
@@ -65,9 +67,11 @@ export function AuthProvider({ children }) {
                 localStorage.setItem('TV-account', JSON.stringify(accountDetails));
             }
             setUser(accountDetails); // that will login the user locally
+            setLoading(false);
             return accountDetails;
         } catch (error) {
             setUser(null);
+            setLoading(false);
             return error;
         }
     };
@@ -82,7 +86,9 @@ export function AuthProvider({ children }) {
 
     return (
         <AuthContext.Provider value={contextData}>
-            {children}
+            {loading
+                ? (<PageLoader />)
+                : (children)}
         </AuthContext.Provider>
     );
 };
