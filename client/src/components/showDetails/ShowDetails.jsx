@@ -37,6 +37,22 @@ export default function ShowDetails() {
                         <div className="details-img">
                             <img src={p.image.original} alt="card-poster" />
                         </div>
+                        <div className="main-details-ctr">
+                            <div className='inner-details'>
+                                <div className='title-ctr'><h2>{p.name}</h2></div>
+                                <div className='year-ctr'><span>{extractYear(p.premiered)} - {extractYear(p.ended)}</span></div>
+                                <div className="rating-ctr">
+                                    {plotRating(p.rating.average).map((x, i) => {
+                                        if (x == 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined fill-n-thin-symbol">star</span>);
+                                        else if (x > 0 & x < 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star_half</span>);
+                                        else return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined thin-symbol">star</span>);
+                                    })}
+                                    <span className="rating-num">{p.rating.average ?? 0}/10</span>
+                                </div>
+
+
+                            </div>
+                        </div>
 
 
                     </div>
