@@ -1,4 +1,5 @@
-.info {
+.info,
+.info-full {
     color: var(--color-bg-reverse);
 }
 
@@ -18,4 +19,13 @@
 
 .info p:not(:first-child) {
     display: none;
+}
+
+.info-full p {
+    margin: 10px 0;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    word-spacing: 2px;
+    text-align: center;
+    color: white;
 }
