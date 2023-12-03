@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './ShowDetails.css';
 import { useParams } from 'react-router-dom';
-import { shows } from '../../services/showService';
+import { shows, urlBuilder } from '../../services/showService';
 import { extractYear, plotRating } from '../../utilities/showUtility';
 import Summary from '../shared/summary/Summary';
 import PageLoader from '../shared/pageLoader/PageLoader';
+import SummaryComplete from '../shared/summary/SummaryComplete';
 
 export default function ShowDetails() {
     const { showId } = useParams();
@@ -40,7 +41,17 @@ export default function ShowDetails() {
                         <div className="main-details-ctr">
                             <div className='inner-details'>
                                 <div className='title-ctr'><h2>{p.name}</h2></div>
-                                <div className='year-ctr'><span>{extractYear(p.premiered)} - {extractYear(p.ended)}</span></div>
+                                <div className='year-ctr'>
+                                    <span>{extractYear(p.premiered)} - {extractYear(p.ended)}</span>
+                                    <span className='imdb tooltip-anchor'>
+                                        <a href={urlBuilder.imdb(p.externals.imdb)} target='_blank'>
+                                            <img src="/src/assets/IMDB_Logo.png" alt="imdb-link" />
+                                        </a>
+                                        <div className="tooltip">View in IMDb
+                                            <span className='material-symbols-outlined'>open_in_new</span>
+                                        </div>
+                                    </span>
+                                </div>
                                 <div className="rating-ctr">
                                     {plotRating(p.rating.average).map((x, i) => {
                                         if (x == 1) return (<span key={`rating-${i}-${p.id}`} className="material-symbols-outlined fill-n-thin-symbol">star</span>);
@@ -49,18 +60,21 @@ export default function ShowDetails() {
                                     })}
                                     <span className="rating-num">{p.rating.average ?? 0}/10</span>
                                 </div>
+                                <div className="tags" id='details-tags'>
+                                    {p.genres.map(x => (<span key={x.toLowerCase()} className={x.toLowerCase()}>{x}</span>))}
+                                </div>
+
 
 
                             </div>
                         </div>
-
-
+                    </div>
+                    <div className="w-full" data-id={p.id}>
+                        <SummaryComplete summary={p.summary} />
                     </div>
 
                     <div className="card" data-id={p.id}>
-                        <div className="poster">
-                            <img src={p.image.medium} alt="card-poster" />
-                        </div>
+                        <div className="poster"><img src={p.image.medium} alt="card-poster" /></div>
                         <div className="details">
                             <div className='title-ctr'><h2>{p.name}</h2></div>
                             <span>{extractYear(p.premiered)} - {extractYear(p.ended)}</span>
