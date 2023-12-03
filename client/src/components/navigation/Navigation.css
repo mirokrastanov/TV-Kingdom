@@ -481,6 +481,10 @@
     .dark-mode .main-header .menu-btn:checked~.menu-icon .menu-icon__line::after {
         background: var(--color-black);
     }
+
+    .tooltip-anchor:hover .tooltip {
+        visibility: hidden;
+    }
 }
 
 @media screen and (max-width: 350px) {
