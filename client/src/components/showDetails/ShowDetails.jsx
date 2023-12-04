@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ShowDetails.css';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { shows, urlBuilder } from '../../services/showService';
 import { extractYear, plotRating } from '../../utilities/showUtility';
 import Summary from '../shared/summary/Summary';
@@ -79,25 +79,39 @@ export default function ShowDetails() {
                                     )}
                                 </div>
                                 <div className='details-p'>
-                                    <p><b>Schedule:</b></p>
+                                    <p style={{ marginBottom: '5px' }}><b>Schedule:</b></p>
                                     {p.schedule.time ? (p.network.country.timezone
                                         ? (<>
                                             {p.schedule.days && <>
                                                 {p.schedule.days.map((x, i, a) => (<>{`${x}${i < a.length - 1 ? ', ' : ''}`}</>))}
-                                                :<b>{p.schedule.time}h</b>
+                                                :<b>{p.schedule.time}</b>
 
                                             </>}
-                                            <p>Timezone: <b>{p.network.country.timezone}</b></p>
+                                            <p style={{ marginTop: '5px' }}>Timezone: <b>{p.network.country.timezone}</b></p>
                                         </>)
                                         : (<p><b>{p.schedule.time}</b></p>)
                                     ) : (<p>-</p>)}
                                 </div>
-
+                                <div className="details-p" style={{ marginTop: '5px' }}>{p._embedded.cast && (<p><b>Top Cast:</b></p>)}</div>
+                                <div className="top-cast">
+                                    {p._embedded.cast && (p._embedded.cast.slice(0, 5).map(x => (
+                                        <div className='tooltip-anchor'>
+                                            <div key={x.person.id} className='img-circle-sm'><Link to={`/actors/${x.person.id}`}>
+                                                <img src={x.person.image.medium} alt="member-img" />
+                                            </Link>
+                                            </div>
+                                            <div className="tooltip">{x.person.name}</div>
+                                        </div>
+                                    )))}
+                                </div>
 
 
 
                             </div>
                         </div>
+                    </div>
+                    <div className="w-full">
+                        <div className="details-p" style={{ margin: '0 auto' }}><b>Summary</b></div>
                     </div>
                     <div className='w-full' data-id={p.id}>
                         <SummaryComplete summary={p.summary} />
