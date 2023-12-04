@@ -20,3 +20,22 @@ export function plotRating(rating) {
     }
     return output;
 };
+
+export function plotNum(num) {
+    if (num < 10) return `0${num}`;
+    return num;
+}
+
+export function getUniqueArr(arr) {
+    const uniqueArray = [];
+    const idSet = new Set();
+
+    arr.forEach((x) => {
+        const personId = x.person.id;
+        if (!idSet.has(personId)) {
+            idSet.add(personId);
+            uniqueArray.push(x);
+        }
+    });
+    return uniqueArray;
+};
