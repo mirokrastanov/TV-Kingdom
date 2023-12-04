@@ -36,15 +36,16 @@ export default function ShowSeasons() {
     return (<>
         {loading
             ? (<PageLoader />)
-            : (<div className="show-extra-ctr">
+            : (<div className="show-extra-ctr seasons">
                 <h1>Seasons</h1>
                 <div className="top-links-ctr-each">
                     <Link className='btn' to={`/shows/${showId}/details`}>Main Details</Link>
-                    <Link className='btn' to={`/shows/${showId}/episodes`}>Episodes</Link>
+                    <Link className='btn' to={`/shows/${showId}/episodes`}>All Episodes</Link>
                 </div>
                 {p.map(x => (
                     <div key={`${x.id}-show-seasons`} data-id={x.id} className="show-extra-data" onClick={routeTo}>
                         <div className="s-n">{x.number}</div>
+                        <h2 className='h2-top'>Click to view this season's episodes...</h2>
                         <article>
                             {x.image
                                 ? (<img src={x.image.original} alt="season-img" />)

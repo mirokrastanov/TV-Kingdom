@@ -70,6 +70,26 @@
     font-weight: 700;
 }
 
+.seasons .h2-top {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    visibility: hidden;
+    opacity: 0;
+    transition: var(--transition-1);
+    background: var(--background-2);
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: var(--box-shadow-7-cards);
+    font-size: 18px;
+}
+
+.seasons .show-extra-data:hover .h2-top {
+    visibility: visible;
+    opacity: 1;
+}
+
 
 
 
