@@ -15,10 +15,11 @@ import UserRoutes from './utilities/userRoutes';
 import UserProfile from './components/userProfile/UserProfile';
 import GuestRoutes from './utilities/guestRoutes';
 import ShowSeasons from './components/showSeasons/showSeasons';
+import ShowSeason from './components/showSeason/showSeason';
 
 function App() {
     const darkTheme = useTheme();
-    const { showId } = useParams();
+    const { showId, seasonId } = useParams();
 
     return (
         <div className={`app-ctr${darkTheme ? ' dark-mode' : ''}`}>
@@ -35,6 +36,7 @@ function App() {
                         <Route path='shows' element={<Shows />} />
                         <Route path='shows/:showId/details' element={<ShowDetails />} />
                         <Route path='shows/:showId/seasons' element={<ShowSeasons />} />
+                        <Route path='shows/:showId/seasons/:seasonId' element={<ShowSeason />} />
 
                         <Route path='search' element={<Search />} />
                         <Route path='actors' element={<Actors />} />
