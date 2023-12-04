@@ -97,7 +97,7 @@ export default function ShowDetails() {
                                 <div className="top-cast">
                                     {p._embedded.cast && (p._embedded.cast.slice(0, 5).map(x => (
                                         <div key={`${x.person.id}-top-c`} className='tooltip-anchor'>
-                                            <div key={x.person.id} className='img-circle-sm'><Link to={`/actors/${x.person.id}`}>
+                                            <div key={x.person.id} className='img-circle-sm'><Link to={`/actors/${x.person.id}/details`}>
                                                 <img src={x.person.image.medium} alt="member-img" />
                                             </Link>
                                             </div>
