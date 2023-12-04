@@ -83,7 +83,9 @@ export default function ShowDetails() {
                                     {p.schedule.time ? (p.network.country.timezone
                                         ? (<>
                                             {p.schedule.days && <>
-                                                {p.schedule.days.map((x, i, a) => (<>{`${x}${i < a.length - 1 ? ', ' : ''}`}</>))}
+                                                {p.schedule.days.map((x, i, a) => (
+                                                    <React.Fragment key={`${x}--${i}-schedule-d`}>{`${x}${i < a.length - 1 ? ', ' : ''}`}</React.Fragment>
+                                                ))}
                                                 :<b>{p.schedule.time}</b>
 
                                             </>}
@@ -95,7 +97,7 @@ export default function ShowDetails() {
                                 <div className="details-p" style={{ marginTop: '5px' }}>{p._embedded.cast && (<p><b>Top Cast:</b></p>)}</div>
                                 <div className="top-cast">
                                     {p._embedded.cast && (p._embedded.cast.slice(0, 5).map(x => (
-                                        <div className='tooltip-anchor'>
+                                        <div key={`${x.person.id}-top-c`} className='tooltip-anchor'>
                                             <div key={x.person.id} className='img-circle-sm'><Link to={`/actors/${x.person.id}`}>
                                                 <img src={x.person.image.medium} alt="member-img" />
                                             </Link>
