@@ -16,13 +16,13 @@
 
 .show-details-ctr .card-cage {
     /* background: peru; */
-    width: 100%;
+    width: 90%;
     display: grid;
-    grid-template-columns: minmax(200px, 600px) 1fr;
+    grid-template-columns: minmax(200px, 400px) 1fr;
     justify-items: center;
     gap: 20px;
     margin: 0 0 20px 0;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 .show-details-ctr .card-cage .title-ctr {
@@ -53,15 +53,15 @@
 }
 
 .show-details-ctr .card-cage .main-details-ctr {
-    min-width: 50vw;
+    min-width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .show-details-ctr .card-cage .main-details-ctr .inner-details {
-    width: 90%;
+    width: 100%;
     height: 100%;
     position: relative;
     overflow: hidden;
@@ -83,7 +83,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 200px;
+    width: 280px;
 }
 
 .show-details-ctr .card-cage .main-details-ctr .year-ctr span {
@@ -169,22 +169,33 @@
 }
 
 .show-details-ctr .w-full {
-    width: 100%;
+    width: 90%;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow-7-cards);
+    background: var(--color-bg);
     display: flex;
 
 
 
-    background: red;
 }
 
 
 
 
 
+@media screen and (max-width: 1050px) {
+    .show-details-ctr .card-cage {
+        width: 100%;
+    }
 
+    .show-details-ctr .w-full {
+        width: 100%;
+    }
+}
 
-
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 920px) {
     .show-details-ctr .card-cage {
         grid-template-columns: 1fr;
         justify-items: center;
@@ -226,6 +237,24 @@
         font-size: 20px;
     }
 
+    .show-details-ctr .card-cage .main-details-ctr .year-ctr {
+        width: 160px;
+        padding-top: 40px;
+        position: relative;
+    }
+
+    .show-details-ctr .card-cage .main-details-ctr .year-ctr span {
+        font-size: 16px;
+        bottom: 0;
+    }
+
+    .imdb {
+        position: absolute;
+        top: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     .show-details-ctr .rating-ctr span:not(.rating-num) {
         font-size: 30px;
         letter-spacing: -12px;
@@ -238,12 +267,20 @@
     .show-details-ctr #details-tags {
         gap: 10px 3px;
     }
-    
+
     .show-details-ctr #details-tags * {
         font-size: 16px;
         padding: 3px 5px;
     }
 
+    .show-details-ctr .w-full {
+        padding: 0 10px;
+    }
 
+    .show-details-ctr .info p,
+    .show-details-ctr .info-full p {
+        font-size: 16px;
+    }
+    
 
 }
