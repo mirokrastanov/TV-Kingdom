@@ -63,6 +63,36 @@ export default function ShowDetails() {
                                 <div className='tags' id='details-tags'>
                                     {p.genres.map(x => (<span key={x.toLowerCase()} className={x.toLowerCase()}>{x}</span>))}
                                 </div>
+                                <div className='details-p'>
+                                    {p.averageRuntime && (<p>Average runtime: <b>{p.averageRuntime} min</b></p>)}
+                                </div>
+                                <div className="details-p">
+                                    {p.language && (p.network.country.code
+                                        ? (<p>Language: <b>{p.language} | {p.network.country.code}</b></p>)
+                                        : (<p>Language: <b>{p.language}</b></p>)
+                                    )}
+                                </div>
+                                <div className="details-p">
+                                    {p.network.name && (p.network.officialSite
+                                        ? (<p>Network: <a className='a-left' href={p.network.officialSite} target='_blank'>{p.network.name}</a></p>)
+                                        : (<p>Network: <b>{p.network.name}</b></p>)
+                                    )}
+                                </div>
+                                <div className='details-p'>
+                                    <p><b>Schedule:</b></p>
+                                    {p.schedule.time ? (p.network.country.timezone
+                                        ? (<>
+                                            {p.schedule.days && <>
+                                                {p.schedule.days.map((x, i, a) => (<>{`${x}${i < a.length - 1 ? ', ' : ''}`}</>))}
+                                                :<b>{p.schedule.time}h</b>
+
+                                            </>}
+                                            <p>Timezone: <b>{p.network.country.timezone}</b></p>
+                                        </>)
+                                        : (<p><b>{p.schedule.time}</b></p>)
+                                    ) : (<p>-</p>)}
+                                </div>
+
 
 
 
