@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import './ShowEpisodes.css';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { shows } from '../../services/showService';
 import PageLoader from '../shared/pageLoader/PageLoader';
 import SummaryComplete from '../shared/summary/SummaryComplete';
-import { getUniqueArr, plotNum, plotRating } from '../../utilities/showUtility';
+import { plotNum, plotRating } from '../../utilities/showUtility';
 
 
 export default function ShowEpisodes() {
     const { showId } = useParams();
     const [p, setP] = useState([]);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
 
     useEffect(() => {
         console.log(showId);

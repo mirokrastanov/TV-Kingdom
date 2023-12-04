@@ -175,7 +175,7 @@
     margin-bottom: 20px;
     border-radius: 15px;
     box-shadow: var(--box-shadow-7-cards);
-    background: var(--color-bg);
+    background: var(--color-bg-light);
     display: flex;
 }
 
