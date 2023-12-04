@@ -35,6 +35,11 @@ export default function ShowSeason() {
         {loading
             ? (<PageLoader />)
             : (<div className="show-extra-ctr one-season">
+                <h1>Season {p[0].season}</h1>
+                <div className="top-links-ctr-each">
+                    <Link className='btn' to={`/shows/${showId}/details`}>Main Details</Link>
+                    <Link className='btn' to={`/shows/${showId}/seasons`}>Seasons</Link>
+                </div>
                 {p.map(x => (
                     <div className="topper" key={`${x.id}-one-season`} data-id={x.id} >
                         <div className="show-extra-data">
@@ -61,7 +66,7 @@ export default function ShowSeason() {
                         </div>
                         {x.summary
                             ? (<SummaryComplete summary={x.summary} />)
-                            : (<p>We don't have a summary for Season {x.number} yet.</p>)}
+                            : (<p>We don't have a summary for episode {x.number} yet.</p>)}
                         <div><h3>Guest stars</h3></div>
                         <div className="top-cast">
                             {x._embedded.guestcast && (getUniqueArr(x._embedded.guestcast).map(y => (

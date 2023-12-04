@@ -1,3 +1,21 @@
+.show-extra-ctr.one-season {
+    padding-top: 85px;
+}
+
+.top-links-ctr-each {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.show-extra-ctr.one-season .top-links-ctr-each a {
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
 .show-extra-ctr.one-season .topper {
     background: var(--color-bg-light);
     box-shadow: var(--box-shadow-7-cards);
@@ -9,6 +27,7 @@
     background: none;
     box-shadow: none;
     width: 100%;
+    cursor: auto;
 }
 
 .show-extra-ctr.one-season article:nth-of-type(1) {
@@ -51,6 +70,12 @@
 
 .show-extra-ctr.one-season .topper .info-full {
     padding: 10px 20px;
+}
+
+.show-extra-ctr.one-season .topper .info-full p {
+    font-size: 18px;
+    font-style: italic;
+    text-align: justify;
 }
 
 .show-extra-ctr.one-season .topper img {
