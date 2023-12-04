@@ -35,10 +35,11 @@ export default function ShowSeason() {
         {loading
             ? (<PageLoader />)
             : (<div className="show-extra-ctr one-season">
-                <h1>Season {p[0].season}</h1>
+                <h1>Season {p[0].season} Episodes</h1>
                 <div className="top-links-ctr-each">
                     <Link className='btn' to={`/shows/${showId}/details`}>Main Details</Link>
                     <Link className='btn' to={`/shows/${showId}/seasons`}>Seasons</Link>
+                    <Link className='btn' to={`/shows/${showId}/episodes`}>All episodes</Link>
                 </div>
                 {p.map(x => (
                     <div className="topper" key={`${x.id}-one-season`} data-id={x.id} >
