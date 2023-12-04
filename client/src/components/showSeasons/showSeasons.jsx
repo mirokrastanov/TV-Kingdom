@@ -37,6 +37,11 @@ export default function ShowSeasons() {
         {loading
             ? (<PageLoader />)
             : (<div className="show-extra-ctr">
+                <h1>Seasons</h1>
+                <div className="top-links-ctr-each">
+                    <Link className='btn' to={`/shows/${showId}/details`}>Main Details</Link>
+                    <Link className='btn' to={`/shows/${showId}/episodes`}>Episodes</Link>
+                </div>
                 {p.map(x => (
                     <div key={`${x.id}-show-seasons`} data-id={x.id} className="show-extra-data" onClick={routeTo}>
                         <div className="s-n">{x.number}</div>
