@@ -240,15 +240,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .show-details-ctr .extra-links .details-p {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    padding: 10px;
 }
 
 .show-details-ctr .extra-links .details-p a {
