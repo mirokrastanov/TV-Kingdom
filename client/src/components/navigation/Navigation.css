@@ -487,11 +487,26 @@
     }
 }
 
-@media screen and (max-width: 350px) {
+
+@media screen and (max-width: 450px) {
+    .main-header .logo {
+        padding: 0;
+        position: relative;
+    }
+    
     .main-header .logo a {
         display: none;
     }
 
+    .main-header .logo .theme-toggle {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media screen and (max-width: 350px) {
     .main-header .nav-links .nav-link a {
         font-size: 1.7rem;
         display: block;
