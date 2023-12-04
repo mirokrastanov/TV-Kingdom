@@ -74,7 +74,7 @@ export default function ShowDetails() {
                                 </div>
                                 <div className="details-p">
                                     {p.network.name && (p.network.officialSite
-                                        ? (<p>Network: <a className='a-left' href={p.network.officialSite} target='_blank'>{p.network.name}</a></p>)
+                                        ? (<p>Network: <a className='btn' href={p.network.officialSite} target='_blank'>{p.network.name}</a></p>)
                                         : (<p>Network: <b>{p.network.name}</b></p>)
                                     )}
                                 </div>
