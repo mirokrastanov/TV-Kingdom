@@ -14,6 +14,7 @@ import UserSignUp from './components/userSignUp/UserSignUp';
 import UserRoutes from './utilities/userRoutes';
 import UserProfile from './components/userProfile/UserProfile';
 import GuestRoutes from './utilities/guestRoutes';
+import ShowSeasons from './components/showSeasons/showSeasons';
 
 function App() {
     const darkTheme = useTheme();
@@ -33,6 +34,7 @@ function App() {
                     <Route element={<UserRoutes />}>
                         <Route path='shows' element={<Shows />} />
                         <Route path='shows/:showId/details' element={<ShowDetails />} />
+                        <Route path='shows/:showId/seasons' element={<ShowSeasons />} />
 
                         <Route path='search' element={<Search />} />
                         <Route path='actors' element={<Actors />} />
