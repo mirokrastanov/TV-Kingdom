@@ -235,8 +235,25 @@
     transform: translateY(-60px);
 }
 
+.show-details-ctr .extra-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
 
+.show-details-ctr .extra-links .details-p {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 
+.show-details-ctr .extra-links .details-p a {
+    padding: 8px 25px;
+}
 
 
 
@@ -272,6 +289,7 @@
 
     .show-details-ctr .card-cage .main-details-ctr .inner-details {
         width: 100%;
+        gap: 10px;
     }
 
 

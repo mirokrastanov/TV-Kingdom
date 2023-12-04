@@ -104,9 +104,6 @@ export default function ShowDetails() {
                                         </div>
                                     )))}
                                 </div>
-
-
-
                             </div>
                         </div>
                     </div>
@@ -116,29 +113,17 @@ export default function ShowDetails() {
                     <div className='w-full' data-id={p.id}>
                         <SummaryComplete summary={p.summary} />
                     </div>
-
-                    <div className='card' data-id={p.id}>
-                        <div className='poster'><img src={p.image.medium} alt='card-poster' /></div>
-                        <div className='details'>
-                            <div className='title-ctr'><h2>{p.name}</h2></div>
-                            <span>{extractYear(p.premiered)} - {extractYear(p.ended)}</span>
-                            <div className='rating'>
-                                {plotRating(p.rating.average).map((x, i) => {
-                                    if (x == 1) return (<span key={`rating-${i}-${p.id}`} className='material-symbols-outlined fill-n-thin-symbol'>star</span>);
-                                    else if (x > 0 & x < 1) return (<span key={`rating-${i}-${p.id}`} className='material-symbols-outlined thin-symbol'>star_half</span>);
-                                    else return (<span key={`rating-${i}-${p.id}`} className='material-symbols-outlined thin-symbol'>star</span>);
-                                })}
-                                <span className='rating-number'>{p.rating.average ?? 0}/10</span>
-                            </div>
-                            <div className='tags'>
-                                {p.genres.map(x => (<span key={x.toLowerCase()} className={x.toLowerCase()}>{x}</span>))}
-                            </div>
-                            <Summary summary={p.summary} />
-                            <div className='extra'>
-                                <p>Language: <b>{p.language}</b></p>
-                            </div>
+                    <div className="w-full extra-links">
+                        <div><h3>Find out more</h3></div>
+                        <div className="details-p">
+                            <Link className='btn' to={`/shows/${showId}/seasons`}>Seasons</Link>
+                            <Link className='btn' to={`/shows/${showId}/episodes`}>Episodes</Link>
+                            <Link className='btn' to={`/shows/${showId}/cast`}>Cast</Link>
+                            <Link className='btn' to={`/shows/${showId}/crew`}>Crew</Link>
+                            <Link className='btn' to={`/shows/${showId}/images`}>Images</Link>
                         </div>
                     </div>
+
                 </>)
             }
         </div>
