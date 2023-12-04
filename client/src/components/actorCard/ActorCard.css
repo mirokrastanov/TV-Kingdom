@@ -1,0 +1,56 @@
+.actor-card.card .poster::before {
+    bottom: -200px;
+}
+
+.actor-card.card * {
+    text-shadow: 1px 1px black;
+}
+
+.actor-card.card .no-img {
+    color: white;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    transition: 0.3s ease-in;
+}
+
+.actor-card.card:hover .no-img {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.actor-card.card .r-m-hidden {
+    visibility: hidden;
+    opacity: 0;
+    font-size: 18px;
+    font-weight: 700;
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    transition: 0.6s;
+    color: white;
+    text-shadow: 1px 1px black;
+}
+
+.actor-card.card:hover .r-m-hidden {
+    visibility: visible;
+    opacity: 1;
+}
+
+.actor-card.card .poster::before {
+    background: transparent;
+    bottom: 0;
+}
+
+.actor-card.card:hover .poster::before {
+    opacity: 0.3;
+}
+
+.actor-card.card:hover .poster img {
+    filter: blur(5px);
+    transform: translateY(0);
+}
