@@ -16,6 +16,7 @@ import UserProfile from './components/userProfile/UserProfile';
 import GuestRoutes from './utilities/guestRoutes';
 import ShowSeasons from './components/showSeasons/showSeasons';
 import ShowSeason from './components/showSeason/showSeason';
+import ShowEpisodes from './components/showEpisodes/ShowEpisodes';
 
 function App() {
     const darkTheme = useTheme();
@@ -37,6 +38,7 @@ function App() {
                         <Route path='shows/:showId/details' element={<ShowDetails />} />
                         <Route path='shows/:showId/seasons' element={<ShowSeasons />} />
                         <Route path='shows/:showId/seasons/:seasonId' element={<ShowSeason />} />
+                        <Route path='shows/:showId/episodes' element={<ShowEpisodes />} />
 
                         <Route path='search' element={<Search />} />
                         <Route path='actors' element={<Actors />} />
