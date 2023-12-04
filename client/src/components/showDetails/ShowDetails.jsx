@@ -3,7 +3,6 @@ import './ShowDetails.css';
 import { Link, useParams } from 'react-router-dom';
 import { shows, urlBuilder } from '../../services/showService';
 import { extractYear, plotRating } from '../../utilities/showUtility';
-import Summary from '../shared/summary/Summary';
 import PageLoader from '../shared/pageLoader/PageLoader';
 import SummaryComplete from '../shared/summary/SummaryComplete';
 

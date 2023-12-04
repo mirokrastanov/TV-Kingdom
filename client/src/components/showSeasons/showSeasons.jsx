@@ -8,7 +8,7 @@ import SummaryComplete from '../shared/summary/SummaryComplete';
 
 export default function ShowSeasons() {
     const { showId } = useParams();
-    const [p, setP] = useState({});
+    const [p, setP] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ export default function ShowSeasons() {
     }, []);
 
     function routeTo(e) {
-        const url = '/seasons/' + e.currentTarget.dataset.id;
+        const url = e.currentTarget.dataset.id;
         navigate(url);
     };
 
