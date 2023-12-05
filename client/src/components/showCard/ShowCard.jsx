@@ -23,7 +23,7 @@ const ShowCard = React.forwardRef((props, ref) => {
         const showId = e.currentTarget.dataset.id;
         // console.log('clicked', id);
 
-        navigate(`${showId}/details`);
+        navigate(`/shows/${showId}/details`);
     };
 
     useEffect(() => {
@@ -42,7 +42,10 @@ const ShowCard = React.forwardRef((props, ref) => {
             ? (<div className="card"><CardLoader /></div>)
             : (<div className="card" data-id={p.id} ref={ref ? ref : null} onClick={clickHandler}>
                 <div className="poster">
-                    <img src={p.image.medium} alt="card-poster" />
+                    {/* <img src={p.image.medium} alt="card-poster" /> */}
+                    {p.image ? (
+                        <img src={p.image.medium} alt="card-poster" />
+                    ) : (<div className='no-img'><p style={{color: 'white'}}>No image available</p></div>)}
                 </div>
                 <div className="details">
                     <div className='title-ctr'><h2>{p.name}</h2></div>
