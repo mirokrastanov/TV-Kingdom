@@ -42,6 +42,17 @@
     transform: translateY(-50px);
 }
 
+.card .no-img {
+    color: white;
+    height: 350px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    transition: 0.3s ease-in;
+}
+
 .details {
     position: absolute;
     padding: 10px;
@@ -237,6 +248,7 @@
     color: yellow;
     text-shadow: none;
 }
+
 .tags span.war {
     background: rgb(150, 44, 44);
     color: black;
