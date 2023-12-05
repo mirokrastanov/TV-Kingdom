@@ -39,3 +39,15 @@ export function getUniqueArr(arr) {
     });
     return uniqueArray;
 };
+
+export function getNotNull(arr) {
+    const uniqueArray = [];
+    arr.forEach((x) => {
+        if (x.rating != null) {
+            if (x.rating.average && x.rating.average > 0 && x.rating.average <= 10) {
+                uniqueArray.push(x);
+            }
+        }
+    });
+    return uniqueArray;
+}
