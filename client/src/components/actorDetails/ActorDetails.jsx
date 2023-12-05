@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './ActorDetails.css';
 import { Link, useParams } from 'react-router-dom';
-import { actors, shows, urlBuilder } from '../../services/showService';
-import { extractYear, plotRating } from '../../utilities/showUtility';
+import { actors } from '../../services/showService';
 import PageLoader from '../shared/pageLoader/PageLoader';
-import SummaryComplete from '../shared/summary/SummaryComplete';
 import ShowCard from '../showCard/ShowCard';
 
 export default function ActorDetails() {
@@ -30,13 +28,7 @@ export default function ActorDetails() {
                                 // console.log(crewCredits);
                                 setP(prev => ({ ...prev, crew: crewCredits }));
 
-                                actors.oneActor.guestCastCredits(actorId)
-                                    .then(guestCastCredits => {
-                                        console.log(guestCastCredits);
-                                        setP(prev => ({ ...prev, guest: guestCastCredits }));
-
-                                        setLoading(false);
-                                    })
+                                setLoading(false);
                             })
                     })
             })
@@ -73,7 +65,7 @@ export default function ActorDetails() {
                 </div>
                 <div className="w-full">
                     <h2>Crew Credits</h2>
-                    <h3>Show - Role</h3>
+                    {/* <h3>{p.crew.length == 0 ? '' : 'Show - Role'}</h3> */}
                 </div>
                 <div className="cards-cage">
                     {/* {p.crew.map(x => (<ShowCard {...x._embedded.show} genres={[x.type]} key={`${x._embedded.show.id}-crew-${x.type}`} />))} */}
