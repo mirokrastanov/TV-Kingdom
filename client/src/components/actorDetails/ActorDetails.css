@@ -103,3 +103,38 @@
 .actor-details-ctr .crew-div:hover {
     box-shadow: var(--box-shadow-2);
 }
+
+
+
+
+@media screen and (max-width: 767px) {
+    .actor-details-ctr .g-full {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    .actor-details-ctr .g-full>* {
+        margin: 0;
+    }
+
+    .actor-details-ctr .actor-img {
+    max-width: none;
+    }
+
+    .actor-details-ctr .no-img {
+        min-height: unset;
+        width: 100%;
+    }
+
+    .actor-details-ctr .actor-info {
+        gap: 5px;
+        padding: 10px;
+    }
+
+    .actor-details-ctr .crew-div {
+        width: 100%;
+    }
+}
