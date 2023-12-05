@@ -84,6 +84,7 @@ export default function ShowSeason() {
                                 )
                             )))}
                         </div>
+                        <div style={{margin: '0 0 20px 0'}}><Link to={`/episodes/${x.id}/details`} className='btn'>Read more</Link></div>
                     </div>
                 ))}
             </div>) : (

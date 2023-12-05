@@ -29,11 +29,11 @@ export default function ShowEpisodes() {
         return () => { };
     }, []);
 
-    function onEpisodeClick(e) {
-        const epId = e.currentTarget.dataset.id;
-        if (!epId || epId == '') navigate('/404');
-        navigate(`/episodes/${epId}/details`);
-    };
+    // function onEpisodeClick(e) {
+    //     const epId = e.currentTarget.dataset.id;
+    //     if (!epId || epId == '') navigate('/404');
+    //     navigate(`/episodes/${epId}/details`);
+    // };
 
     return (<>
         {loading
@@ -46,7 +46,7 @@ export default function ShowEpisodes() {
                 </div>
                 {p.length == 0 && <div style={{ fontSize: '20px' }}>None available.</div>}
                 {p.map((x, i, arr) => (
-                    <div className="topper" key={`${x.id}-one-season`} data-id={x.id} onClick={onEpisodeClick} >
+                    <div className="topper" key={`${x.id}-one-season`} data-id={x.id} >
                         <div className="show-extra-data">
                             <div className="s-n">{x.number ?? arr[i - 1].number + 1 ?? ''}</div>
                             <article>
@@ -72,6 +72,7 @@ export default function ShowEpisodes() {
                         {x.summary
                             ? (<SummaryComplete summary={x.summary} />)
                             : (<p>We don't have a summary for episode {x.number ?? arr[i - 1].number + 1 ?? ''} yet.</p>)}
+                        <div style={{ margin: '0 0 20px 0' }}><Link to={`/episodes/${x.id}/details`} className='btn'>Read more</Link></div>
                     </div>
                 ))}
             </div>)
