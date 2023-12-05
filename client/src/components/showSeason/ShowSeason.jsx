@@ -42,17 +42,17 @@ export default function ShowSeason() {
                     <Link className='btn' to={`/shows/${showId}/seasons`}>Seasons</Link>
                     <Link className='btn' to={`/shows/${showId}/episodes`}>All episodes</Link>
                 </div>
-                {p.map(x => (
+                {p.map((x, i, arr) => (
                     <div className="topper" key={`${x.id}-one-season`} data-id={x.id} >
                         <div className="show-extra-data">
-                            <div className="s-n">{x.number}</div>
+                            <div className="s-n">{x.number ?? arr[i - 1].number + 1 ?? ''}</div>
                             <article>
                                 {x.image
                                     ? (<img src={x.image.original} alt="episode-img" />)
                                     : (<img style={{ background: 'var(--color-accent-2)' }} src='/src/assets/replace-img.jpg' alt="episode-img" />)}
                             </article>
                             <article>
-                                <p>Episode: <b>s{plotNum(x.season)} e{plotNum(x.number)}</b></p>
+                                <p>Episode: <b>s{plotNum(x.season)} e{plotNum(x.number ?? arr[i - 1].number + 1 ?? '')}</b></p>
                                 <p><b>{x.name}</b></p>
                                 <div className='rating-ctr'>
                                     {plotRating(x.rating.average).map((x, i) => {
@@ -68,7 +68,7 @@ export default function ShowSeason() {
                         </div>
                         {x.summary
                             ? (<SummaryComplete summary={x.summary} />)
-                            : (<p>We don't have a summary for episode {x.number} yet.</p>)}
+                            : (<p>We don't have a summary for episode {x.number ?? arr[i - 1].number + 1 ?? ''} yet.</p>)}
                         <div><h3>Guest stars</h3></div>
                         <div className="top-cast">
                             {!x._embedded.guestcast || x._embedded.guestcast.length == 0 ? (<p>None</p>) : (null)}

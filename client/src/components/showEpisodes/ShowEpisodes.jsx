@@ -71,7 +71,7 @@ export default function ShowEpisodes() {
                         </div>
                         {x.summary
                             ? (<SummaryComplete summary={x.summary} />)
-                            : (<p>We don't have a summary for episode {x.number} yet.</p>)}
+                            : (<p>We don't have a summary for episode {x.number ?? arr[i - 1].number + 1 ?? ''} yet.</p>)}
                     </div>
                 ))}
             </div>)
