@@ -22,6 +22,7 @@ export function plotRating(rating) {
 };
 
 export function plotNum(num) {
+    if (!num) return ': (Special)';
     if (num < 10) return `0${num}`;
     return num;
 }
