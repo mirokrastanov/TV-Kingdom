@@ -108,14 +108,12 @@ export default function ShowDetails() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full">
-                        <div className="details-p" style={{ margin: '0 auto' }}><b>Summary</b></div>
-                    </div>
-                    <div className='w-full' data-id={p.id}>
+                    <div className='w-full summary' data-id={p.id}>
+                        <div><h2>Summary</h2></div>
                         <SummaryComplete summary={p.summary} />
                     </div>
-                    <div className="w-full extra-links">
-                        <div><h3>Find out more</h3></div>
+                    <div className="w-full extra-links" data-id={p.id}>
+                        <div><h2>Find out more</h2></div>
                         <div className="details-p">
                             <Link className='btn' to={`/shows/${showId}/seasons`}>Seasons</Link>
                             <Link className='btn' to={`/shows/${showId}/episodes`}>Episodes</Link>
