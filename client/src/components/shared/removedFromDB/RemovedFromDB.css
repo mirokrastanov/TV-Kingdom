@@ -1,0 +1,11 @@
+.removed-from-db {
+    width: 100%;
+    padding: 20px 0;
+    background: var(--color-bg-light);
+    box-shadow: var(--box-shadow-7-cards);
+    border-radius: 15px;
+}
+
+.removed-from-db h2 {
+    padding: 20px;
+}
