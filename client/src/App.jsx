@@ -18,10 +18,11 @@ import ShowSeasons from './components/showSeasons/showSeasons';
 import ShowSeason from './components/showSeason/showSeason';
 import ShowEpisodes from './components/showEpisodes/ShowEpisodes';
 import ActorDetails from './components/actorDetails/ActorDetails';
+import ShowEpisode from './components/showEpisode/ShowEpisode';
 
 function App() {
     const darkTheme = useTheme();
-    const { showId, seasonId, actorId } = useParams();
+    const { showId, seasonId, actorId, episodeId } = useParams();
 
     return (
         <div className={`app-ctr${darkTheme ? ' dark-mode' : ''}`}>
@@ -41,6 +42,9 @@ function App() {
                         <Route path='shows/:showId/seasons' element={<ShowSeasons />} />
                         <Route path='shows/:showId/seasons/:seasonId' element={<ShowSeason />} />
                         <Route path='shows/:showId/episodes' element={<ShowEpisodes />} />
+
+                        <Route path='episodes/:episodeId/details' element={<ShowEpisode />} />
+                        <Route exact path='episodes/:episodeId/' element={<Navigate to={'details'} />} />
 
                         <Route path='actors' element={<Actors />} />
                         <Route exact path='actors/:actorId/' element={<Navigate to={'details'} />} />
