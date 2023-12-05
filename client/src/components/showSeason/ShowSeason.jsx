@@ -5,6 +5,7 @@ import { shows } from '../../services/showService';
 import PageLoader from '../shared/pageLoader/PageLoader';
 import SummaryComplete from '../shared/summary/SummaryComplete';
 import { getUniqueArr, plotNum, plotRating } from '../../utilities/showUtility';
+import RemovedFromDB from '../shared/removedFromDB/RemovedFromDB';
 
 
 export default function ShowSeason() {
@@ -34,7 +35,7 @@ export default function ShowSeason() {
     return (<>
         {loading
             ? (<PageLoader />)
-            : (<div className="show-extra-ctr one-season">
+            : (p.length > 0 ? (<div className="show-extra-ctr one-season">
                 <h1>Season {p[0].season} Episodes</h1>
                 <div className="top-links-ctr-each">
                     <Link className='btn' to={`/shows/${showId}/details`}>Main Details</Link>
@@ -70,10 +71,11 @@ export default function ShowSeason() {
                             : (<p>We don't have a summary for episode {x.number} yet.</p>)}
                         <div><h3>Guest stars</h3></div>
                         <div className="top-cast">
+                            {!x._embedded.guestcast || x._embedded.guestcast.length == 0 ? (<p>None</p>) : (null)}
                             {x._embedded.guestcast && (getUniqueArr(x._embedded.guestcast).map(y => (
                                 y.person.image && (
                                     <div key={`${y.person.id}-${y.character.id}-${x.id}`} className='tooltip-anchor'>
-                                        <div key={y.person.id} className='img-circle-sm'><Link to={`/actors/${y.person.id}`}>
+                                        <div key={y.person.id} className='img-circle-sm'><Link to={`/actors/${y.person.id}/details`}>
                                             <img src={y.person.image.medium} alt="member-img" />
                                         </Link>
                                         </div>
@@ -84,7 +86,9 @@ export default function ShowSeason() {
                         </div>
                     </div>
                 ))}
-            </div>)
+            </div>) : (
+                <div className="show-extra-ctr one-season"><RemovedFromDB /></div>
+            ))
         }
     </>);
 }
