@@ -1,0 +1,46 @@
+.episode-current .all-crew {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.episode-current .all-crew a {
+    width: 40%;
+}
+
+.episode-current .crew-div {
+    background: var(--color-bg-light);
+    box-shadow: var(--box-shadow-7-cards);
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.episode-current .crew-div p:first-child {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.episode-current .crew-div p:nth-child(2) {
+    font-style: italic;
+    font-size: 18px;
+}
+
+.episode-current .crew-div div {
+    padding: 8px 20px;
+    border-radius: 15px;
+}
+
+.episode-current .crew-div:hover {
+    box-shadow: var(--box-shadow-2);
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .episode-current .all-crew a {
+        width: 90%;
+    }
+
+}
