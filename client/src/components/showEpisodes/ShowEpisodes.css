@@ -1,0 +1,12 @@
+.show-extra-ctr.one-season.episodes * {
+    cursor: pointer;
+}
+
+.show-extra-ctr.one-season.episodes .topper {
+    box-shadow: var(--box-shadow-4);
+}
+
+.show-extra-ctr.one-season.episodes .topper:hover {
+    box-shadow: var(--box-shadow-7-cards);
+    background: var(--background-2);
+}

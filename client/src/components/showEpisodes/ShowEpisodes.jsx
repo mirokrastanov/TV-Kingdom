@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import './ShowEpisodes.css';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { shows } from '../../services/showService';
 import PageLoader from '../shared/pageLoader/PageLoader';
 import SummaryComplete from '../shared/summary/SummaryComplete';
@@ -10,6 +11,7 @@ export default function ShowEpisodes() {
     const { showId } = useParams();
     const [p, setP] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.log(showId);
@@ -27,7 +29,11 @@ export default function ShowEpisodes() {
         return () => { };
     }, []);
 
-
+    function onEpisodeClick(e) {
+        const epId = e.currentTarget.dataset.id;
+        if (!epId || epId == '') navigate('/404');
+        navigate(`/episodes/${epId}/details`);
+    };
 
     return (<>
         {loading
@@ -40,7 +46,7 @@ export default function ShowEpisodes() {
                 </div>
                 {p.length == 0 && <div style={{ fontSize: '20px' }}>None available.</div>}
                 {p.map((x, i, arr) => (
-                    <div className="topper" key={`${x.id}-one-season`} data-id={x.id} >
+                    <div className="topper" key={`${x.id}-one-season`} data-id={x.id} onClick={onEpisodeClick} >
                         <div className="show-extra-data">
                             <div className="s-n">{x.number ?? arr[i - 1].number + 1 ?? ''}</div>
                             <article>
