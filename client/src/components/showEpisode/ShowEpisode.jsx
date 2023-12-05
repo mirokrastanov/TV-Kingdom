@@ -1,27 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import './ShowEpisode.css';
 import { episodes, urlBuilder } from '../../services/showService';
 import PageLoader from '../shared/pageLoader/PageLoader';
 import SummaryComplete from '../shared/summary/SummaryComplete';
-import { plotNum, plotRating } from '../../utilities/showUtility';
+import { getUniqueArr, plotNum, plotRating } from '../../utilities/showUtility';
 import RemovedFromDB from '../shared/removedFromDB/RemovedFromDB';
 
 export default function ShowEpisode() {
     const { episodeId } = useParams();
-    const [p, setP] = useState([]);
+    const [p, setP] = useState({});
+    const [g, setG] = useState([]);
+    const [c, setC] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showId, setShowId] = useState(1);
 
     useEffect(() => {
-        console.log(episodeId);
+        // console.log(episodeId);
 
         episodes.oneEpisode.details(episodeId)
-            .then(data => {
-                console.log(data);
-                setP(data);
-                setShowId(data._embedded.show.id ?? 1);
+            .then(details => {
+                // console.log(details);
+                setP(details);
+                setShowId(details._embedded.show.id ?? 1);
 
-                setLoading(false);
+                episodes.oneEpisode.guestCast(episodeId)
+                    .then(guestCast => {
+                        // console.log(guestCast);
+                        setG(guestCast);
+
+                        episodes.oneEpisode.guestCrew(episodeId)
+                            .then(guestCrew => {
+                                console.log(guestCrew);
+                                setC(guestCrew);
+
+                                setLoading(false);
+                            })
+                    })
             })
             .catch(err => {
                 console.log(err.message);
@@ -34,12 +49,12 @@ export default function ShowEpisode() {
     return (<>
         {loading
             ? (<PageLoader />)
-            : (p.id ? (<div className="show-extra-ctr one-season">
+            : (p.id ? (<div className="show-extra-ctr one-season episode-current" id='ep-1'>
                 <h1>{p.name} </h1>
                 <div className="top-links-ctr-each">
-                    <Link className='btn' to={`/shows/${showId}/details`}>Main Details</Link>
-                    <Link className='btn' to={`/shows/${showId}/seasons`}>Seasons</Link>
-                    <Link className='btn' to={`/shows/${showId}/episodes`}>All episodes</Link>
+                    <Link className='btn' to={`/shows/${showId}/details`}>Show Details</Link>
+                    <Link className='btn' to={`/shows/${showId}/seasons`}>Show Seasons</Link>
+                    <Link className='btn' to={`/shows/${showId}/episodes`}>Show episodes</Link>
                 </div>
                 <div className="topper" key={`${p.id}-one-ep`} data-id={p.id} >
                     <div className="show-extra-data">
@@ -62,18 +77,15 @@ export default function ShowEpisode() {
                             <p>Air date: <b>{p.airdate && p.airdate != '' ? p.airdate : '-'}</b></p>
                             <p>Air time: <b>{p.airtime && p.airtime != '' ? p.airtime : '-'}</b></p>
                             <p>Duration: <b>{p.runtime && p.runtime != '' ? p.runtime + ' min' : '-'}</b></p>
-                            <p>Show: <b>{p._embedded.show.name && p._embedded.show.name != '' ? p._embedded.show.name : '-'}</b></p>
-
-
                         </article>
                     </div>
                     {p.summary
                         ? (<SummaryComplete summary={p.summary} />)
                         : (<p>We don't have a summary for episode {p.number} yet.</p>)}
-                    {/* <div><h3>Guest stars</h3></div>
+                    <div><h2>Guest stars</h2></div>
                     <div className="top-cast">
-                        {!p._embedded.guestcast || p._embedded.guestcast.length == 0 ? (<p>None</p>) : (null)}
-                        {p._embedded.guestcast && (getUniqueArr(p._embedded.guestcast).map(y => (
+                        {!g || g.length == 0 ? (<p>None</p>) : (null)}
+                        {g && (getUniqueArr(g).map(y => (
                             y.person.image && (
                                 <div key={`${y.person.id}-${y.character.id}-${p.id}`} className='tooltip-anchor'>
                                     <div key={y.person.id} className='img-circle-sm'><Link to={`/actors/${y.person.id}/details`}>
@@ -84,7 +96,21 @@ export default function ShowEpisode() {
                                 </div>
                             )
                         )))}
-                    </div> */}
+                    </div>
+                    <div><h2>Crew</h2></div>
+                    <div className="cards-cage all-crew">
+                        {c.length == 0 && <h3>No crew credits</h3>}
+                        {getUniqueArr(c).map(x => (
+                            <Link to={`/actors/${x.person.id}/details`} key={`${x.person.id}-crew-2-${x.guestCrewType}`}>
+                                <div className='crew-div'>
+                                    <div>
+                                        <p>{x.person.name}</p>
+                                        <p>- {x.guestCrewType}</p>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </div>) : (
                 <div className="show-extra-ctr one-season"><RemovedFromDB /></div>
