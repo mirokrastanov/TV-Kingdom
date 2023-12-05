@@ -34,6 +34,7 @@ function App() {
                     <Route path='home' element={<Navigate to='/' />} />
                     <Route path='index' element={<Navigate to='/' />} />
                     <Route path='schedule' element={<Schedule />} />
+                    {/* SCHEDULE come here - available to ALL */}
 
                     <Route element={<UserRoutes />}>
                         <Route path='shows' element={<Shows />} />
@@ -59,7 +60,6 @@ function App() {
                         <Route path='user/sign-in' element={<UserSignIn />} />
                         <Route path='user/sign-up' element={<UserSignUp />} />
                     </Route>
-
 
                     <Route path='*' element={<NotFound />} />
                 </Routes>
