@@ -38,6 +38,7 @@ export default function ShowEpisodes() {
                     <Link className='btn' to={`/shows/${showId}/details`}>Main Details</Link>
                     <Link className='btn' to={`/shows/${showId}/seasons`}>Seasons</Link>
                 </div>
+                {p.length == 0 && <div style={{fontSize: '20px'}}>None available.</div>}
                 {p.map(x => (
                     <div className="topper" key={`${x.id}-one-season`} data-id={x.id} >
                         <div className="show-extra-data">
