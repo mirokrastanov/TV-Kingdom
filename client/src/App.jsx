@@ -36,12 +36,14 @@ function App() {
 
                     <Route element={<UserRoutes />}>
                         <Route path='shows' element={<Shows />} />
+                        <Route exact path='shows/:showId/' element={<Navigate to={'details'} />} />
                         <Route path='shows/:showId/details' element={<ShowDetails />} />
                         <Route path='shows/:showId/seasons' element={<ShowSeasons />} />
                         <Route path='shows/:showId/seasons/:seasonId' element={<ShowSeason />} />
                         <Route path='shows/:showId/episodes' element={<ShowEpisodes />} />
 
                         <Route path='actors' element={<Actors />} />
+                        <Route exact path='actors/:actorId/' element={<Navigate to={'details'} />} />
                         <Route path='actors/:actorId/details' element={<ActorDetails />} />
 
                         <Route path='search' element={<Search />} />
