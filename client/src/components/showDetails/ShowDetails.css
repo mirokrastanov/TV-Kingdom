@@ -179,6 +179,13 @@
     display: flex;
 }
 
+.show-details-ctr .w-full.summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .show-details-ctr .details-p {
     padding: 0 10px;
     font-size: 18px;
@@ -233,6 +240,8 @@
 .show-details-ctr .tooltip-anchor:has(.img-circle-sm) .tooltip {
     top: 0;
     transform: translateY(-60px);
+    width: 140px;
+    margin-left: -70px;
 }
 
 .show-details-ctr .extra-links {
@@ -358,6 +367,11 @@
 
     .show-details-ctr .w-full {
         padding: 0 10px;
+    }
+
+    .show-details-ctr .w-full.summary h2,
+    .show-details-ctr .w-full h2 {
+        padding: 20px 0 10px 0;
     }
 
     .show-details-ctr .info p,
