@@ -38,18 +38,18 @@ export default function ShowEpisodes() {
                     <Link className='btn' to={`/shows/${showId}/details`}>Main Details</Link>
                     <Link className='btn' to={`/shows/${showId}/seasons`}>Seasons</Link>
                 </div>
-                {p.length == 0 && <div style={{fontSize: '20px'}}>None available.</div>}
-                {p.map(x => (
+                {p.length == 0 && <div style={{ fontSize: '20px' }}>None available.</div>}
+                {p.map((x, i, arr) => (
                     <div className="topper" key={`${x.id}-one-season`} data-id={x.id} >
                         <div className="show-extra-data">
-                            <div className="s-n">{x.number}</div>
+                            <div className="s-n">{x.number ?? arr[i - 1].number + 1 ?? ''}</div>
                             <article>
                                 {x.image
                                     ? (<img src={x.image.original} alt="episode-img" />)
                                     : (<img style={{ background: 'var(--color-accent-2)' }} src='/src/assets/replace-img.jpg' alt="episode-img" />)}
                             </article>
                             <article>
-                                <p>Episode: <b>s{plotNum(x.season)} e{plotNum(x.number)}</b></p>
+                                <p>Episode: <b>s{plotNum(x.season)} e{plotNum(x.number ?? arr[i - 1].number + 1 ?? '')}</b></p>
                                 <p><b>{x.name}</b></p>
                                 <div className='rating-ctr'>
                                     {plotRating(x.rating.average).map((x, i) => {
