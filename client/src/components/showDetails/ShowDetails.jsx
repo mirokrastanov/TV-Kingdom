@@ -84,6 +84,11 @@ export default function ShowDetails() {
                                             ? (<p>Network: <a className='btn' href={p.network.officialSite} target='_blank'>{p.network.name}</a></p>)
                                             : (<p>Network: <b>{p.network.name}</b></p>)
                                         )}
+                                        {!p.network && p.webChannel && (p.webChannel.officialSite
+                                            ? (<p>Web Channel: <a className='btn' href={p.webChannel.officialSite}
+                                                target='_blank'>{p.webChannel.name}</a></p>)
+                                            : (<p>Web Channel: <b>{p.webChannel.name}</b></p>)
+                                        )}
                                     </div>
                                     <div className='details-p'>
                                         <p style={{ marginBottom: '5px' }}><b>Schedule:</b></p>
