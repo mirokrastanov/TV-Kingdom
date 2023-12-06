@@ -21,12 +21,12 @@ export default function Shows() {
 
         intObserver.current = new IntersectionObserver(cards => {
             if (cards[0].isIntersecting) {
-                // console.log('Near last card!', card);
+                console.log('Near last card!', card);
                 setPageValues(prev => ({ ...prev, displayPage: prev.displayPage + 1, isIntersecting: true }));
             }
         }, {
             threshold: 1, // full element on screen, before trigger
-            rootMargin: '-60px', // + a margin for the scroll loader
+            // rootMargin: '-40px', // + a margin for the scroll loader
         });
 
         if (card) intObserver.current.observe(card);

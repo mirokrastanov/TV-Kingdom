@@ -36,3 +36,15 @@
     color: var(--color-bg-reverse);
     font-size: 18px;
 }
+
+.shows-ctr .cards-cage .scroll-loader-cage {
+    padding-bottom: 480px;
+}
+
+.shows-ctr .cards-cage .scroll-loader-cage .lds-roller {
+    background: var(--color-bg-light);
+    border-radius: 50%;
+    box-shadow: var(--box-shadow-7-cards);
+    scale: 1.5;
+}
+
