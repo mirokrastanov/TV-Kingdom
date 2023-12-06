@@ -86,7 +86,6 @@
 }
 
 .search-page-ctr #results-ctr {
-    background: plum; /* TODO: Remove when done styling the page */
     width: 100%;
     padding: 20px 0 50px 0;
     display: flex;
@@ -98,3 +97,63 @@
     position: relative;
 }
 
+#controls-res {
+    width: 250px;
+    height: 40px;
+    background: var(--color-black-light);
+    box-shadow: var(--box-shadow-4);
+    border-radius: 25px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+#controls-res>div {
+    width: 120px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: var(--color-bg-reverse);
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#controls-res>div:not(.selected-res):hover {
+    background: var(--color-bg-light);
+    font-weight: 700;
+    box-shadow: var(--box-shadow-2);
+}
+
+#controls-res>div:first-child,
+#controls-res>div:last-child {
+    border-radius: 25px;
+}
+
+#controls-res .selected-res {
+    background: var(--color-bg-light);
+    box-shadow: var(--box-shadow-7-cards);
+    font-weight: 700;
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+#controls-res>div:first-child:not(.selected-res) {
+    transform: translateX(125px);
+}
+
+#controls-res>div:last-child:not(.selected-res) {
+    transform: translateX(-125px);
+}
+
+.hidden-res-ctr {
+    display: none;
+}
