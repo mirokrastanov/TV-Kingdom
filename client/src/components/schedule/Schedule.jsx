@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './Schedule.css';
-import { schedule, shows } from '../../services/showService';
+import { schedule } from '../../services/showService';
 import PageLoader from '../shared/pageLoader/PageLoader';
 import ScrollLoader from '../shared/scrollLoader/ScrollLoader';
 import { createPartials } from '../../utilities/showUtility';

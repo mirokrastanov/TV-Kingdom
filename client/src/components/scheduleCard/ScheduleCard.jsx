@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import './ScheduleCard.css';
-import Summary from '../shared/summary/Summary';
 import CardLoader from '../shared/cardLoader/CardLoader';
 import { useNavigate } from 'react-router-dom';
-import { extractYear, plotRating } from '../../utilities/showUtility';
-
 
 const ScheduleCard = React.forwardRef((props, ref) => {
     const [p, setP] = useState({});
