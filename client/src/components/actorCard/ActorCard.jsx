@@ -14,7 +14,7 @@ const ActorCard = React.forwardRef((props, ref) => {
         const actorId = e.currentTarget.dataset.id;
         // console.log('clicked', actorId);
 
-        navigate(`${actorId}/details`);
+        navigate(`/actors/${actorId}/details`);
     };
 
     useEffect(() => {
