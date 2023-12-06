@@ -27,7 +27,7 @@ export default function Actors() {
             }
         }, {
             threshold: 1, // full element on screen, before trigger
-            rootMargin: '-60px', // + a margin for the scroll loader
+            // rootMargin: '-60px', // + a margin for the scroll loader
         });
 
         if (card) intObserver.current.observe(card);
