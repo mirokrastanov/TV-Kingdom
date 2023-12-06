@@ -37,7 +37,9 @@
 
 .show-extra-ctr .show-extra-data article:nth-of-type(2) {
     width: 70%;
-    padding: 5%;
+    padding: 2%;
+    max-height: 500px;
+    overflow: hidden;
 }
 
 .show-extra-ctr .show-extra-data img {
@@ -90,8 +92,16 @@
     opacity: 1;
 }
 
-
-
+.seasons article .info-full p {
+    font-size: 18px;
+    font-style: italic;
+    width: 96%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 10;
+    text-overflow: ellipsis;
+}
 
 
 
