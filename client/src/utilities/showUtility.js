@@ -52,3 +52,17 @@ export function getNotNull(arr) {
     });
     return uniqueArray;
 }
+
+export function getUniqueShows(arr) {
+    const uniqueArray = [];
+    const idSet = new Set();
+
+    arr.forEach((x) => {
+        const sId = x._embedded.show.id
+        if (!idSet.has(sId)) {
+            idSet.add(sId);
+            uniqueArray.push(x);
+        }
+    });
+    return uniqueArray;
+};
