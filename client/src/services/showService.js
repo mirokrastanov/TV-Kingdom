@@ -99,13 +99,14 @@ export const schedule = { // INCLUDES HISTORICAL DATA !!! Newest items first
         return await get(`${baseURL}/schedule/full`);
     },
     tvList: async function (date = 'YYYY-MM-DD', countryISOCode = 'XX') { // United Kingdom is GB 
-        if (date == 'YYYY-MM-DD' && countryISOCode == 'XX') {
-            return await get(`${baseURL}/schedule`);
-        } else if (countryISOCode == 'XX') {
-            return await get(`${baseURL}/schedule?date=${date}`);
-        } else {
-            return await get(`${baseURL}/schedule?date=${date}&country=${countryISOCode}`);
+        if (date == 'YYYY-MM-DD') {
+            if (countryISOCode == 'XX') return await get(`${baseURL}/schedule`);
+            return await get(`${baseURL}/schedule?country=${countryISOCode}`);
         }
+        if (countryISOCode == 'XX') {
+            return await get(`${baseURL}/schedule?date=${date}`);
+        }
+        return await get(`${baseURL}/schedule?date=${date}&country=${countryISOCode}`);
     },
     webList: async function (date = 'YYYY-MM-DD', countryISOCode = 'XX') { // United Kingdom is GB 
         if (date == 'YYYY-MM-DD' && countryISOCode == 'XX') {
