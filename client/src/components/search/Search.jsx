@@ -53,7 +53,7 @@ export default function Search() {
 
         search.shows(searchValue)
             .then(sData => {
-                console.log(sData);
+                // console.log(sData);
                 setShowResults(sData);
                 setLoading(false);
 
