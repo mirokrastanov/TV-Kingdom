@@ -92,7 +92,7 @@ export default function ShowDetails() {
                                     </div>
                                     <div className='details-p'>
                                         <p style={{ marginBottom: '5px' }}><b>Schedule:</b></p>
-                                        {p.schedule.time ? (p.network.country.timezone
+                                        {p.schedule.time ? (p.network
                                             ? (<>
                                                 {p.schedule.days && <>
                                                     {p.schedule.days.map((x, i, a) => (
