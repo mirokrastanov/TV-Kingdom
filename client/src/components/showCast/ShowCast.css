@@ -13,3 +13,113 @@
     font-size: 2.5rem;
     padding: 1rem;
 }
+
+.show-cast-ctr .top-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.show-cast-ctr .top-links a {
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+.show-cast-ctr article {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow-7-cards);
+}
+
+.show-cast-ctr article section.cast-img {
+    width: 40%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--color-bg-light);
+    border-radius: 15px 0 0 15px;
+}
+
+.show-cast-ctr article section.cast-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.show-cast-ctr article section.cast-info {
+    width: 60%;
+    height: 100%;
+    background: var(--color-bg-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 0 15px 15px 0;
+}
+
+.show-cast-ctr article section.cast-info>*:nth-child(2n) {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.show-cast-ctr article section.cast-info>*:nth-child(2n -1):not(:last-child) {
+    font-size: 18px;
+}
+
+.show-cast-ctr article section.cast-img .no-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+}
+
+.show-cast-ctr article section.cast-info .btn {
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 767px) {
+
+    .show-cast-ctr article {
+        flex-direction: column;
+        width: 100%;
+        height: unset;
+    }
+
+    .show-cast-ctr article section.cast-img {
+        width: 100%;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .show-cast-ctr article section.cast-info {
+        padding: 10px;
+        width: 100%;
+        border-radius: 0 0 15px 15px;
+    }
+
+
+
+}
