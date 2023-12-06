@@ -21,6 +21,7 @@ import ActorDetails from './components/actorDetails/ActorDetails';
 import ShowEpisode from './components/showEpisode/ShowEpisode';
 import ShowCast from './components/showCast/ShowCast';
 import ShowCrew from './components/showCrew/ShowCrew';
+import ShowImages from './components/showImages/ShowImages';
 
 function App() {
     const darkTheme = useTheme();
@@ -47,6 +48,7 @@ function App() {
                         <Route path='shows/:showId/episodes' element={<ShowEpisodes />} />
                         <Route path='shows/:showId/cast' element={<ShowCast />} />
                         <Route path='shows/:showId/crew' element={<ShowCrew />} />
+                        <Route path='shows/:showId/images' element={<ShowImages />} />
 
                         <Route path='episodes/:episodeId/details' element={<ShowEpisode />} />
                         <Route exact path='episodes/:episodeId/' element={<Navigate to={'details'} />} />
