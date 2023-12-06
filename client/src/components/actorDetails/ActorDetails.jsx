@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { actors } from '../../services/showService';
 import PageLoader from '../shared/pageLoader/PageLoader';
 import ShowCard from '../showCard/ShowCard';
+import { getUniqueShows } from '../../utilities/showUtility';
 
 export default function ActorDetails() {
     const { actorId } = useParams();
@@ -61,7 +62,7 @@ export default function ActorDetails() {
                 </div>
                 <div className="cards-cage">
                     {p.cast.length == 0 && <h3>No cast credits</h3>}
-                    {p.cast.map(x => (<ShowCard {...x._embedded.show} key={`${x._embedded.show.id}-cast`} />))}
+                    {getUniqueShows(p.cast).map(x => (<ShowCard {...x._embedded.show} key={`${x._embedded.show.id}-cast`} />))}
                 </div>
                 <div className="w-full">
                     <h2>Crew Credits</h2>
