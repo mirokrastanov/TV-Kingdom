@@ -48,7 +48,7 @@ export function AuthProvider({ children }) {
             setUser(accountDetails); // that will login the user locally
             return accountDetails;
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             return error;
         }
     };

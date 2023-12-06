@@ -15,16 +15,16 @@ export default function ShowSeason() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(showId);
+        // console.log(showId);
 
         shows.oneShow.oneSeasonEpisodes(seasonId)
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setP(data);
                 setLoading(false);
             })
             .catch(err => {
-                console.log(err.message);
+                // console.log(err.message);
             })
 
         return () => { };

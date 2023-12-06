@@ -21,7 +21,7 @@ export default function ShowCast() {
                 setLoading(false);
             })
             .catch(err => {
-                console.log(err.message);
+                // console.log(err.message);
             })
 
         return () => { };

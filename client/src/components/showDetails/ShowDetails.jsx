@@ -13,16 +13,16 @@ export default function ShowDetails() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        console.log(showId);
+        // console.log(showId);
 
         shows.oneShow.mainInfo(showId)
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setP(data);
                 setLoading(false);
             })
             .catch(err => {
-                console.log(err.message);
+                // console.log(err.message);
                 setLoading(false);
             })
 

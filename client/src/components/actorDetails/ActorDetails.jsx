@@ -11,7 +11,7 @@ export default function ActorDetails() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        console.log(actorId);
+        // console.log(actorId);
 
         actors.oneActor.details(actorId)
             .then(details => {
@@ -33,7 +33,7 @@ export default function ActorDetails() {
                     })
             })
             .catch(err => {
-                console.log(err.message);
+                // console.log(err.message);
             })
 
         return () => { };

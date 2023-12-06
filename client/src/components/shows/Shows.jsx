@@ -21,7 +21,7 @@ export default function Shows() {
 
         intObserver.current = new IntersectionObserver(cards => {
             if (cards[0].isIntersecting) {
-                console.log('Near last card!', card);
+                // console.log('Near last card!', card);
                 setPageValues(prev => ({ ...prev, displayPage: prev.displayPage + 1, isIntersecting: true }));
             }
         }, {
@@ -50,7 +50,7 @@ export default function Shows() {
                 }));
             })
             .catch((err) => {
-                console.log(err.message);
+                // console.log(err.message);
             })
     };
 

@@ -15,12 +15,12 @@ export default function ShowImages() {
 
         shows.oneShow.showImages(showId)
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setP(data);
                 setLoading(false);
             })
             .catch(err => {
-                console.log(err.message);
+                // console.log(err.message);
             })
 
         return () => { };

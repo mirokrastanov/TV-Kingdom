@@ -8,9 +8,15 @@ const get = async (address) => {
         if (resRaw.status != 204) resData = await resRaw.json();
         return resData;
     } catch (err) {
-        if (err.message) console.log(err.message);
-        else if (err.stateText) console.log(err.stateText);
-        else console.log(err);
+        if (err.message) {
+            // console.log(err.message);
+        }
+        else if (err.stateText) {
+            // console.log(err.stateText);
+        }
+        else {
+            // console.log(err);
+        }
         // re-throw if needed for global error handler or for page specific one
     }
 };

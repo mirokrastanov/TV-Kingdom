@@ -39,7 +39,7 @@ export default function Actors() {
                 if (!data || !Array.isArray(data)) {
                     setPageValues(prev => ({ ...prev, scrollLoading: false }));
                 }
-                console.log(data[0]);
+                // console.log(data[0]);
                 const partials = createPartials(data);
                 const first = partials.shift();
                 setPageValues(prev => ({
@@ -52,7 +52,7 @@ export default function Actors() {
                 }));
             })
             .catch((err) => {
-                console.log(err.message);
+                // console.log(err.message);
             })
     };
 

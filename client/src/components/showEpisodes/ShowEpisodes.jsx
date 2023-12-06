@@ -14,16 +14,16 @@ export default function ShowEpisodes() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(showId);
+        // console.log(showId);
 
         shows.oneShow.episodes(showId)
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setP(data);
                 setLoading(false);
             })
             .catch(err => {
-                console.log(err.message);
+                // console.log(err.message);
             })
 
         return () => { };

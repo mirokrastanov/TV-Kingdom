@@ -21,12 +21,12 @@ export default function Home() {
     const fetchShowsPage = async () => {
         const data = await shows.page(pageValues.showsPage);
         setPageValues({ ...pageValues, showsData: data })
-        console.log(data);
+        // console.log(data);
     };
 
     const fetchSingleShow = async () => {
         const data = await shows.oneShow.mainInfo(2999);
-        console.log(data);
+        // console.log(data);
     };
 
     return (

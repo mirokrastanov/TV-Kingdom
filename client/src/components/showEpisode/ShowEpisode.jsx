@@ -31,7 +31,7 @@ export default function ShowEpisode() {
 
                         episodes.oneEpisode.guestCrew(episodeId)
                             .then(guestCrew => {
-                                console.log(guestCrew);
+                                // console.log(guestCrew);
                                 setC(guestCrew);
 
                                 setLoading(false);
@@ -39,7 +39,7 @@ export default function ShowEpisode() {
                     })
             })
             .catch(err => {
-                console.log(err.message);
+                // console.log(err.message);
                 setLoading(false);
             })
 
