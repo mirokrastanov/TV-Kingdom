@@ -25,7 +25,8 @@ import ShowImages from './components/showImages/ShowImages';
 
 function App() {
     const darkTheme = useTheme();
-    const { showId, seasonId, actorId, episodeId } = useParams();
+    // NOTE: All params in use throughout the app.
+    // const { showId, seasonId, actorId, episodeId } = useParams();
 
     return (
         <div className={`app-ctr${darkTheme ? ' dark-mode' : ''}`}>
@@ -37,7 +38,6 @@ function App() {
                     <Route path='home' element={<Navigate to='/' />} />
                     <Route path='index' element={<Navigate to='/' />} />
                     <Route path='schedule' element={<Schedule />} />
-                    {/* SCHEDULE come here - available to ALL */}
 
                     <Route element={<UserRoutes />}>
                         <Route path='shows' element={<Shows />} />
