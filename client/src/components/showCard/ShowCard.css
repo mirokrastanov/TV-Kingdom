@@ -147,8 +147,7 @@
     border-radius: 4px;
     font-size: 14px;
     font-weight: 700;
-    background: royalblue;
-    /* generic color for unspecified tags */
+    background: rgb(8, 43, 150);
 }
 
 .tags span.fantasy {
