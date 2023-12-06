@@ -19,6 +19,7 @@ import ShowSeason from './components/showSeason/showSeason';
 import ShowEpisodes from './components/showEpisodes/ShowEpisodes';
 import ActorDetails from './components/actorDetails/ActorDetails';
 import ShowEpisode from './components/showEpisode/ShowEpisode';
+import ShowCast from './components/showCast/ShowCast';
 
 function App() {
     const darkTheme = useTheme();
@@ -43,6 +44,7 @@ function App() {
                         <Route path='shows/:showId/seasons' element={<ShowSeasons />} />
                         <Route path='shows/:showId/seasons/:seasonId' element={<ShowSeason />} />
                         <Route path='shows/:showId/episodes' element={<ShowEpisodes />} />
+                        <Route path='shows/:showId/cast' element={<ShowCast />} />
 
                         <Route path='episodes/:episodeId/details' element={<ShowEpisode />} />
                         <Route exact path='episodes/:episodeId/' element={<Navigate to={'details'} />} />
