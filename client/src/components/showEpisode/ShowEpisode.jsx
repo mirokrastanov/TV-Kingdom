@@ -6,6 +6,7 @@ import PageLoader from '../shared/pageLoader/PageLoader';
 import SummaryComplete from '../shared/summary/SummaryComplete';
 import { getUniqueArr, plotNum, plotRating } from '../../utilities/showUtility';
 import RemovedFromDB from '../shared/removedFromDB/RemovedFromDB';
+import CommentsContainer from '../shared/commentsContainer/CommentsContainer';
 
 export default function ShowEpisode() {
     const { episodeId } = useParams();
@@ -81,7 +82,7 @@ export default function ShowEpisode() {
                     </div>
                     {p.summary
                         ? (<SummaryComplete summary={p.summary} />)
-                        : (<p style={{padding: '20px'}}>We don't have a summary for episode {p.number} yet.</p>)}
+                        : (<p style={{ padding: '20px' }}>We don't have a summary for episode {p.number} yet.</p>)}
                     <div><h2>Guest stars</h2></div>
                     <div className="top-cast">
                         {!g || g.length == 0 ? (<p>None</p>) : (null)}
@@ -111,6 +112,10 @@ export default function ShowEpisode() {
                             </Link>
                         ))}
                     </div>
+                </div>
+                <div className="com-title">
+                    <h2>Comments</h2>
+                    <CommentsContainer />
                 </div>
             </div>) : (
                 <div className="show-extra-ctr one-season"><RemovedFromDB /></div>
