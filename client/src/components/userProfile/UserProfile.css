@@ -13,3 +13,106 @@
     font-size: 2.5rem;
     padding: 1rem;
 }
+
+.user-profile-ctr .a-full {
+    color: var(--color-bg-reverse);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.user-profile-ctr .a-full section {
+    height: 300px;
+}
+
+.user-profile-ctr .a-full .inner-section {
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+.user-profile-ctr .a-full .inner-section>* {
+    background: var(--color-bg-light);
+    box-shadow: var(--box-shadow-7-cards);
+}
+
+.user-profile-ctr .a-full section:first-of-type {
+    width: 40%;
+}
+
+.user-profile-ctr .a-full section:first-of-type .inner-section {
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.user-profile-ctr .a-full section:first-of-type .inner-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.user-profile-ctr .a-full section:last-of-type {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-profile-ctr .a-full section:last-of-type .inner-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-profile-ctr .a-full section:last-of-type .inner-section>div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+
+@media screen and (max-width: 767px) {
+    .user-profile-ctr .a-full {
+        gap: 0;
+    }
+
+    .user-profile-ctr .a-full .inner-section {
+        padding: 10px;
+    }
+
+    .user-profile-ctr .a-full section:first-of-type,
+    .user-profile-ctr .a-full section:last-of-type {
+        width: 100%;
+    }
+
+    .user-profile-ctr .a-full section:first-of-type {
+        height: 400px;
+    }
+
+    .user-profile-ctr .a-full section:last-of-type {
+        height: fit-content;
+    }
+
+    .user-profile-ctr .a-full section:last-of-type .inner-section {
+        gap: 15px;
+    }
+
+    .user-profile-ctr p {
+        word-break: break-all;
+    }
+}
