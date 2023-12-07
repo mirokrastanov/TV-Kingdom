@@ -1,144 +1,61 @@
-/* Global settings */
-
-:root {
-    --mainBgColor: rgba(20, 20, 31, 11);
-    --secondaryBgColor: rgba(27, 27, 39, 1);
-    --borderColor1: rgba(40, 41, 57, 1);
-    --borderColor2: rgba(79, 86, 105, 1);
-    --textColorMain: #fff;
-    --textColorSecondary: rgb(226, 227, 232);
-    --themeColorMain: rgba(219, 26, 90, 1);
-    --themeColorSecondary: #386fd2;
-}
-
-a {
-    color: #40e0d0;
-}
-
-body {
-    background-color: var(--mainBgColor);
-    color: var(--textColorMain);
-}
-
-.container {
-    max-width: 600px;
-    margin: 20px auto;
-}
-
-/* Login & Register Pages */
-
-.auth--container {
-    height: 100vh;
+.comments-cage {
+    width: 100%;
+    margin: 20px auto 60px auto;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    border-radius: 15px;
 }
 
-.form--wrapper {
-    width: 600px;
-    width: 600px;
-    padding: 2em;
+.comments-cage .container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0;
+    border-radius: 15px;
 }
-
-.field--wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    padding: 0.5em 0;
-}
-
-
 
 /* Form Input Styling */
-
-input[type="text"],
-input[type="password"],
-input[type="email"],
-textarea {
-    background: var(--mainBgColor);
-    border: none;
-    border-bottom: 1px solid var(--borderColor1);
+.comments-cage textarea {
+    background: rgba(128, 128, 128, 0.171);
     padding: 1rem;
-    border-radius: 3px;
     width: 100%;
-    color: var(--color-light);
     outline: none;
     font-size: 18px;
     text-shadow: none !important;
-    color: var(--textColorMain);
-}
-
-
-/* Button Styling */
-
-.btn {
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn--lg {
-    padding: 1em 2em;
-}
-
-.btn--main {
-    background-color: rgba(219, 26, 90, 1);
-    color: #fff;
-}
-
-.btn--secondary {
-    background-color: #8db3dd;
-}
-
-.btn:hover {
-    opacity: 0.7;
-}
-
-/* Header Styling */
-
-#header--wrapper {
-    background-color: var(--mainBgColor);
-    padding: 1em;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 10px 10px 0 0;
-    border: 1px solid var(--borderColor1);
-    border-bottom: none;
-}
-
-.header--link {
-    color: #c7d8eb;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.header--link:hover {
-    color: #8db3dd;
+    color: var(--color-bg-reverse);
+    border-radius: 10px;
+    border: 1px solid var(--color-black-light);
 }
 
 /* Room Styling */
-
-.room--container {
+.comments-cage .room--container {
     padding: 2em;
-    background-color: var(--secondaryBgColor);
-    border-radius: 0 0 10px 10px;
-    border: 1px solid var(--borderColor1);
+    background: var(--color-bg-light);
+    border-radius: 15px;
+    box-shadow: var(--box-shadow-7-cards);
 }
 
-#message--form {
+.comments-cage .com-ctr {
+    padding: 0 0 20px 0;
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.comments-cage #message--form {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
 }
 
-.send-btn--wrapper {
+.comments-cage .send-btn--wrapper {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 10px;
 }
 
-.message--wrapper {
+.comments-cage .message--wrapper {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -146,45 +63,83 @@ textarea {
     margin: 1em;
 }
 
-.message--header {
+.comments-cage .message--header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.message--header p {
-    color: white;
+.comments-cage .message--header p {
+    color: var(--color-bg-reverse);
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin: 0;
 }
 
-.message--body {
-    padding: 0.5em 0;
-    color: var(--textColorSecondary);
-    background-color: var(--themeColorMain);
-    padding: 1em;
-    border-radius: 20px;
+.comments-cage .message--header div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.comments-cage .message--header div div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comments-cage .message--header div div:last-child {
+    margin-right: 10px;
+}
+
+.comments-cage .message--body {
+    color: var(--color-bg-reverse);
+    background: var(--color-accent-2);
+    padding: 0.75em 1em;
+    border-radius: 15px;
     width: fit-content;
     max-width: 100%;
     word-wrap: break-word;
-    /* added */
+    box-shadow: var(--box-shadow-4);
 }
 
-.message--body--owner {
-    border: 1px solid rgba(219, 26, 90, 1);
-    background-color: var(--secondaryBgColor);
+.comments-cage .message--body--owner {
+    border: 1px solid var(--color-accent-2);
+    background: var(--color-bg);
 }
 
-.message-timestamp {
+.comments-cage .message-timestamp {
     margin-left: 1em;
     color: rgb(164, 161, 161);
 }
 
-.delete--btn {
+.comments-cage .delete--btn,
+.comments-cage .edit--btn {
     color: #8db3dd;
     cursor: pointer;
     transition: 0.3s;
-    width: 16px;
+    width: 26px;
+    padding: 0 5px;
 }
 
-.delete--btn:hover {
+.comments-cage .tooltip-anchor .delete--btn:hover,
+.comments-cage .tooltip-anchor .edit--btn:hover {
     color: red;
+}
+
+.comments-cage .com-ctr .tooltip {
+    width: 80px;
+    margin-left: -40px;
+}
+
+
+@media screen and (max-width: 450px) {
+    .comments-cage small {
+        display: none;
+    }
 }
