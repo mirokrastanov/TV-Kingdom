@@ -36,6 +36,16 @@
     box-shadow: var(--box-shadow-2);
 }
 
+.com-title {
+    width: 100%;
+}
+
+.com-title h2 {
+    padding: 5px;
+    background: var(--color-bg-light);
+    box-shadow: var(--box-shadow-7-cards);
+    border-radius: 15px;
+}
 
 
 @media screen and (max-width: 767px) {
