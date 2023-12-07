@@ -44,7 +44,25 @@ export default function CommentsContainer() {
                 </form>
 
                 <div>
-                    {/* TODO: map here when all is done */}
+                    {messages.map(message => (
+                        <div key={message.$id} className={"message--wrapper"}>
+                            <div className="message--header">
+                                <p>
+                                    {message?.username ? (
+                                        <span> {message?.username}</span>
+                                    ) : (
+                                        'Anonymous user'
+                                    )}
+                                    <small className="message-timestamp"> {new Date(message.$createdAt).toLocaleString()}</small>
+                                </p>
+                              
+                                {/* TODO: Add delete and edit buttons here */}
+                            </div>
+                            <div className={"message--body" + (message.user_id === user.$id ? ' message--body--owner' : '')}>
+                                <span>{message.body}</span>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </main>

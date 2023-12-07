@@ -159,6 +159,10 @@ textarea {
     align-items: center;
 }
 
+.message--header p {
+    color: white;
+}
+
 .message--body {
     padding: 0.5em 0;
     color: var(--textColorSecondary);
