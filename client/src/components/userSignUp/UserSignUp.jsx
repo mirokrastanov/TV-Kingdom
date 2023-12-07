@@ -71,6 +71,7 @@ function UserSignUp() {
         }
         try {
             setValues(state => ({ ...state, loading: true }));
+            localStorage.removeItem('cookieFallback');
             // 1. Send data to back end
             const userInfo = { username: sub.username, email: sub.email, pwd: sub.pwd };
             const data = await registerUser(userInfo);
@@ -84,10 +85,13 @@ function UserSignUp() {
         } catch (err) {
             setValues(state => ({ ...state, loading: false }));
             // console.log(err?.response?.code, err?.message);
+            
             if (!err?.response) {
                 setValues(state => ({ ...state, errMsg: 'No Server Response' }));
             } else if (err?.response?.code === 401) {
                 setValues(state => ({ ...state, errMsg: 'Invalid credentials' }));
+            } else if (err?.response?.code === 409) {
+                setValues(state => ({ ...state, errMsg: 'A user with the same Username or email already exists' }));
             } else if (err?.response?.code === 429) {
                 setValues(state => ({ ...state, errMsg: 'Too Many Attempts' }));
             } else {

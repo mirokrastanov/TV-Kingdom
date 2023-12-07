@@ -48,7 +48,7 @@ export function AuthProvider({ children }) {
             setUser(accountDetails); // that will login the user locally
             return accountDetails;
         } catch (error) {
-            // console.log(error);
+            // console.log(error, '-- on register');
             return error;
         }
     };
@@ -71,6 +71,7 @@ export function AuthProvider({ children }) {
             return accountDetails;
         } catch (error) {
             setUser(null);
+            localStorage.removeItem('cookieFallback');
             setLoading(false);
             return error;
         }

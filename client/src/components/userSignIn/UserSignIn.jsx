@@ -61,6 +61,7 @@ function UserSignIn() {
         }
         try {
             setValues(state => ({ ...state, loading: true }));
+            localStorage.removeItem('cookieFallback');
             // 1. Send data to back end
             const userInfo = { email: sub.email, pwd: sub.pwd };
             const data = await loginUser(userInfo);
