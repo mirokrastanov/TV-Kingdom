@@ -5,6 +5,7 @@ import { actors } from '../../services/showService';
 import PageLoader from '../shared/pageLoader/PageLoader';
 import ShowCard from '../showCard/ShowCard';
 import { getUniqueShows } from '../../utilities/showUtility';
+import CommentsContainer from '../shared/commentsContainer/CommentsContainer';
 
 export default function ActorDetails() {
     const { actorId } = useParams();
@@ -83,6 +84,8 @@ export default function ActorDetails() {
                     ))}
                 </div>
             </>)}
+            <div className="w-full"><h2>Comments</h2></div>
+            <CommentsContainer />
         </div>
     )
 }
