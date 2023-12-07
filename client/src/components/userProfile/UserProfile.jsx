@@ -7,12 +7,19 @@ export default function UserProfile() {
     const { user } = useAuth();
     const [loading, setLoading] = useState(true);
     const [modalOpen, setModalOpen] = useState(false);
+    const [profileImage, setProfileImage] = useState('');
 
     useEffect(() => {
         if (user) {
+            if (localStorage.getItem(user.email)) {
+                setProfileImage(localStorage.getItem(user.email));
+            } else {
+                setProfileImage('/src/assets/tv-1.png');
+                localStorage.setItem(user.email, '/src/assets/tv-1.png');
+            }
             setLoading(false);
         }
-        console.log(user);
+        // console.log(user);
 
         window.addEventListener('click', backdropCloseModal);
         return () => {
@@ -34,6 +41,13 @@ export default function UserProfile() {
         }
     }
 
+    function chooseProfileImg(e) {
+        const target = e.currentTarget.dataset.src;
+        setProfileImage(target);
+        localStorage.setItem(user.email, target);
+        setModalOpen(false);
+    }
+
     return (
         <div className="user-profile-ctr">
             <h1>User Profile</h1>
@@ -43,7 +57,7 @@ export default function UserProfile() {
                     <article className="a-full">
                         <section>
                             <div className="inner-section">
-                                <img src="/src/assets/tv-1.png" alt="profile-img" onClick={openModal} />
+                                <img src={profileImage} alt="profile-img" onClick={openModal} />
                                 <div id="profile-modal" className={`modal${modalOpen ? ' modal-open' : ''}`}>
                                     <div className="modal-content">
                                         <div className='tooltip-anchor'>
@@ -54,7 +68,8 @@ export default function UserProfile() {
                                         <h3>Choose a profile image</h3>
                                         <div className="modal-images">
                                             <div>
-                                                <img src="/src/assets/tv-1.png" alt="profile-img" />
+                                                <img src="/src/assets/tv-1.png" alt="profile-img" data-src="/src/assets/tv-1.png"
+                                                    onClick={chooseProfileImg} />
                                             </div>
 
 
