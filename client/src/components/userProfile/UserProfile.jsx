@@ -53,7 +53,9 @@ export default function UserProfile() {
                                         </div>
                                         <h3>Choose a profile image</h3>
                                         <div className="modal-images">
-                                            <img src="/src/assets/tv-1.png" alt="profile-img" />
+                                            <div>
+                                                <img src="/src/assets/tv-1.png" alt="profile-img" />
+                                            </div>
 
 
                                         </div>
