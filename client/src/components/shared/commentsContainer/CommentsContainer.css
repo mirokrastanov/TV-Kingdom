@@ -37,8 +37,8 @@
 
 .comments-cage .com-ctr {
     padding: 0 0 20px 0;
-    height: 400px;
-    overflow-y: scroll;
+    max-height: 400px;
+    overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
 }

@@ -55,7 +55,7 @@ export default function CommentsContainer() {
         );
         // console.log('TOTAL: ', response.documents);
         const currentPageComments = response.documents.filter(x => x.asset_id == assetId);
-        console.log('PAGE: ', currentPageComments);
+        // console.log('PAGE: ', currentPageComments);
         setMessages(currentPageComments);
     }
 
