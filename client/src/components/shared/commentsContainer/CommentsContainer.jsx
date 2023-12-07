@@ -3,6 +3,7 @@ import './CommentsContainer.css';
 import client, { databases, DATABASE_ID, COLLECTION_ID_MESSAGES } from '../../../config/appwriteConfig';
 import { ID, Query, Permission, Role } from 'appwrite';
 import { useAuth } from '../../../contexts/AuthContext';
+import { Trash2 } from 'react-feather';
 
 
 export default function CommentsContainer() {
@@ -37,6 +38,11 @@ export default function CommentsContainer() {
 
         setMessageBody('');
 
+    }
+
+    const deleteMessage = async (id) => {
+        await databases.deleteDocument(DATABASE_ID, COLLECTION_ID_MESSAGES, id);
+        setMessages(prevState => prevState.filter(message => message.$id !== id));
     }
 
     const getMessages = async () => {
@@ -84,8 +90,10 @@ export default function CommentsContainer() {
                                     )}
                                     <small className="message-timestamp"> {new Date(message.$createdAt).toLocaleString()}</small>
                                 </p>
+                                {message.$permissions.includes(`delete(\"user:${user.$id}\")`) && (
+                                    <Trash2 className="delete--btn" onClick={() => { deleteMessage(message.$id) }} />
 
-                                {/* TODO: Add delete and edit buttons here */}
+                                )}
                             </div>
                             <div className={"message--body" + (message.user_id === user.$id ? ' message--body--owner' : '')}>
                                 <span>{message.body}</span>
