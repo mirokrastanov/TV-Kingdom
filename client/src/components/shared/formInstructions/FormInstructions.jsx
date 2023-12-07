@@ -6,7 +6,7 @@ const messages = {
     uidnote: [
         (<> 4 to 24 characters</>),
         (<> Must begin with a <b>Letter</b></>),
-        (<> Allowed: <b>Letters</b>, <b>Numbers</b>, <b>Underscores</b> & <b>Hyphens</b></>),
+        (<> Allowed: <b>Letters</b>, <b>Numbers</b>, <b>Underscores</b>, <b>Hyphens</b> & <b>Spaces</b></>),
     ],
     emailnote: [(<> Enter a valid <b>Email</b></>), (<> Eg: <b>john@example.com</b></>)],
     pwdnote: [
