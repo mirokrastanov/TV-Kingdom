@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './CommentsContainer.css';
 import client, { databases, DATABASE_ID, COLLECTION_ID_MESSAGES } from '../../../config/appwriteConfig';
+import { ID, Query, Permission, Role } from 'appwrite';
 import { useAuth } from '../../../contexts/AuthContext';
 
 
@@ -15,6 +16,23 @@ export default function CommentsContainer() {
 
     }, []);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        console.log('MESSAGE:', messageBody)
+
+        const payload = {
+            body: messageBody
+        }
+
+        const response = await databases.createDocument(
+            DATABASE_ID,
+            COLLECTION_ID_MESSAGES,
+            ID.unique(),
+            payload,
+        )
+
+        console.log('RESPONSE:', response)
+    }
 
     const getMessages = async () => {
         const response = await databases.listDocuments(
@@ -27,14 +45,16 @@ export default function CommentsContainer() {
 
 
     return (
-        <main className="container">
+        <div className="container">
             <div className="room--container">
-                <form id="message--form">
+                <form id="message--form" onSubmit={handleSubmit}>
                     <div>
                         <textarea
                             required
                             maxLength="250"
-                            placeholder="Say something..."
+                            placeholder="Type a comment..."
+                            onChange={(e) => { setMessageBody(e.target.value) }}
+                            value={messageBody}
                         ></textarea>
                     </div>
 
@@ -55,7 +75,7 @@ export default function CommentsContainer() {
                                     )}
                                     <small className="message-timestamp"> {new Date(message.$createdAt).toLocaleString()}</small>
                                 </p>
-                              
+
                                 {/* TODO: Add delete and edit buttons here */}
                             </div>
                             <div className={"message--body" + (message.user_id === user.$id ? ' message--body--owner' : '')}>
@@ -65,6 +85,6 @@ export default function CommentsContainer() {
                     ))}
                 </div>
             </div>
-        </main>
+        </div>
     )
 }
