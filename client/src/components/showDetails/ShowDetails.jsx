@@ -6,6 +6,7 @@ import { extractYear, plotRating } from '../../utilities/showUtility';
 import PageLoader from '../shared/pageLoader/PageLoader';
 import SummaryComplete from '../shared/summary/SummaryComplete';
 import RemovedFromDB from '../shared/removedFromDB/RemovedFromDB';
+import CommentsContainer from '../shared/commentsContainer/CommentsContainer';
 
 export default function ShowDetails() {
     const { showId } = useParams();
@@ -142,6 +143,10 @@ export default function ShowDetails() {
                     </>
                 ))
             }
+            <div className="com-title">
+                <h2>Comments</h2>
+                <CommentsContainer />
+            </div>
         </div>
     )
 }
