@@ -17,27 +17,36 @@ export default function CommentsContainer() {
     }, []);
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        console.log('MESSAGE:', messageBody)
+        e.preventDefault();
+        console.log('MESSAGE:', messageBody);
 
         const payload = {
             body: messageBody
-        }
+        };
 
         const response = await databases.createDocument(
             DATABASE_ID,
             COLLECTION_ID_MESSAGES,
             ID.unique(),
             payload,
-        )
+        );
 
-        console.log('RESPONSE:', response)
+        console.log('RESPONSE:', response);
+
+        setMessages(prevState => [response, ...prevState]);
+
+        setMessageBody('');
+
     }
 
     const getMessages = async () => {
         const response = await databases.listDocuments(
             DATABASE_ID,
             COLLECTION_ID_MESSAGES,
+            [
+                Query.orderDesc('$createdAt'),
+                Query.limit(100),
+            ]
         );
         console.log(response.documents);
         setMessages(response.documents);
