@@ -66,6 +66,12 @@ export default function Navigation() {
         navigate('/search');
     };
 
+    const logoutMiddleware = (e) => {
+        e.preventDefault();
+        if (darkTheme) toggleTheme();
+        logoutUser();
+    };
+
     useEffect(() => {
         window.addEventListener('scroll', scrollHandler);
         window.addEventListener('load', screenResizeHandler);
@@ -120,7 +126,7 @@ export default function Navigation() {
                 <NavBtn target={'Sign In'} check={mobileWidth} handler={navHandler} user={user} />
 
                 {/* USER */}
-                <NavLogout logout={logoutUser} check={mobileWidth} handler={navHandler} user={user} />
+                <NavLogout logout={logoutMiddleware} check={mobileWidth} handler={navHandler} user={user} />
             </ul>
         </header>
     )
