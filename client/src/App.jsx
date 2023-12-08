@@ -1,6 +1,7 @@
-import { Routes, Route, Navigate, useParams } from 'react-router-dom';
-import { useTheme } from './contexts/ThemeContext';
+import { useEffect } from 'react';
+import { Routes, Route, Navigate, useParams, useLocation } from 'react-router-dom';
 import './App.css';
+import { useTheme } from './contexts/ThemeContext';
 import Home from './components/home/Home';
 import Navigation from './components/navigation/Navigation';
 import NotFound from './components/notFound/NotFound';
@@ -23,10 +24,16 @@ import ShowCast from './components/showCast/ShowCast';
 import ShowCrew from './components/showCrew/ShowCrew';
 import ShowImages from './components/showImages/ShowImages';
 
+// NOTE: All params in use throughout the app.
+// const { showId, seasonId, actorId, episodeId } = useParams();
+
 function App() {
     const darkTheme = useTheme();
-    // NOTE: All params in use throughout the app.
-    // const { showId, seasonId, actorId, episodeId } = useParams();
+    // const location = useLocation();
+
+    // useEffect(() => {
+    //     console.log(location);
+    // }, [location]);
 
     return (
         <div className={`app-ctr${darkTheme ? ' dark-mode' : ''}`}>
