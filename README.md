@@ -35,7 +35,8 @@ The website is an entertainment platform focused on TV shows. It provides users 
 - Users get an enhanced experience and full access to the app.
 - Dynamic search available as a separate entity with its own page and also from within the navigation bar. Both share the same search context.
 - Dynamic navigation with animations.
-- Special mobile device views and navigation show/hide button for mobile view
+- Special mobile device views and navigation show/hide button for mobile view.
+- Custom scrollbars with a smooth effect.
 - And much more...
 
 
@@ -135,8 +136,8 @@ The website is an entertainment platform focused on TV shows. It provides users 
 
 
 ## A lot more awaits you on the app. Thank You! 
-<a href="https://nba-1-480a7.web.app/" target="_blank"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/try-now-btn.png?raw=true" height="60px" /></a>
-- BACKUP: [In case main hosting is down](https://nba-1-480a7.firebaseapp.com/)
+<a href="https://kingdom-71759.web.app/" target="_blank"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/try-now-btn.png?raw=true" height="60px" /></a>
+- BACKUP: [In case main hosting is down](https://kingdom-71759.firebaseapp.com/)
 
 
 
