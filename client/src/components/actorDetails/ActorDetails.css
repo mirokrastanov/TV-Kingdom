@@ -83,6 +83,19 @@
     border-radius: 15px;
     width: 40%;
     transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards-cage:has(.crew-div) {
+    align-items: stretch;
+}
+
+.crew-div p {
+    color: var(--color-bg-reverse);
+    text-decoration: none;
 }
 
 .actor-details-ctr .crew-div p:first-child {
@@ -121,7 +134,7 @@
     }
 
     .actor-details-ctr .actor-img {
-    max-width: none;
+        max-width: none;
     }
 
     .actor-details-ctr .no-img {
