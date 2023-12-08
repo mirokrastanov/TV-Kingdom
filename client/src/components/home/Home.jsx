@@ -5,8 +5,10 @@ import { useEffect } from 'react';
 import PageLoader from '../shared/pageLoader/PageLoader';
 import { plotRating } from '../../utilities/showUtility';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 
 export default function Home() {
+    const { user } = useAuth();
     const [mySwiper, setMySwiper] = useState(null);
     const [cards, setCards] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -69,7 +71,10 @@ export default function Home() {
                                 <p>
                                     Join us for a world of entertainment at your fingertips! Your ultimate destination for all things television: ratings, summaries, comments, we've got it all!
                                 </p>
-                                <Link className='btn' to={'/user/sign-up'}>Join</Link>
+                                {user
+                                    ? (<Link className='btn' to={'/shows'}>Shows</Link>)
+                                    : (<Link className='btn' to={'/user/sign-up'}>Join</Link>)
+                                }
                             </div>
                             <div className="swiper">
                                 <div className="swiper-wrapper">
@@ -80,10 +85,7 @@ export default function Home() {
                                                     ? "url('/src/assets/the100-1.jpg')" : (`url('${x.image.medium}')`))),
                                                 backgroundRepeat: "no-repeat",
                                                 backgroundPosition: "bottom center"
-                                            }}
-                                        >
-                                            {/* <span>{x.rating?.average ? x.rating.average : ''}</span> */}
-                                            {/* <h2>{x.name ? x.name : ''}</h2> */}
+                                            }}>
                                             <div className="tags">
                                                 {x.genres.map(y => (<span key={y.toLowerCase()} className={y.toLowerCase()}>{y}</span>))}
                                             </div>
@@ -94,44 +96,8 @@ export default function Home() {
                                                     else return (<b key={`rating-${i}-${x.id}`} className="material-symbols-outlined thin-symbol">star</b>);
                                                 })}
                                             </h2>
-                                            {/* <span className="rating-number">{x.rating.average ?? 0}/10</span> */}
                                         </div>
                                     ))}
-
-
-
-                                    {/* <div className="swiper-slide">
-                                        <span>9.5</span>
-                                        <h2>Breaking Bad</h2>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <span>8.1</span>
-                                        <h2>Wednesday</h2>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <span>8.7</span>
-                                        <h2>Stranger Things</h2>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <span>8.6</span>
-                                        <h2>Anne with an E</h2>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <span>8.9</span>
-                                        <h2>Friends</h2>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <span>8.6</span>
-                                        <h2>The Crown</h2>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <span>8.7</span>
-                                        <h2>House M.D.</h2>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <span>9.2</span>
-                                        <h2>Game of Thrones</h2>
-                                    </div> */}
                                 </div>
                             </div>
                         </div>
