@@ -20,8 +20,8 @@ export default function UserProfile() {
             if (localStorage.getItem(user.email)) {
                 setProfileImage(localStorage.getItem(user.email));
             } else {
-                setProfileImage('/src/assets/tv-1.png');
-                localStorage.setItem(user.email, '/src/assets/tv-1.png');
+                setProfileImage('/tv-1.png');
+                localStorage.setItem(user.email, '/tv-1.png');
             }
             setLoading(false);
         } else {
@@ -104,8 +104,8 @@ export default function UserProfile() {
                                         <div className="modal-images">
                                             {profileImages.map(x => (
                                                 <div key={x[0] + 'i-m-g'}>
-                                                    <img src={`/src/assets/p-img/${x[0]}.${x[1]}`} alt="profile-img"
-                                                        data-src={`/src/assets/p-img/${x[0]}.${x[1]}`} onClick={chooseProfileImg} />
+                                                    <img src={`/p-img/${x[0]}.${x[1]}`} alt="profile-img"
+                                                        data-src={`/p-img/${x[0]}.${x[1]}`} onClick={chooseProfileImg} />
                                                 </div>
                                             ))}
                                         </div>
