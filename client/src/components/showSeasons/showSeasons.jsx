@@ -49,7 +49,7 @@ export default function ShowSeasons() {
                         <article>
                             {x.image
                                 ? (<img src={x.image.original} alt="season-img" />)
-                                : (<img style={{ background: 'var(--color-accent-2)' }} src='/src/assets/replace-img.jpg' alt="season-img" />)}
+                                : (<img style={{ background: 'var(--color-accent-2)' }} src='/replace-img.jpg' alt="season-img" />)}
                         </article>
                         <article>
                             {x.summary

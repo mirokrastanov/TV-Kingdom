@@ -81,8 +81,8 @@ export default function Home() {
                                     {cards.map(x => (
                                         <div className="swiper-slide" key={x.id + '--card-dynamic'}
                                             style={{
-                                                backgroundImage: (!x.image ? "url('/src/assets/the100-1.jpg')" : (!x.image?.medium
-                                                    ? "url('/src/assets/the100-1.jpg')" : (`url('${x.image.medium}')`))),
+                                                backgroundImage: (!x.image ? "url('/the100-1.jpg')" : (!x.image?.medium
+                                                    ? "url('/the100-1.jpg')" : (`url('${x.image.medium}')`))),
                                                 backgroundRepeat: "no-repeat",
                                                 backgroundPosition: "bottom center"
                                             }}>

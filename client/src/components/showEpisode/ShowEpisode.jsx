@@ -62,7 +62,7 @@ export default function ShowEpisode() {
                         <article>
                             {p.image
                                 ? (<img src={p.image.original} alt="episode-img" />)
-                                : (<img style={{ background: 'var(--color-accent-2)' }} src='/src/assets/replace-img.jpg' alt="episode-img" />)}
+                                : (<img style={{ background: 'var(--color-accent-2)' }} src='/replace-img.jpg' alt="episode-img" />)}
                         </article>
                         <article>
                             <p>Show: <b>{p._embedded.show.name && p._embedded.show.name != '' ? p._embedded.show.name : '-'}</b></p>

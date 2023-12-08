@@ -53,7 +53,7 @@ export default function ShowDetails() {
                                             <a href={p.externals.imdb
                                                 ? (urlBuilder.imdb(p.externals.imdb))
                                                 : (`https://www.imdb.com/find/?q=${p.name}`)} target='_blank'>
-                                                <img src='/src/assets/IMDB_Logo.png' alt='imdb-link' />
+                                                <img src='/IMDB_Logo.png' alt='imdb-link' />
                                             </a>
                                             <div className='tooltip'>View in IMDb
                                                 <span className='material-symbols-outlined'>open_in_new</span>

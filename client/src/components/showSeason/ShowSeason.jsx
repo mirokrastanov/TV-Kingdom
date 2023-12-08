@@ -49,7 +49,7 @@ export default function ShowSeason() {
                             <article>
                                 {x.image
                                     ? (<img src={x.image.original} alt="episode-img" />)
-                                    : (<img style={{ background: 'var(--color-accent-2)' }} src='/src/assets/replace-img.jpg' alt="episode-img" />)}
+                                    : (<img style={{ background: 'var(--color-accent-2)' }} src='/replace-img.jpg' alt="episode-img" />)}
                             </article>
                             <article>
                                 <p>Episode: <b>s{plotNum(x.season)} e{plotNum(x.number ?? arr[i - 1].number + 1 ?? '')}</b></p>
