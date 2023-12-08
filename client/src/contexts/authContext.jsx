@@ -58,6 +58,7 @@ export function AuthProvider({ children }) {
         setUser(null);
         localStorage.removeItem('TV-session');
         localStorage.removeItem('TV-account');
+        localStorage.removeItem('TV-dark-mode');
     };
 
     const checkUserStatus = async () => {
