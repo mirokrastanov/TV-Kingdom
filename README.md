@@ -20,6 +20,7 @@ The website is an entertainment platform focused on TV shows. It provides users 
 
 
 ## Key Features
+- A Unique Home Page Cards Slider supporting user interactions and resembling the Shuffle of a Deck of Cards. Available to both guests and users.
 - Home Page showcasing featured content.
 - Schedule page for tracking show timings.
 - Detailed pages for Shows, Seasons, Episodes, Cast, Crew, and Actors.
