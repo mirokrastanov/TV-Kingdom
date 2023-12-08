@@ -140,6 +140,7 @@ export default function UserProfile() {
                             <div className="room--container">
                                 <h2 style={{ marginBottom: '20px' }}>Latest comments</h2>
                                 <div className='com-ctr'>
+                                    {messages.length == 0 && (<h3>You haven't posted any comments yet.</h3>)}
                                     {messages.map(message => (
                                         <div key={message.$id} className={"message--wrapper"}>
                                             <div className="message--header">
