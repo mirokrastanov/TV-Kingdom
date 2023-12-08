@@ -84,7 +84,7 @@ export default function ActorDetails() {
                     ))}
                 </div>
             </>)}
-            <div className="w-full"><h2>Comments</h2></div>
+            <div className="w-full com"><h2>Comments</h2></div>
             <CommentsContainer />
         </div>
     )
