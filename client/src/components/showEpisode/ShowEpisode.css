@@ -47,6 +47,11 @@
     border-radius: 15px;
 }
 
+.episode-current .com-title {
+    margin: auto;
+    max-width: 800px;
+}
+
 
 @media screen and (max-width: 767px) {
     .episode-current .all-crew a {

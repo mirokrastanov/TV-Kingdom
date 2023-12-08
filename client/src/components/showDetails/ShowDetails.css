@@ -25,6 +25,11 @@
     padding: 10px 0;
 }
 
+.show-details-ctr .com-title h2 {
+    margin: auto;
+    max-width: 800px;
+}
+
 .show-details-ctr .card-cage .title-ctr {
     padding-top: 10px;
 }
