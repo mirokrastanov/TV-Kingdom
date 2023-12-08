@@ -106,6 +106,15 @@ body {
     scroll-behavior: smooth;
 }
 
+p {
+    color: var(--color-bg-reverse);
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
 
 /* Effects */
 .a-left {
