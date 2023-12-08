@@ -1,54 +1,155 @@
 import React, { useState } from 'react';
 import './Home.css';
 import { shows } from '../../services/showService';
-
-const INITIAL_VALUES = {
-    showsData: {},
-    showsPage: 0,
-};
+import { useEffect } from 'react';
+import PageLoader from '../shared/pageLoader/PageLoader';
+import { plotRating } from '../../utilities/showUtility';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
-    const [pageValues, setPageValues] = useState(INITIAL_VALUES);
+    const [mySwiper, setMySwiper] = useState(null);
+    const [cards, setCards] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    const pageControl = {
-        next: () => setPageValues({ ...pageValues, showsPage: pageValues.showsPage + 1 }),
-        previous: () => {
-            if (pageValues.showsPage - 1 < 0) return;
-            setPageValues({ ...pageValues, showsPage: pageValues.showsPage - 1 });
-        },
-    };
+    useEffect(() => {
+        shows.page(0)
+            .then(sData => {
+                // console.log(sData[0]);
+                setCards(sData.slice(0, 9));
 
-    const fetchShowsPage = async () => {
-        const data = await shows.page(pageValues.showsPage);
-        setPageValues({ ...pageValues, showsData: data })
-        // console.log(data);
-    };
+                setLoading(false);
+            })
+            .catch(err => {
+                // console.log(err.message);
+                setLoading(false);
+            })
+    }, [])
 
-    const fetchSingleShow = async () => {
-        const data = await shows.oneShow.mainInfo(2999);
-        // console.log(data);
-    };
+    useEffect(() => {
+        // console.log(cards);
+
+        if (mySwiper && mySwiper?.initialized) {
+            // console.log('init');
+            // mySwiper.destroy(true, true);
+            mySwiper.update();
+        } else {
+            let swiper = new Swiper('.swiper', {
+                effect: 'cards',
+                grabCursor: true,
+                initialSlide: 3,
+                loop: true,
+                rotate: true,
+                mousewheel: {
+                    invert: false,
+                },
+                on: {
+                    init: function () {
+                        // console.log('swiper initialized');
+                    },
+                    destroy: function () {
+                        // console.log('swiper destroyed');
+                    },
+                    update: function () {
+                        // console.log('swiper updated');
+                    },
+                },
+            });
+            setMySwiper(swiper);
+        }
+    }, [cards])
 
     return (
         <div className='home-ctr'>
-            <div className="hero">
-                <h1>RULE YOUR WATCHLIST</h1>
-            </div>
+            {loading
+                ? (<PageLoader />)
+                : (<>
+                    <section className='h--section-top'>
+                        <div className="h--content">
+                            <div className="h--info">
+                                <p>
+                                    Join us for a world of entertainment at your fingertips! Your ultimate destination for all things television: ratings, summaries, comments, we've got it all!
+                                </p>
+                                <Link className='btn' to={'/user/sign-up'}>Join</Link>
+                            </div>
+                            <div className="swiper">
+                                <div className="swiper-wrapper">
+                                    {cards.map(x => (
+                                        <div className="swiper-slide" key={x.id + '--card-dynamic'}
+                                            style={{
+                                                backgroundImage: (!x.image ? "url('/src/assets/the100-1.jpg')" : (!x.image?.medium
+                                                    ? "url('/src/assets/the100-1.jpg')" : (`url('${x.image.medium}')`))),
+                                                backgroundRepeat: "no-repeat",
+                                                backgroundPosition: "bottom center"
+                                            }}
+                                        >
+                                            {/* <span>{x.rating?.average ? x.rating.average : ''}</span> */}
+                                            {/* <h2>{x.name ? x.name : ''}</h2> */}
+                                            <div className="tags">
+                                                {x.genres.map(y => (<span key={y.toLowerCase()} className={y.toLowerCase()}>{y}</span>))}
+                                            </div>
+                                            <h2>
+                                                {plotRating(x.rating.average).map((y, i) => {
+                                                    if (y == 1) return (<b key={`rating-${i}-${x.id}`} className="material-symbols-outlined fill-n-thin-symbol">star</b>);
+                                                    else if (y > 0 & y < 1) return (<b key={`rating-${i}-${x.id}`} className="material-symbols-outlined thin-symbol">star_half</b>);
+                                                    else return (<b key={`rating-${i}-${x.id}`} className="material-symbols-outlined thin-symbol">star</b>);
+                                                })}
+                                            </h2>
+                                            {/* <span className="rating-number">{x.rating.average ?? 0}/10</span> */}
+                                        </div>
+                                    ))}
 
-            <div className="container">
-                <div className="btn-cage">
-                    <button className='btn' onClick={pageControl.previous}>Prev page: {pageValues.showsPage - 1 >= 0 ? pageValues.showsPage - 1 : 'X'}</button>
-                    <p>Page = {pageValues.showsPage}</p>
-                    <button className='btn' onClick={pageControl.next}>Next page: {pageValues.showsPage + 1}</button>
-                </div>
-                <div className="btn-cage">
-                    <button className='btn' onClick={fetchShowsPage}>Fetch page</button>
-                    <button className='btn' onClick={fetchSingleShow}>Fetch one</button>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa sequi nemo perspiciatis adipisci repellendus molestiae, nesciunt ex mollitia amet cum.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus soluta unde id nulla natus nostrum laudantium minima magni! Quos, exercitationem qui! Laudantium maiores ipsa, nihil totam deleniti, quae in sit fuga possimus itaque mollitia. At labore, numquam cumque illo quae molestiae sunt non similique obcaecati beatae in expedita facere omnis!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus eligendi suscipit excepturi eius recusandae laboriosam aperiam nobis sint? Voluptatem amet cupiditate corrupti! Eius quasi quae eveniet laborum soluta delectus, perspiciatis similique totam unde, molestiae nesciunt harum possimus ad eaque deleniti iste natus consequuntur odio recusandae? Dolores, tenetur voluptatibus praesentium impedit unde voluptates, consectetur corporis nulla nihil velit ratione debitis eligendi ad animi est ex officia maxime enim quaerat iusto deserunt perferendis dolorem repellat. Odit nostrum quasi qui excepturi sed. A doloremque error sequi et optio harum magni natus qui necessitatibus minima, reprehenderit quae veritatis quasi, voluptatem non illum nihil at temporibus minus obcaecati ipsam, rerum perferendis. Blanditiis nisi ipsam, placeat fugiat incidunt sequi dolorem voluptas nihil. Et, eum. Labore, rerum. Ipsa suscipit officia praesentium alias corrupti, esse assumenda debitis veniam sequi maxime numquam, illum natus temporibus! Aspernatur officia soluta nam explicabo error consectetur ab facilis dolores omnis, amet dolore et culpa, tempora saepe possimus perspiciatis ratione quam. Nulla saepe rerum totam magnam in quia, alias labore, vitae ad dolorem facere sapiente eligendi tempore dolor iste error. Inventore ad quis repudiandae neque ut laudantium facilis error ab voluptatibus. Consequuntur blanditiis ipsam itaque minus sit corporis sed illum soluta sequi, qui doloremque.</p>
-            </div>
+
+
+                                    {/* <div className="swiper-slide">
+                                        <span>9.5</span>
+                                        <h2>Breaking Bad</h2>
+                                    </div>
+                                    <div className="swiper-slide">
+                                        <span>8.1</span>
+                                        <h2>Wednesday</h2>
+                                    </div>
+                                    <div className="swiper-slide">
+                                        <span>8.7</span>
+                                        <h2>Stranger Things</h2>
+                                    </div>
+                                    <div className="swiper-slide">
+                                        <span>8.6</span>
+                                        <h2>Anne with an E</h2>
+                                    </div>
+                                    <div className="swiper-slide">
+                                        <span>8.9</span>
+                                        <h2>Friends</h2>
+                                    </div>
+                                    <div className="swiper-slide">
+                                        <span>8.6</span>
+                                        <h2>The Crown</h2>
+                                    </div>
+                                    <div className="swiper-slide">
+                                        <span>8.7</span>
+                                        <h2>House M.D.</h2>
+                                    </div>
+                                    <div className="swiper-slide">
+                                        <span>9.2</span>
+                                        <h2>Game of Thrones</h2>
+                                    </div> */}
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </section>
+                </>)}
         </div>
     )
 }
