@@ -2,7 +2,7 @@
 🎬📺🏰🎉TV Kingdom, where the magic of television meets the future: a modern, fully responsive, full-stack web application that unlocks a kingdom of limitless TV show data at your fingertips!
 
 <p align="center">
-   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/preview-img.png?raw=true" alt="game-image" height="500px"></a>
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/preview.png?raw=true" alt="game-image" height="500px"></a>
 </p>
 
 #### Site is powered by: [TV MAZE](https://www.tvmaze.com)
