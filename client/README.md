@@ -15,4 +15,5 @@ Currently, two official plugins are available:
 
 <br />
 
-## The complete review is located in the main README file at the root of this repository
+## Read the COMPLETE README
+- Full Project README: [Here](https://github.com/mirokrastanov/TV-Kingdom/blob/main/README.md)
