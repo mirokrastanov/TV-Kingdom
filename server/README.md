@@ -26,5 +26,5 @@
 - A fast and free REST API that provides TV information. In addition to the free public API, there's a user-level API available for all Premium members. The documentation for the user API can be viewed [here](https://static.tvmaze.com/apidoc/).
 
 
-## Read the COMPLETE README file of the project
+## Read the COMPLETE README
 - Full Project README: [Here](https://github.com/mirokrastanov/TV-Kingdom/blob/main/README.md)
