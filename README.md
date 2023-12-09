@@ -1,7 +1,9 @@
 # TV-Kingdom
 🎬📺🏰🎉TV Kingdom, where the magic of television meets the future: a modern, fully responsive, full-stack web application that unlocks a kingdom of limitless TV show data at your fingertips!
 
-### Disclaimer
+#### Site is powered by: [TV MAZE](https://www.tvmaze.com)
+
+## Disclaimer
 - This is a non-commercial student project designed to showcase programming skills. I have only used it in a student environment @SoftUni.
 <br />
 
@@ -19,24 +21,23 @@
 The website is an entertainment platform focused on TV shows. It provides users with a variety of features including browsing and searching for shows, viewing detailed information about shows, seasons, episodes, cast, crew, and actors. Users can also explore images related to shows and episodes. Additionally, the website offers user authentication, allowing registered users to personalize their experience by managing their profiles.
 
 
-## Key Features
-- A Unique Home Page Cards Slider supporting user interactions and resembling the Shuffle of a Deck of Cards. Available to both guests and users.
-- Home Page showcasing featured content.
+## Features
+- `Infinite Scrolling` for Shows, Actors & Schedule pages.
+- Unique Home Page `Shows Cards Slider` supporting user interactions and resembling the Shuffle of a Deck of Cards. Available to both guests and users.
 - Schedule page for tracking show timings.
 - Detailed pages for Shows, Seasons, Episodes, Cast, Crew, and Actors.
-- Search functionality for discovering content.
-- User authentication for personalized profiles.
+- `User authentication` for personalized profiles. Users get an enhanced experience and full access to the app.
 - Custom 404 Not Found page for handling invalid routes.
-- Light/Dark modes - selection is remembered for each account.
-- Comments for the following pages: Show Details, Actor Details, Episode Details.
-- Overview of latest comments is also available at Users' profile page.
-- Profile image selection from a preset of stock images (future update might also support custom image upload).
-- Guest features/access are limited to less than 10% of all features.
-- Users get an enhanced experience and full access to the app.
-- Dynamic search available as a separate entity with its own page and also from within the navigation bar. Both share the same search context.
-- Dynamic navigation with animations.
-- Special mobile device views and navigation show/hide button for mobile view.
-- Custom scrollbars with a smooth effect.
+- `Light/Dark modes` - selection is remembered for each account.
+- `Comments` for the following pages: Show Details, Actor Details, Episode Details.
+- Overview of `latest comments` is also available on Users' profile page.
+- `Profile image selection` from a preset of stock images (future update might also support custom image upload).
+- `Dynamic search` available both from the nav bar and as a dedicated feature page.
+- Dynamic switching between Shows & Actors results. Both available on the dedicated Search page.
+- Dynamic navigation with animations and `Custom Tooltips`.
+- `Responsive Design on All pages`. Mobile device views and mobile specific navigation with a show/hide button.
+- `Custom scrollbars` with a smooth effect.
+- The app also features a set of beautiful background images for user sign in & sign up pages, and also for the home page.
 - And much more...
 
 
@@ -108,32 +109,81 @@ The website is an entertainment platform focused on TV shows. It provides users 
 
 
 
-
+<br />
 
 ## Sneak Peak Images 
 - Dashboard (User View)
 
-### (In progress...)
 
-<!--
-<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/1.png?raw=true" alt="game-image" height="600px"></a></p>
-- Dashboard (Guest View)
-<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/2.png?raw=true" alt="game-image" height="600px"></a></p>
-- Teams (with nice hover effects)
-<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/3.png?raw=true" alt="game-image" height="600px"></a></p>
-- Navigation (with a custom animated tooltip on hover)
-<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/4.png?raw=true" alt="game-image" height="300px"></a></p>
-- Navigation on big screens
-<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/5.png?raw=true" alt="game-image" height="600px"></a></p>
-- Navigation on mobile devices (toggled on)
-<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/6.png?raw=true" alt="game-image" height="600px"></a></p>
-- Mobile View with navigation toggled off
-<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/7.png?raw=true" alt="game-image" height="600px"></a></p>
-- Liked Team (already added to favorites)
-<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/8.png?raw=true" alt="game-image" height="100px"></a></p>
-- Not liked (you can click on the star to add it to favorites). Also showcases the custom tooltip on hover telling you what happens if you click the star. The star also spins with an animation effect, but to see that you must try out the app. :)
-<p align="center"><a href="https://nba-1-480a7.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/nba-dashboard-project/9.png?raw=true" alt="game-image" height="200px"></a></p>
+- Actor Card, Show Card (with a custom animation that uncovers hidden extra content) & Custom tooltips
+<p align="center">
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/actor-card.png?raw=true" alt="game-image" height="300px"></a>
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/show-card.png?raw=true" alt="game-image" height="300px"></a>
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/custom-tooltip.png?raw=true" alt="game-image" height="100px"></a>
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/guest-star-tooltip.png?raw=true" alt="game-image" height="100px"></a>
+</p>
 
+- Comments
+<p align="center">
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/comments.png?raw=true" alt="game-image" height="500px"></a>
+</p>
+
+- Episodes
+<p align="center">
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/episodes.png?raw=true" alt="game-image" height="500px"></a>
+</p>
+
+- Images
+<p align="center">
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/images.png?raw=true" alt="game-image" height="500px"></a>
+</p>
+
+- Schedule
+<p align="center">
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/schedule.png?raw=true" alt="game-image" height="500px"></a>
+</p>
+
+- Search - Nav view & Dedicated page view
+<p align="center">
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/search-nav.png?raw=true" alt="game-image" height="60px"></a>
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/search-dedicated.png?raw=true" alt="game-image" height="500px"></a>
+</p>
+
+- Seasons
+<p align="center">
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/seasons.png?raw=true" alt="game-image" height="500px"></a>
+</p>
+
+- Home (Light Mode)
+<p align="center">
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/home-light.png?raw=true" alt="game-image" height="500px"></a>
+</p>
+
+- Home (Dark Mode)
+<p align="center">
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/home-dark.png?raw=true" alt="game-image" height="500px"></a>
+</p>
+
+- Actors
+<p align="center">
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/actors.png?raw=true" alt="game-image" height="500px"></a>
+</p>
+
+- Show Details
+<p align="center">
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/show-details.png?raw=true" alt="game-image" height="500px"></a>
+</p>
+
+- Episode Details
+<p align="center">
+   <a href="https://kingdom-71759.web.app/"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/tv-kingdom-assets/single-episode.png?raw=true" alt="game-image" height="500px"></a>
+</p>
+
+
+
+
+
+<br />
 
 ## A lot more awaits you on the app. Thank You! 
 <a href="https://kingdom-71759.web.app/" target="_blank"><img src="https://github.com/mirokrastanov/Software-Engineering-SoftUni/blob/main/miscellaneous/try-now-btn.png?raw=true" height="60px" /></a>
@@ -146,21 +196,44 @@ The website is an entertainment platform focused on TV shows. It provides users 
 
 # Technical Information
 
-## Front End side 
-### This SPA project was built using the Angular framework
-- More information regarding Angular can be found in [this README](https://github.com/mirokrastanov/NBA-Dashboard/blob/main/client/README.md) and in the [Angular Docs](https://docs.angularjs.org/api).
+## Project Tools & Technologies used
+### IDE
+- [VS Code](https://code.visualstudio.com/)
+### Extensions 
+- [CSS Variable Autocomplete](https://marketplace.visualstudio.com/items?itemName=vunguyentuan.vscode-css-variables)
+- [ES7+ React/Redux/React-Native snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets)
+### Languages
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+### Libraries
+- [Swiper.js](https://swiperjs.com/)
+- [React Feather](https://feathericons.com/)
+- [React Router](https://reactrouter.com/en/main)
+- [Vite](https://vitejs.dev/guide/)
+### Fonts, Icons & Visual elements
+- [Font Awesome Icons](https://fontawesome.com/)
+- [Google Material Icons](https://fonts.google.com/icons?icon.set=Material+Symbols)
+- [Font - Montserrat](https://fonts.google.com/specimen/Montserrat)
 
+<br />
+
+## Front End side 
+### This SPA project was built using the React.js
+- More information regarding React can be found in [this README](https://github.com/mirokrastanov/TV-Kingdom/blob/main/client/README.md) and in the [React Docs](https://react.dev/learn).
+
+<br />
 
 ## Back End side
-### Back End is fully handled by Firebase
-- Read the details of this project's back end handling and challenges. [Here](https://github.com/mirokrastanov/NBA-Dashboard/blob/main/server/README.md)
+### Authentication 
+- [Appwrite.io](https://cloud.appwrite.io/)
+### Database 
+- [Appwrite.io](https://cloud.appwrite.io/)
+### Hosting 
+- [Firebase](https://firebase.google.com/)
+### Read more
+- Read the details of this project's back end handling and challenges. [Here](https://github.com/mirokrastanov/TV-Kingdom/blob/main/server/README.md)
 
-### NBA Data obtained via web scraping
-- The lack of a free and feasible good API led to me learning web scraping and incorporating it for this project.
-- It was a great way for me to learn more about the `puppeteer` library and web scraping as a whole.
-- This of course made the Front End use of this data harder than using a regular API. 
-- There were many challenges and the process was very involved. 
-- Read more about it [Here](https://github.com/mirokrastanov/NBA-Dashboard/tree/main/web-scrapers)
-
--->
+### Powered by 
+- App Data provided by: [TV MAZE](https://www.tvmaze.com)
 
