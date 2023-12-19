@@ -27,7 +27,7 @@ The website is an entertainment platform focused on TV shows. It provides users 
 
 ## Features
 - `Infinite Scrolling` for Shows, Actors & Schedule pages.
-- Unique Home Page `Shows Cards Slider` supporting user interactions and resembling the Shuffle of a Deck of Cards. Available to both guests and users.
+- Unique Home Page `Show Cards Slider` supporting user interactions and resembling the Shuffle of a Deck of Cards. Available to both guests and users.
 - Schedule page for tracking show timings.
 - Detailed pages for Shows, Seasons, Episodes, Cast, Crew, and Actors.
 - `User authentication` for personalized profiles. Users get an enhanced experience and full access to the app.
